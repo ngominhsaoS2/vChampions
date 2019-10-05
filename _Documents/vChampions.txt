@@ -3,11 +3,59 @@
 --- Date created: 2019/10/05
 --- Date modified: 2019/10/05
 
+I. Mục tiêu, tầm nhìn dài hạn
+    1. Giúp các đội bóng phủi có thể dễ dàng set kèo, đặt kèo
+    2. Giúp các đội bóng quản lý dòng tiền, quản lý đội bóng
+    3. Giúp các chủ sân dễ dàng quản lý các sân bóng của họ, theo dõi doanh thu..., ERP cho các sân bóng
+    4. Giúp tạo ra sân chơi để các đội bóng khắp cả nước tranh tài, cọ sát
+    5. Hướng đến tổ chức các giải bóng đá phủi tầm cỡ thành phố, quốc gia
+    6. ...
 
+II. Mục tiêu ngắn hạn
+    1. Hoàn thành website trong 4 - 6 tuần, bao gồm cả test
+    2. Pulish ra internet
+    3. ...
 
+III. Yêu cầu, chức năng vả tình hình thực hiện
+    1. Đăng ký, đăng nhập, đăng xuất
+        - User, có thể là cầu thủ/chủ sân
+        - Đăng ký: 
+        - Đăng nhập: 
+        - Đăng xuất: 
 
+    2. Tạo đội bóng, quản lý cầu thủ của đội bóng
+        - Tạo đội bóng, tên, logo, đội trưởng, đội phó... các thông tin cần thiết cho một đội bóng phủi/chuyên nghiệp
+        - Thêm bớt cầu thủ trong đội
+        - Tạo kèo, nhận kèo
+        - Upload kêt quả, confirm kêt quả thi đấu
+        - Cho điểm và xếp hạng các đội bóng
+        - ...
 
+    3. Tạo trang quản lý cho chủ sân
+        - Từ User, tạo sân bóng
+        - Thêm sửa xoá các sân trong sân bóng của mình
+        - Tình hình sân available
+        - Thêm một vài chức năng ERP cho chủ sân
+        - Tạo trang đặt sân và thanh toán qua Momo, Paypal...
+        - Thêm chức năng thêm thời tiết tại sân (update từ cầu thủ hoặc chủ sân đều được)
+        - Làm cách nào để hạn chế việc các sân delay trong quá trình làm việc???
 
+    4. Trang xếp hạng
+        - 
+        - 
+
+    5. Trang blog (nếu cần)
+
+    6. 
+
+IV. Kết quả mong muốn
+    1. Publish thành công một website đơn giản, dễ sử dụng, có tính thẩm mỹ
+    2. Có 1000 đội bóng (active) sau 3 tháng chính thức đi vào hoạt động
+    3. ...
+
+V. Kết quả thực tế
+    1. 
+    2. 
 
 
 
