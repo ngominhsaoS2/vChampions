@@ -2,6 +2,13 @@
 --- Author: SaoNM
 --- Date created: 2019/10/05
 --- Date modified: 2019/10/05
+--- Status of task:
+        A. Hoàn thành
+        B. Đang làm, không vướng mắc
+        C. Đang làm, vướng mắc nhỏ
+        D. Đang làm, vướng mắc to
+        E. Đang làm
+        F. Chưa bắt đầu; G. Đã hủy
 
 I. Mục tiêu, tầm nhìn dài hạn
     1. Giúp các đội bóng phủi có thể dễ dàng set kèo, đặt kèo
@@ -18,35 +25,72 @@ II. Mục tiêu ngắn hạn
 
 III. Yêu cầu, chức năng vả tình hình thực hiện
     1. Đăng ký, đăng nhập, đăng xuất
-        - User, có thể là cầu thủ/chủ sân
-        - Đăng ký: 
-        - Đăng nhập: 
-        - Đăng xuất: 
+        - User, có thể là cầu thủ/chủ sân (Role management)
+            + API: A. Done. Phân biệt bằng role. Hiện có Admin, Player, StadiumOwner.
+            + UI: 
+        - Đăng ký (Register)
+            + API: A. Done.
+            + UI: 
+        - Đăng nhập (Login)
+            + API: A. Done.
+            + UI: 
+        - Đăng xuất (Logout)
+            + API: 
+            + UI: 
 
     2. Tạo đội bóng, quản lý cầu thủ của đội bóng
         - Tạo đội bóng, tên, logo, đội trưởng, đội phó... các thông tin cần thiết cho một đội bóng phủi/chuyên nghiệp
+            + API: 
+            + UI: 
         - Thêm bớt cầu thủ trong đội
+            + API: 
+            + UI: 
         - Tạo kèo, nhận kèo
+            + API: 
+            + UI:
         - Upload kêt quả, confirm kêt quả thi đấu
+            + API: 
+            + UI:
         - Cho điểm và xếp hạng các đội bóng
+            + API: 
+            + UI:
         - ...
 
-    3. Tạo trang quản lý cho chủ sân
+    3. Phân quyền truy cập các API đã viết
+        - Theo role: Admin, Player, StadiumOwner
+            + API: A. Done
+        - 
+
+    4. Tạo trang quản lý cho chủ sân
         - Từ User, tạo sân bóng
+            + API: 
+            + UI:
         - Thêm sửa xoá các sân trong sân bóng của mình
+            + API: 
+            + UI:
         - Tình hình sân available
+            + API: 
+            + UI:
         - Thêm một vài chức năng ERP cho chủ sân
+            + API: 
+            + UI:
         - Tạo trang đặt sân và thanh toán qua Momo, Paypal...
+            + API: 
+            + UI:
         - Thêm chức năng thêm thời tiết tại sân (update từ cầu thủ hoặc chủ sân đều được)
+            + API: 
+            + UI:
         - Làm cách nào để hạn chế việc các sân delay trong quá trình làm việc???
+            + API: 
+            + UI:
 
-    4. Trang xếp hạng
+    5. Trang xếp hạng
         - 
         - 
 
-    5. Trang blog (nếu cần)
+    6. Trang blog (nếu cần)
 
-    6. 
+    7. 
 
 IV. Kết quả mong muốn
     1. Publish thành công một website đơn giản, dễ sử dụng, có tính thẩm mỹ

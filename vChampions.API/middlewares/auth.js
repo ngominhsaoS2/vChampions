@@ -11,7 +11,7 @@ function auth(req, res, next) {
         next();
     }
     catch (ex) {
-        res.status(401).send('Access denied. No token provided.');
+        res.status(401).send('Access denied. Invalid token.');
     }
 }
 
