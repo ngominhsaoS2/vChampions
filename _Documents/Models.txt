@@ -1,0 +1,45 @@
+*** User (bao gồm cả cầu thủ/chủ sân)
+- id
+- name
+- email
+- phone
+- password
+- role (vai trò: cầu thủ/chủ sân)
+- images (các ảnh, và ảnh avatar)
+- birthday
+- description (tự mô tả =))) )
+- clubs (một cầu thủ có thể tham gia nhiều clubs)
+- stats (một số thống kê về cầu thủ: số trận, số bàn, trung bình...)
+
+
+*** Club
+- id
+- name
+- logo
+- captain
+- players
+- stats (một số thống kê về đội bóng: số trận, số bàn, trung bình...)
+- rank (xếp hạng của đội bóng)
+
+
+*** Stadium
+- id
+- name
+- address
+- yards (các sân nhỏ trong stadium)
+
+
+*** Match
+- id
+- datetime
+- stadium
+- clubs
+- results
+
+*** 
+
+
+
+
+
+
