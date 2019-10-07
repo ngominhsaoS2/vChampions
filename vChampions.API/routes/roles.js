@@ -27,7 +27,7 @@ router.put('/:id', [auth, admin], async (req, res) => {
     res.send(role);
   });
 
-router.get('/', [auth], async (req, res) => {
+router.get('/', async (req, res) => {
     const roles = await Role.find().sort('name');
     res.send(roles);
 });

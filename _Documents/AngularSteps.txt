@@ -1,6 +1,13 @@
 --- Các bước khi tạo một project Angular mới
 1. Chạy command: ng new projectname-SPA
 2. Change 2 file trong environments
-3. Tạo file routes.ts trong /src/app
+3. Tạo component 'value' để test
+4. import { HttpClientModule } from '@angular/common/http'; trong app.module.ts
+5. Delete toàn bộ app.component.html, sau đó sử dụng <app-value></app-value> component để check xem có lỗi CORS
+6. Trở lại backend, allow CORS. Sau đó test lại value component để check không còn lỗi CORS
+7. Add Bootstrap
+8. 
+9. 
+10. 
 
 

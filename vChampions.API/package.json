@@ -13,6 +13,7 @@
     "bcrypt": "^3.0.6",
     "cheerio": "^1.0.0-rc.3",
     "config": "^3.1.0",
+    "cors": "^2.8.5",
     "express": "^4.16.2",
     "express-async-errors": "^3.1.1",
     "fastest-validator": "^0.6.18",

@@ -2,6 +2,7 @@ const winston = require('winston');
 const express = require('express');
 const app = express();
 
+require('./startup/cors-config')(app);
 require('./startup/logging');
 require('./startup/routes')(app);
 require('./startup/db')();
