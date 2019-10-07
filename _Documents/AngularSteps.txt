@@ -1,0 +1,6 @@
+--- Các bước khi tạo một project Angular mới
+1. Chạy command: ng new projectname-SPA
+2. Change 2 file trong environments
+3. Tạo file routes.ts trong /src/app
+
+
