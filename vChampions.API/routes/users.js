@@ -12,7 +12,7 @@ const { Role, validateRole } = require('../models/role');
 
 router.get('/me', auth, async (req, res) => {
     const user = await User.findById(req.user._id).select('-password'); // Không chọn property password
-    if (!user) return res.status(400).send('The user was not found.');
+    if (!user) return res.status(400).send('The User was not found.');
     res.send(user);
 });
 
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
     if (!role) return res.status(400).send('Invalid role.');
 
     let user = await User.findOne({ $or: [{ email: req.body.email }, { phone: req.body.phone }] });
-    if (user) return res.status(400).send('Email or phone number is already used by another user.');
+    if (user) return res.status(400).send('Email or phone number is already used by another User.');
 
     user = new User({
         name: req.body.name,
@@ -64,7 +64,7 @@ router.put('/', auth, async (req, res) => {
     console.log(req.user.email);
     
 
-    if (user.email != req.user.email) return res.status(400).send('Phone number is already used by another user.');
+    if (user.email != req.user.email) return res.status(400).send('Phone number is already used by another User.');
 
     user = await User.findOneAndUpdate(
         { _id: req.user._id },
@@ -81,7 +81,7 @@ router.put('/', auth, async (req, res) => {
         { new: true }
     );
 
-    if (!user) return res.status(404).send('The user with the given ID was not found.');
+    if (!user) return res.status(404).send('The User with the given ID was not found.');
 
     res.send(_.pick(user, ['_id', 'name', 'email', 'phone', 'role', 'description', 'birthday']));
 });

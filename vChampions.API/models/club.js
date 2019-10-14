@@ -32,15 +32,13 @@ const clubSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 5,
-        maxlength: 255,
-        unique: true
+        maxlength: 255
       },
       phone: {
         type: String,
         required: true,
         minlength: 10,
-        maxlength: 12,
-        unique: true
+        maxlength: 12
       },
       avatar: {
         imgId: { type: String, default: '' },
@@ -67,15 +65,13 @@ const clubSchema = new mongoose.Schema({
           type: String,
           required: true,
           minlength: 5,
-          maxlength: 255,
-          unique: true
+          maxlength: 255
         },
         phone: {
           type: String,
           required: true,
           minlength: 10,
-          maxlength: 12,
-          unique: true
+          maxlength: 12
         },
         avatar: {
           imgId: { type: String, default: '' },
@@ -94,13 +90,14 @@ const clubSchema = new mongoose.Schema({
 
 const Club = mongoose.model('Club', clubSchema);
 
-function validateClub(club) {
+async function validateClub(club) {
   const schema = {
     code: { type: "string", empty: false, min: 3, max: 50, pattern: /^\S*$/ }, // string phải theo đúng RegEx (không chứa dấu phẩy)
-    name: { type: "string", empty: false, min: 3, max: 50 } // empty: false - tức là không cho trường code empty
+    name: { type: "string", empty: false, min: 3, max: 50 }, // empty: false - tức là không cho trường code empty
+    captainId : { type: "string", empty: false, pattern: /^[0-9a-fA-F]{24}$/ } // pattern objectId trong mongoDb
   };
 
-  return v.validate(club, schema)
+  return v.validate(club, schema);
 }
 
 exports.clubSchema = clubSchema;
