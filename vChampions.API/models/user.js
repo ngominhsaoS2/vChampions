@@ -31,22 +31,57 @@ const userSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 1024
     },
-    role: { 
-        type: roleSchema,  
+    role: {
+        type: roleSchema,
         required: true
     },
     avatar: {
         imgId: { type: String, default: '' },
         imgVersion: { type: String, default: '' }
     },
+    clubs: [
+        {
+            type: new mongoose.Schema({
+                code: {
+                    type: String,
+                    required: true,
+                    minlength: 3,
+                    maxlength: 50,
+                    unique: true
+                },
+                name: {
+                    type: String,
+                    required: true,
+                    minlength: 3,
+                    maxlength: 50
+                },
+                logo: {
+                    imgId: { type: String, default: '' },
+                    imgVersion: { type: String, default: '' }
+                },
+                titleOfUser: {
+                    type: String,
+                    required: true,
+                    default: 'player',
+                    minlength: 5,
+                    maxlength: 50
+                },
+                isConfirmed: {
+                    type: Boolean,
+                    required: true,
+                    default: false
+                }
+            })
+        }
+    ],
     images: [
         {
             imgId: { type: String, default: '' },
             imgVersion: { type: String, default: '' }
         }
     ],
-    birthday: { 
-        type: Date, 
+    birthday: {
+        type: Date,
         required: false
     },
     description: {
@@ -57,7 +92,7 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.methods.generateAuthToken = function() {
+userSchema.methods.generateAuthToken = function () {
     const token = jwt.sign({ _id: this._id, name: this.name, email: this.email, role: this.role }, config.get('jwtPrivateKey'), { expiresIn: '24h' });
     return token;
 }

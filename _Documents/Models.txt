@@ -4,7 +4,7 @@
 - email
 - phone
 - password
-- role (vai trò: cầu thủ/chủ sân)
+- role (vai trò: cầu thủ/manager/chủ sân)
 - images (các ảnh, và ảnh avatar)
 - birthday
 - description (tự mô tả =))) )
@@ -17,6 +17,7 @@
 - code
 - name
 - logo
+- manager
 - captain
 - players
 - stats (một số thống kê về đội bóng: số trận, số bàn, trung bình...)

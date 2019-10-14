@@ -16,8 +16,14 @@ router.get('/me', auth, async (req, res) => {
     res.send(user);
 });
 
+router.get('/:id', auth, async (req, res) => {
+    const user = await User.findById(req.params.id).select(['-password']);
+    if (!user) return res.status(400).send('The User was not found.');
+    res.send(user);
+});
+
 router.get('/', [auth], async (req, res) => {
-    const users = await User.find().select('-password').sort('name');
+    const users = await User.find().select('-password').sort('email');
     res.send(users);
 });
 
