@@ -50,7 +50,7 @@ router.post('/', auth, async (req, res) => {
 
         if (req.body.players != undefined && req.body.players.length > 0) {
             for (let item of req.body.players) {
-                let found = await User.findById(item._id);
+                let found = await User.findById(item.id);
                 if (found) {
                     let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description'])
                     player.title = item.title ? item.title : 'player';
@@ -98,7 +98,7 @@ router.put('/:id/add-players', auth, async (req, res) => {
         if (req.body.players != undefined && req.body.players.length > 0) {
             let newPlayers = [];
             for (let item of req.body.players) {
-                let found = await User.findById(item._id);
+                let found = await User.findById(item.id);
                 if (found) {
                     let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description'])
                     player.title = item.title ? item.title : 'player';

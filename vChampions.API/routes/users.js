@@ -28,11 +28,8 @@ router.get('/', [auth], async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { error } = validateUser(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
-
-    const role = await Role.findById(req.body.roleId);
-    if (!role) return res.status(400).send('Invalid role.');
+    const error = validateUser(req.body);
+    if (error != true) return res.status(400).send(error);
 
     let user = await User.findOne({ $or: [{ email: req.body.email }, { phone: req.body.phone }] });
     if (user) return res.status(400).send('Email or phone number is already used by another User.');
@@ -42,41 +39,58 @@ router.post('/', async (req, res) => {
         email: req.body.email,
         phone: req.body.phone,
         password: req.body.password,
-        role: {
-            _id: role._id,
-            name: role.name
-        },
+        roles: [],
         birthday: req.body.birthday || null,
         description: req.body.description || null
     });
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
+
+    if (req.body.roles != undefined && req.body.roles.length > 0) {
+        for (let item of req.body.roles) {
+            let found = await Role.findById(item.id);
+            if (found) {
+                user.roles.push(found.name);
+            }
+        }
+    }
+    else {
+        return res.status(400).send('Provide at least one Role for User');
+    }
+
     await user.save();
 
     const token = user.generateAuthToken();
-    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email', 'phone', 'role', 'description', 'birthday']));
+    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email', 'phone', 'roles', 'description', 'birthday']));
 });
 
 router.put('/', auth, async (req, res) => {
-    const { error } = validateUser(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
-
-    const role = await Role.findById(req.body.roleId);
-    if (!role) return res.status(400).send('Invalid role.');
+    const error = validateUser(req.body);
+    if (error != true) return res.status(400).send(error);
 
     let user = await User.findOne({ phone: req.body.phone });
     if (user.email != req.user.email) return res.status(400).send('Phone number is already used by another User.');
 
+    let roles = [];
+    if (req.body.roles != undefined && req.body.roles.length > 0) {
+        for (let item of req.body.roles) {
+            let found = await Role.findById(item.id);
+            if (found) {
+                roles.push(found.name);
+            }
+        }
+    }
+    else {
+        return res.status(400).send('Provide at least one Role for User');
+    }
+
     user = await User.findOneAndUpdate(
         { _id: req.user._id },
-        { 
+        {
             name: req.body.name,
             phone: req.body.phone,
-            role: {
-                _id: role._id,
-                name: role.name
-            },
+            roles: roles,
             birthday: req.body.birthday,
             description: req.body.description
         },
@@ -85,7 +99,7 @@ router.put('/', auth, async (req, res) => {
 
     if (!user) return res.status(404).send('The User with the given ID was not found.');
 
-    res.send(_.pick(user, ['_id', 'name', 'email', 'phone', 'role', 'description', 'birthday']));
+    res.send(_.pick(user, ['_id', 'name', 'email', 'phone', 'roles', 'description', 'birthday']));
 });
 
 module.exports = router;

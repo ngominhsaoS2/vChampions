@@ -1,8 +1,8 @@
-const Joi = require('joi');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const { roleSchema } = require('./role');
+let Validator = require("fastest-validator");
+let v = new Validator();
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -31,10 +31,14 @@ const userSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 1024
     },
-    role: {
-        type: roleSchema,
-        required: true
-    },
+    roles: [
+        {
+            type: String,
+            required: true,
+            minlength: 3,
+            maxlength: 50
+        }
+    ],
     avatar: {
         imgId: { type: String, default: '' },
         imgVersion: { type: String, default: '' }
@@ -93,7 +97,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.generateAuthToken = function () {
-    const token = jwt.sign({ _id: this._id, name: this.name, email: this.email, role: this.role }, config.get('jwtPrivateKey'), { expiresIn: '24h' });
+    const token = jwt.sign({ _id: this._id, name: this.name, email: this.email, roles: this.roles }, config.get('jwtPrivateKey'), { expiresIn: '24h' });
     return token;
 }
 
@@ -101,15 +105,21 @@ const User = mongoose.model('User', userSchema);
 
 function validateUser(user) {
     const schema = {
-        name: Joi.string().min(5).max(50).required(),
-        email: Joi.string().min(5).max(255).required().email(),
-        phone: Joi.string().min(10).max(12).required(),
-        password: Joi.string().min(5).max(255).required(),
-        roleId: Joi.objectId().required(),
-        description: Joi.string().min(5).max(200)
-    };
-
-    return Joi.validate(user, schema);
+        name: { type: "string", empty: false, min: 5, max: 50 }, // empty: false - tức là không cho trường name empty
+        email: { type: "email", empty: false, min: 5, max: 255 },
+        phone: { type: "string", empty: false, min: 10, max: 12 },
+        password: { type: "string", empty: false, min: 5, max: 255 },
+        description: { type: "string", empty: true, optional: true, min: 5, max: 255 }, // optional: true - tức là trường description không bắt buộc nhập
+        roles: {
+          type: "array", items: {
+            type: "object", props: {
+                id: { type: "string", empty: false, pattern: /^[0-9a-fA-F]{24}$/ }, // pattern objectId trong mongoDb
+            }
+          }
+        }
+      };
+    
+      return v.validate(user, schema);
 }
 
 exports.User = User;

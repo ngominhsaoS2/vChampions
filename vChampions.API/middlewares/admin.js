@@ -1,7 +1,9 @@
 
+const _ = require('lodash');
+
 function admin(req, res, next) {
     try {
-        if (req.user.role.name != 'Admin') return res.status(403).send('Access denied. Required Admin permission'); // Forbidden
+        if (_.includes(req.user.roles, 'Admin') != true) return res.status(403).send('Access denied. Required Admin permission'); // Forbidden
         next();
     }
     catch (ex) {
