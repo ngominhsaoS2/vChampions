@@ -60,10 +60,6 @@ router.put('/', auth, async (req, res) => {
     if (!role) return res.status(400).send('Invalid role.');
 
     let user = await User.findOne({ phone: req.body.phone });
-    console.log(user.email);
-    console.log(req.user.email);
-    
-
     if (user.email != req.user.email) return res.status(400).send('Phone number is already used by another User.');
 
     user = await User.findOneAndUpdate(
