@@ -120,7 +120,7 @@ async function validateClub(club) {
     players: {
       type: "array", items: {
         type: "object", props: {
-          title: { type: "string", empty: false, min: 3, max: 50 },
+          title: { type: "enum", values: ["player", "captain"] },
           positions: { type: "array", items: "string", enum: [ "GK", "DF", "MF", "FW" ] },
           confirmation: { type: "enum", values: ["received", "denined", "accepted"], optional: true }
         }
@@ -136,7 +136,7 @@ async function validatePlayers(players) {
     players: {
       type: "array", items: {
         type: "object", props: {
-          title: { type: "string", empty: false, min: 3, max: 50 },
+          title: { type: "enum", values: ["player", "captain"] },
           positions: { type: "array", items: "string", enum: [ "GK", "DF", "MF", "FW" ] }
         }
       }

@@ -27,21 +27,47 @@
 *** Stadium
 - id
 - name
+- images
 - address
 - yards (các sân nhỏ trong stadium)
+    + name
+    + prices
+        * from
+        * to
+        * price
+    + isReserved
+    + homeClub
+    + visitingClub
+    + realtimeUpdate
 
 
-*** Match
+*** Financial
 - id
-- datetime
-- stadium
-- clubs
-- results
+- stadiumId
+- year
+- monthReports
+- yearReports
+- matches
+    + yard
+        * name
+        * startTime
+        * endTime
+        * price
+    + homeClub
+    + visitingClub
+    + results
+        * homeClub []
+            ~ player
+            ~ time score
+        * visitingClub []
+            ~ player
+            ~ time score
 
-*** 
+
+ 
 
 
-
+350 sân x 5 sân nhỏ * 7 khung giờ * 30 ngày * 12 tháng = 4,410,000 số trận đấu 1 năm
 
 
 
