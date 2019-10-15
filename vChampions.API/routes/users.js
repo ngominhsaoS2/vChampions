@@ -1,5 +1,6 @@
 const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
+const { Fawn } = require('../middlewares/fawn');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
@@ -9,6 +10,8 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { User, validateUser } = require('../models/user');
 const { Role, validateRole } = require('../models/role');
+const { Club } = require('../models/club');
+
 
 router.get('/me', auth, async (req, res) => {
     const user = await User.findById(req.user._id).select('-password'); // Không chọn property password
@@ -29,8 +32,33 @@ router.get('/', [auth], async (req, res) => {
 
 router.get('/:id/joining-requests', [auth], async (req, res) => {
     const user = await User.findById(req.user._id).select('-password');
-    if (!user) return res.status(400).send('The User was not found.');
-    res.send(_.filter(user.clubs, { 'isConfirmed': false }));
+    if (!user) return res.status(400).send('The User with the given ID was not found.');
+    if (req.user._id != req.params.id) return res.status(400).send('The given ID was not correct.');
+    res.send(_.filter(user.clubs, { 'confirmation': 'received' }));
+});
+
+router.put('/confirm-request/:clubId', [auth], async (req, res) => {
+    let club = await Club.findById(req.params.clubId);
+    if (!club) return res.status(400).send('Invalid Club.');
+
+    try {
+        var task = Fawn.Task();
+        task.update('users', { _id: req.user._id, 'clubs._id': mongoose.Types.ObjectId(req.params.clubId) }, {
+            $set: { 'clubs.$.confirmation' : req.body.confirmation }
+        });
+
+        task.update('clubs', { _id: req.params.clubId, 'players._id': mongoose.Types.ObjectId(req.user._id) }, {
+            $set: { 'players.$.confirmation' : req.body.confirmation }
+        });
+
+        let result = await task.run({useMongoose: true});
+        //res.send(result);
+        res.send(req.body.confirmation == 'accepted' ? 'You are a member of this Club now.' : "You denined to be this Club's member successfully");
+    }
+    catch (ex) {
+        console.log(ex);
+        res.status(500).send(ex);
+    }
 });
 
 router.post('/', async (req, res) => {

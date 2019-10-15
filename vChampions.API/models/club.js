@@ -97,7 +97,14 @@ const clubSchema = new mongoose.Schema({
             minlength: 1,
             maxlength: 50
           }
-        ]
+        ],
+        confirmation: {
+          type: String,
+          required: false,
+          default: 'received',
+          minlength: 5,
+          maxlength: 50
+        }
       })
     }
   ]
@@ -114,7 +121,8 @@ async function validateClub(club) {
       type: "array", items: {
         type: "object", props: {
           title: { type: "string", empty: false, min: 3, max: 50 },
-          positions: { type: "array", items: "string", enum: [ "GK", "DF", "MF", "FW" ] }
+          positions: { type: "array", items: "string", enum: [ "GK", "DF", "MF", "FW" ] },
+          confirmation: { type: "enum", values: ["received", "denined", "accepted"], optional: true }
         }
       }
     }

@@ -3,13 +3,9 @@ const router = express.Router();
 const _ = require('lodash');
 const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
+const { Fawn } = require('../middlewares/fawn');
 const { Club, validateClub, validatePlayers } = require('../models/club');
 const { User } = require('../models/user');
-
-// Transactions
-const mongoose = require('mongoose');
-const Fawn = require('fawn');
-Fawn.init(mongoose);
 
 router.get('/', async (req, res) => {
     const clubs = await Club.find().sort('name');
@@ -55,6 +51,7 @@ router.post('/', auth, async (req, res) => {
                     let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description'])
                     player.title = item.title ? item.title : 'player';
                     player.positions = item.positions.length > 0 ? item.positions : [];
+                    player.confirmation = 'received';
                     club.players.push(player);
 
                     // Update clubs of Player
@@ -66,7 +63,7 @@ router.post('/', auth, async (req, res) => {
                                     code: req.body.code,
                                     name: req.body.name,
                                     titleOfUser: item.title ? item.title : 'player',
-                                    isConfirmed: false
+                                    confirmation: 'received'
                                 }
                             }
                         });
@@ -103,6 +100,7 @@ router.put('/:id/add-players', auth, async (req, res) => {
                     let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description'])
                     player.title = item.title ? item.title : 'player';
                     player.positions = item.positions.length > 0 ? item.positions : [];
+                    player.confirmation = 'received';
                     newPlayers.push(player);
 
                     // Update clubs of Player
@@ -114,7 +112,7 @@ router.put('/:id/add-players', auth, async (req, res) => {
                                     code: club.code,
                                     name: club.name,
                                     titleOfUser: item.title ? item.title : 'player',
-                                    isConfirmed: false
+                                    confirmation: 'received'
                                 }
                             }
                         });
@@ -136,6 +134,7 @@ router.put('/:id/add-players', auth, async (req, res) => {
         }
     }
     catch (ex) {
+        console.log(ex);
         res.status(500).send(ex);
     }
 });
@@ -161,7 +160,8 @@ router.delete('/:id/remove-player/:playerId', [auth], async (req, res) => {
             }
         });
 
-        task.run({useMongoose: true});
+        let result = await task.run({useMongoose: true});
+        //res.send(result);
         res.send('Remove Player successfully.');
     }
     catch (ex) {
