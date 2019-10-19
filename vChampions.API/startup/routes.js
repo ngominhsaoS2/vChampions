@@ -5,6 +5,7 @@ const auth = require('../routes/auth');
 const users = require('../routes/users');
 const roles = require('../routes/roles');
 const clubs = require('../routes/clubs');
+const stadiums = require('../routes/stadiums');
 
 // middlewares
 const error = require('../middlewares/error');
@@ -15,6 +16,7 @@ module.exports = function (app) {
     app.use('/api/roles', roles);
     app.use('/api/users', users);
     app.use('/api/clubs', clubs);
+    app.use('/api/stadiums', stadiums);
 
     // SaoNM this error logging middleware is registered after all routes middlewares
     app.use(error);

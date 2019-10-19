@@ -17,7 +17,7 @@ const stadiumSchema = new mongoose.Schema({
     ],
     address: {
         type: String,
-        required: false,
+        required: true,
         minlength: 5,
         maxlength: 500
     },
@@ -106,9 +106,17 @@ const stadiumSchema = new mongoose.Schema({
     ]
 });
 
-const Stadium = mongoose.model('Stadium', stadiumSchema);
+const Stadium = mongoose.model('Stadiums', stadiumSchema);
 
-
+async function validateStadium(stadium) {
+    const schema = {
+      name: { type: "string", empty: false, min: 3, max: 50 },
+      address: { type: "string", empty: false, min: 5, max: 500 },
+    };
+  
+    return v.validate(stadium, schema);
+  }
 
 exports.stadiumSchema = stadiumSchema;
 exports.Stadium = Stadium;
+exports.validateStadium = validateStadium;

@@ -110,7 +110,7 @@ const clubSchema = new mongoose.Schema({
   ]
 });
 
-const Club = mongoose.model('Club', clubSchema);
+const Club = mongoose.model('Clubs', clubSchema);
 
 async function validateClub(club) {
   const schema = {
