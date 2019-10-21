@@ -10,13 +10,14 @@
         E. Đang làm
         F. Chưa bắt đầu; G. Đã hủy
 
-I. Mục tiêu, tầm nhìn dài hạn
+I. Mục tiêu, tầm nhìn dài hạn, điều làm chúng tôi KHÁC BIỆT
     1. Giúp các đội bóng phủi có thể dễ dàng set kèo, đặt kèo
-    2. Giúp các đội bóng quản lý dòng tiền, quản lý đội bóng
-    3. Giúp các chủ sân dễ dàng quản lý các sân bóng của họ, theo dõi doanh thu..., ERP cho các sân bóng
-    4. Giúp tạo ra sân chơi để các đội bóng khắp cả nước tranh tài, cọ sát
-    5. Hướng đến tổ chức các giải bóng đá phủi tầm cỡ thành phố, quốc gia
-    6. ...
+    2. ***** Giúp các đội bóng quản lý dòng tiền, quản lý đội bóng
+    3. ***** Giúp các chủ sân dễ dàng quản lý các sân bóng của họ, theo dõi doanh thu..., ERP cho các sân bóng
+    4. Tự động hoá quá trình đặt sân, thanh toán, giúp cả bên đặt sân và bên chủ sân mất ít công sức hơn
+    5. ***** Giúp tạo ra sân chơi để các đội bóng khắp cả nước tranh tài, cọ sát
+    6. ***** Hướng đến tổ chức các giải bóng đá phủi tầm cỡ thành phố, quốc gia
+    7. ...
 
 II. Mục tiêu ngắn hạn
     1. Hoàn thành website trong 4 - 6 tuần, bao gồm cả test
@@ -101,9 +102,11 @@ V. Kết quả thực tế
     1. 
     2. 
 
-
-
-
+VI. Cập nhật hiện trạng, trạng thái hiện tại của Project sau mỗi 7 ngày, mỗi thứ 3 hàng tuần
+- 2019/10/05: bắt đầu viết requirement, tạo project trên Github
+- 2019/10/21: viết API hoàn thiện cho các mục Role, Auth, User, Club (có thể cần bổ sung thêm cho User, Club khi đã chốt được giao diện)
+- 2019/10/22: 
+- 2019/10/29: 
 
 
 

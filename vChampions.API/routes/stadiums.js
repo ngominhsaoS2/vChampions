@@ -27,7 +27,7 @@ router.post('/', auth, async (req, res) => {
     stadium = new Stadium({
         name: req.body.name,
         address: req.body.address,
-        yards: []
+        yards: _.uniqBy(req.body.yards, 'name')
     });
 
     await stadium.save();

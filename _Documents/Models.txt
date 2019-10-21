@@ -4,11 +4,11 @@
 - email
 - phone
 - password
-- role (vai trò: cầu thủ/manager/chủ sân)
-- images (các ảnh, và ảnh avatar)
+- role [] (vai trò: cầu thủ/manager/chủ sân)
+- images [] (các ảnh, và ảnh avatar)
 - birthday
 - description (tự mô tả =))) )
-- clubs (một cầu thủ có thể tham gia nhiều clubs)
+- clubs [] (một cầu thủ có thể tham gia nhiều clubs)
 - stats (một số thống kê về cầu thủ: số trận, số bàn, trung bình...)
 
 
@@ -19,7 +19,7 @@
 - logo
 - manager
 - captain
-- players
+- players []
 - stats (một số thống kê về đội bóng: số trận, số bàn, trung bình...)
 - rank (xếp hạng của đội bóng)
 
@@ -29,17 +29,17 @@
 - name
 - images
 - address
-- yards (các sân nhỏ trong stadium)
+- yards [] (các sân nhỏ trong stadium)
     + name
-    + prices
-        * from
-        * to
-        * price
+    // phục vụ cho realtime update
     + isReserved
     + homeClub
     + visitingClub
     + realtimeUpdate
-
+- prices []
+    + from
+    + to
+    + price
 
 *** Financial
 - id
@@ -47,12 +47,11 @@
 - year
 - monthReports
 - yearReports
-- matches
+- matches []
     + yard
-        * name
-        * startTime
-        * endTime
-        * price
+    + startTime
+    + endTime
+    + price
     + homeClub
     + visitingClub
     + results
