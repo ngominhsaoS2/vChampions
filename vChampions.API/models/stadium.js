@@ -174,3 +174,4 @@ async function validateYards(yards) {
 exports.stadiumSchema = stadiumSchema;
 exports.Stadium = Stadium;
 exports.validateStadium = validateStadium;
+exports.validateYards = validateYards;

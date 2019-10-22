@@ -90,7 +90,7 @@ router.put('/:id/add-players', auth, async (req, res) => {
     if (!club) return res.status(400).send('Invalid Club.');
 
     if (club.manager._id != req.user._id)
-        return res.status(400).send('Just manager of this club is authorized to add new players');
+        return res.status(400).send('Just manager of this Club is authorized to add new Players');
 
     try {
         var task = Fawn.Task();

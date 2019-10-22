@@ -4,7 +4,7 @@ const _ = require('lodash');
 const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
 const { Fawn } = require('../middlewares/fawn');
-const { Stadium, validateStadium } = require('../models/stadium');
+const { Stadium, validateStadium, validateYards } = require('../models/stadium');
 const { User } = require('../models/user');
 
 router.get('/', async (req, res) => {
@@ -48,8 +48,26 @@ router.post('/', auth, async (req, res) => {
 });
 
 router.put('/:id/add-yards', auth, async (req, res) => {
+    const error = await validateYards(req.body);
+    if (error != true) return res.status(400).send(error);
 
+    let stadium = await Stadium.findById(req.params.id);
+    if (!stadium) return res.status(400).send('Invalid Stadium.');
 
+    if (!(_.find(stadium.owners, { 'email': req.user.email })))
+        return res.status(400).send('Just owners of this Stadium are authorized to add new yards.');
+
+    stadium = await Stadium.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+            $push: {
+                yards: { $each: _.uniqBy(req.body.yards, 'name') }
+            }
+        },
+        { new: true }
+    );
+
+    res.send(stadium);
 });
 
 module.exports = router;
