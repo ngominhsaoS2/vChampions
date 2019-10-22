@@ -5,6 +5,7 @@ const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
 const { Fawn } = require('../middlewares/fawn');
 const { Stadium, validateStadium } = require('../models/stadium');
+const { User } = require('../models/user');
 
 router.get('/', async (req, res) => {
     const stadiums = await Stadium.find().sort('name');
@@ -22,16 +23,33 @@ router.post('/', auth, async (req, res) => {
     if (error != true) return res.status(400).send(error);
 
     let stadium = await Stadium.findOne({ name: req.body.name });
-    if (stadium) return res.status(400).send('Name is already registerd by another Stadium.');
+    if (stadium) return res.status(400).send('Name is already registered by other Stadium.');
+
+    let owner = await User.findById(req.user._id);
+    if (!owner) return res.status(400).send('Invalid owner.');
 
     stadium = new Stadium({
         name: req.body.name,
         address: req.body.address,
+        owners: [
+            {
+                name: owner.name,
+                email: owner.email,
+                phone: owner.phone,
+                avatar: owner.avatar,
+                description: owner.description,
+            }
+        ],
         yards: _.uniqBy(req.body.yards, 'name')
     });
 
     await stadium.save();
     res.send(stadium);
+});
+
+router.put('/:id/add-yards', auth, async (req, res) => {
+
+
 });
 
 module.exports = router;

@@ -9,6 +9,40 @@ const stadiumSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 50
   },
+  owners: [
+    {
+      type: new mongoose.Schema({
+        name: {
+          type: String,
+          required: true,
+          minlength: 5,
+          maxlength: 50
+        },
+        email: {
+          type: String,
+          required: true,
+          minlength: 5,
+          maxlength: 255
+        },
+        phone: {
+          type: String,
+          required: true,
+          minlength: 10,
+          maxlength: 12
+        },
+        avatar: {
+          imgId: { type: String, default: '' },
+          imgVersion: { type: String, default: '' }
+        },
+        description: {
+          type: String,
+          required: false,
+          minlength: 5,
+          maxlength: 200
+        }
+      })
+    }
+  ],
   images: [
     {
       imgId: { type: String, default: '' },
@@ -123,7 +157,19 @@ async function validateStadium(stadium) {
   return v.validate(stadium, schema);
 }
 
+async function validateYards(yards) {
+  const schema = {
+    yards: {
+      type: "array", items: {
+        type: "object", props: {
+          name: { type: "string", empty: false, min: 3, max: 50 },
+        }
+      }
+    }
+  };
 
+  return v.validate(yards, schema);
+}
 
 exports.stadiumSchema = stadiumSchema;
 exports.Stadium = Stadium;

@@ -4,7 +4,7 @@
 - email
 - phone
 - password
-- role [] (vai trò: cầu thủ/manager/chủ sân)
+- role [] (vai trò: cầu thủ/chủ sân)
 - images [] (các ảnh, và ảnh avatar)
 - birthday
 - description (tự mô tả =))) )
@@ -27,6 +27,7 @@
 *** Stadium
 - id
 - name
+- owners []
 - images
 - address
 - yards [] (các sân nhỏ trong stadium)

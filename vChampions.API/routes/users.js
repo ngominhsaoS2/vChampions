@@ -66,7 +66,7 @@ router.post('/', async (req, res) => {
     if (error != true) return res.status(400).send(error);
 
     let user = await User.findOne({ $or: [{ email: req.body.email }, { phone: req.body.phone }] });
-    if (user) return res.status(400).send('Email or phone number is already used by another User.');
+    if (user) return res.status(400).send('Email or phone number is already used by other User.');
 
     user = new User({
         name: req.body.name,
@@ -104,7 +104,7 @@ router.put('/', auth, async (req, res) => {
     if (error != true) return res.status(400).send(error);
 
     let user = await User.findOne({ phone: req.body.phone });
-    if (user.email != req.user.email) return res.status(400).send('Phone number is already used by another User.');
+    if (user.email != req.user.email) return res.status(400).send('Phone number is already used by other User.');
 
     let roles = [];
     if (req.body.roles != undefined && req.body.roles.length > 0) {

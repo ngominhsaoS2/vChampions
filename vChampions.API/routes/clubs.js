@@ -23,7 +23,7 @@ router.post('/', auth, async (req, res) => {
     if (error != true) return res.status(400).send(error);
 
     let club = await Club.findOne({ code: req.body.code });
-    if (club) return res.status(400).send('Code is already registerd by another Club.');
+    if (club) return res.status(400).send('Code is already registerd by other Club.');
 
     const manager = await User.findById(req.body.managerId);
     if (!manager) return res.status(400).send('Invalid manager.');
@@ -89,6 +89,9 @@ router.put('/:id/add-players', auth, async (req, res) => {
     let club = await Club.findById(req.params.id);
     if (!club) return res.status(400).send('Invalid Club.');
 
+    if (club.manager._id != req.user._id)
+        return res.status(400).send('Just manager of this club is authorized to add new players');
+
     try {
         var task = Fawn.Task();
 
@@ -143,6 +146,9 @@ router.delete('/:id/remove-player/:playerId', [auth], async (req, res) => {
     let club = await Club.findById(req.params.id);
     if (!club) return res.status(400).send('Invalid Club.');
 
+    if (club.manager._id != req.user._id)
+        return res.status(400).send('Just manager of this club is authorized to remove players');
+
     let player = await User.findById(req.params.playerId);
     if (!player) return res.status(400).send('Invalid Player.');
 
@@ -160,7 +166,7 @@ router.delete('/:id/remove-player/:playerId', [auth], async (req, res) => {
             }
         });
 
-        let result = await task.run({useMongoose: true});
+        let result = await task.run({ useMongoose: true });
         //res.send(result);
         res.send('Remove Player successfully.');
     }
