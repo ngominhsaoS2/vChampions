@@ -102,11 +102,11 @@ V. Kết quả thực tế
     1. 
     2. 
 
-VI. Cập nhật hiện trạng, trạng thái hiện tại của Project sau mỗi 7 ngày, mỗi thứ 3 hàng tuần
+VI. Cập nhật hiện trạng, trạng thái hiện tại của Project mỗi thứ 3, thứ 7 hàng tuần
 - 2019/10/05: bắt đầu viết requirement, tạo project trên Github
 - 2019/10/21: viết API hoàn thiện cho các mục Role, Auth, User, Club (có thể cần bổ sung thêm cho User, Club khi đã chốt được giao diện)
-- 2019/10/22: 
-- 2019/10/29: 
+- 2019/10/22: đã có thể get Stadiums, get Stadium by Id, create a new Stadium
+- 2019/10/26: 
 
 
 

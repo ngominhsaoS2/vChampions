@@ -1,6 +1,20 @@
 const mongoose = require('mongoose');
 let Validator = require("fastest-validator");
-let v = new Validator();
+let v = new Validator({
+  messages: {
+      // Register our new error message text
+      validDateTimeMessage: "The '{field}' field must be a valid datetime! Actual: {actual}"
+  }
+});
+
+// Register a custom 'validDateTime' validator
+v.add('validDateTime', value => {
+  if (new Date(value) == 'Invalid Date') {
+    return v.makeError('validDateTimeMessage', null, value);
+  }
+
+  return true;
+});
 
 const stadiumSchema = new mongoose.Schema({
   name: {
@@ -171,7 +185,24 @@ async function validateYards(yards) {
   return v.validate(yards, schema);
 }
 
+async function validatePrices(prices) {
+  const schema = {
+    prices: {
+      type: "array", items: {
+        type: "object", props: {
+          from: { type: "validDateTime" },
+          to: { type: "validDateTime" },
+          price: { type: "number", min: 0 }
+        }
+      }
+    }
+  };
+
+  return v.validate(prices, schema);
+}
+
 exports.stadiumSchema = stadiumSchema;
 exports.Stadium = Stadium;
 exports.validateStadium = validateStadium;
 exports.validateYards = validateYards;
+exports.validatePrices = validatePrices;
