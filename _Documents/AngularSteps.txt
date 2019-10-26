@@ -7,9 +7,9 @@
 6. Trở lại backend, allow CORS. Sau đó test lại value component để check không còn lỗi CORS
 7. npm i bootstrap font-awesome ...; sau đó vào angular.json, tìm /src/styles.css, vào file đó, import bootstrap, font-awesome
 8. Tạo các folder _directives, _guards, _models, _resolvers, _services
-9. Tạo nav
+9. Tạo home, nav component
 10. Install ngx-bootstrap: npm i ngx-bootstrap
-11. 
+11. Tạo file routes.ts
 12. 
 13. 
 14. 
