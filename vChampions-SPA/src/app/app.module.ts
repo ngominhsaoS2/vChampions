@@ -15,7 +15,10 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
-import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselSmComponent } from './carousel/carousel-sm/carousel-sm.component';
+import { CarouselMdComponent } from './carousel/carousel-md/carousel-md.component';
+import { LoginComponent } from './login/login.component';
+import { FollowUsComponent } from './addition/follow-us/follow-us.component';
 
 @NgModule({
    declarations: [
@@ -23,7 +26,10 @@ import { CarouselComponent } from './carousel/carousel.component';
       NavComponent,
       RegisterComponent,
       HomeComponent,
-      CarouselComponent
+      CarouselSmComponent,
+      CarouselMdComponent,
+      LoginComponent,
+      FollowUsComponent
    ],
    imports: [
       BrowserModule,
