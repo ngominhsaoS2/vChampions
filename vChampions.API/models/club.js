@@ -114,7 +114,7 @@ const Club = mongoose.model('Clubs', clubSchema);
 
 async function validateClub(club) {
   const schema = {
-    code: { type: "string", empty: false, min: 3, max: 50, pattern: /^\S*$/ }, // string phải theo đúng RegEx (không chứa dấu phẩy)
+    code: { type: "string", empty: false, min: 3, max: 50, pattern: /^\S*$/ }, // string phải theo đúng RegEx (không chứa dấu cách)
     name: { type: "string", empty: false, min: 3, max: 50 }, // empty: false - tức là không cho trường code empty
     managerId: { type: "string", empty: false, pattern: /^[0-9a-fA-F]{24}$/ }, // pattern objectId trong mongoDb
     players: {

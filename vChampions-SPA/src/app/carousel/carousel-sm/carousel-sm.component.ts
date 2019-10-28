@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-carousel-sm',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselSmComponent implements OnInit {
 
+  @Input() title: string; // pass param từ parent component đến child component
+  @Input() description: string;
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

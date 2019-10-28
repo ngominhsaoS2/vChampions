@@ -61,6 +61,10 @@ router.put('/confirm-request/:clubId', [auth], async (req, res) => {
     }
 });
 
+router.post('/demo', async (req, res) => {
+    console.log(req.body);
+});
+
 router.post('/', async (req, res) => {
     const error = validateUser(req.body);
     if (error != true) return res.status(400).send(error);

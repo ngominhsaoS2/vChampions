@@ -8,7 +8,10 @@ router.post('/', [auth, admin], async (req, res) => {
     const { error } = validateRole(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
-    let role = new Role({ name: req.body.name });
+    let role = await Role.findOne({ name: req.body.name });
+    if (role) return res.status(400).send('The Role name already exists.');
+
+    role = new Role({ name: req.body.name });
     role = await role.save();
 
     res.send(role);
@@ -17,15 +20,18 @@ router.post('/', [auth, admin], async (req, res) => {
 router.put('/:id', [auth, admin], async (req, res) => {
     const { error } = validateRole(req.body);
     if (error) return res.status(400).send(error.details[0].message);
-  
+
+    let found = await Role.findOne({ name: req.body.name });
+    if (found) return res.status(400).send('The Role name already exists.');
+
     const role = await Role.findByIdAndUpdate(req.params.id, { name: req.body.name }, {
-      new: true
+        new: true
     });
-  
+
     if (!role) return res.status(404).send('The Role with the given ID was not found.');
-  
+
     res.send(role);
-  });
+});
 
 router.get('/', async (req, res) => {
     const roles = await Role.find().sort('name');

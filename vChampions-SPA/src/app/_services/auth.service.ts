@@ -9,7 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl = environment.apiUrl + 'auth/';
+  baseUrl = environment.apiUrl;
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 
@@ -19,7 +19,7 @@ export class AuthService {
   ) { }
 
   login(model: any) {
-    return this.http.post(this.baseUrl, model)
+    return this.http.post(this.baseUrl + 'auth', model)
       .pipe(
         map((res: any) => {
           if (res) {
@@ -33,6 +33,10 @@ export class AuthService {
   loggedIn() {
     const token = this.cookieService.get('token');
     return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  register(user: any) {
+    return this.http.post(this.baseUrl + 'users/demo', user);
   }
 
 }

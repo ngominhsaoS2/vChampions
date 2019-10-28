@@ -12,9 +12,9 @@
 11. Tạo file routes.ts
 12. Import FormsModule, JwtModule (custom lại tokenGetter) ở app.module.ts
 13. Sử dụng Toast thay cho alertifyjs
-14. 
-15. 
-16. 
+14. Sử dụng decodedToken, user cho toàn bộ app
+15. Guard routes.ts, ng g guard <guard-name> --spec=false
+16. TemplateForm (login) và ReactiveForm (register)
 17. 
 18. 
 19. 

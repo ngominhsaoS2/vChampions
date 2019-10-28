@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule, CarouselModule, AlertModule } from 'ngx-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -17,10 +17,13 @@ import { appRoutes } from './routes';
 // Libarary Services
 import { CookieService } from 'ngx-cookie-service';
 
+// Customized Guards
+import { AuthGuard } from './_guards/auth.guard';
+
 // Customized Services
 import { AuthService } from './_services/auth.service';
 
-// Resolvers
+// Customized Resolvers
 
 // Components
 import { AppComponent } from './app.component';
@@ -31,6 +34,10 @@ import { CarouselSmComponent } from './carousel/carousel-sm/carousel-sm.componen
 import { CarouselMdComponent } from './carousel/carousel-md/carousel-md.component';
 import { LoginComponent } from './login/login.component';
 import { FollowUsComponent } from './addition/follow-us/follow-us.component';
+import { PlayersComponent } from './players/players.component';
+import { ResultsComponent } from './results/results.component';
+import { RankComponent } from './rank/rank.component';
+import { ProfileComponent } from './profile/profile.component';
 
 // 2019/10/28 SaoNM custom tokenGetter
 export function tokenGetter() {
@@ -53,7 +60,11 @@ export function tokenGetter() {
     CarouselSmComponent,
     CarouselMdComponent,
     LoginComponent,
-    FollowUsComponent
+    FollowUsComponent,
+    PlayersComponent,
+    ResultsComponent,
+    RankComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -61,10 +72,12 @@ export function tokenGetter() {
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     AlertModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    NgxSpinnerModule,
     ToastrModule.forRoot({
       newestOnTop: false,
       timeOut: 5000,
@@ -73,18 +86,18 @@ export function tokenGetter() {
       progressBar: true,
       progressAnimation: 'decreasing'
     }),
-    NgxSpinnerModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:3000'],
         blacklistedRoutes: ['localhost:3000/api/auth']
       }
-    })
+    }),
   ],
   providers: [
     CookieService,
     AuthService,
+    AuthGuard
   ],
   bootstrap: [
     AppComponent
