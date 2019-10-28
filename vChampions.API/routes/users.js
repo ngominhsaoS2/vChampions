@@ -87,7 +87,7 @@ router.post('/', async (req, res) => {
 
     if (req.body.roles != undefined && req.body.roles.length > 0) {
         for (let item of req.body.roles) {
-            let found = await Role.findById(item.id);
+            let found = await Role.findOne({ name: item });
             if (found) {
                 user.roles.push(found.name);
             }
@@ -113,7 +113,7 @@ router.put('/', auth, async (req, res) => {
     let roles = [];
     if (req.body.roles != undefined && req.body.roles.length > 0) {
         for (let item of req.body.roles) {
-            let found = await Role.findById(item.id);
+            let found = await Role.findOne({ name: item });
             if (found) {
                 roles.push(found.name);
             }

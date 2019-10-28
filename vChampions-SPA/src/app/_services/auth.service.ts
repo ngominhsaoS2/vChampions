@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   register(user: any) {
-    return this.http.post(this.baseUrl + 'users/demo', user);
+    return this.http.post(this.baseUrl + 'users', user);
   }
 
 }

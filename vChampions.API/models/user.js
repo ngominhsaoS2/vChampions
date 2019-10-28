@@ -111,13 +111,7 @@ function validateUser(user) {
         phone: { type: "string", empty: false, min: 10, max: 12 },
         password: { type: "string", empty: false, min: 5, max: 255 },
         description: { type: "string", empty: true, optional: true, min: 5, max: 255 }, // optional: true - tức là trường description không bắt buộc nhập
-        roles: {
-          type: "array", items: {
-            type: "object", props: {
-                id: { type: "string", empty: false, pattern: /^[0-9a-fA-F]{24}$/ }, // pattern objectId trong mongoDb
-            }
-          }
-        }
+        roles: { type: "array", items: "string" }
       };
     
       return v.validate(user, schema);

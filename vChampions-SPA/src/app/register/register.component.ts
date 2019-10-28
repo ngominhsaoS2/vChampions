@@ -33,11 +33,11 @@ export class RegisterComponent implements OnInit {
 
   createRegisterForm() {
     this.registerForm = this.fb.group({
-      role: ['Player'],
+      roles: ['Player'],
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(50)]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.minLength(10), Validators.maxLength(14)]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/), Validators.minLength(5), Validators.maxLength(50)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$/), Validators.minLength(5), Validators.maxLength(50)]],
       confirmPassword: ['', Validators.required]
     }, { validators: this.passwordMatchValidator });
   }
@@ -51,13 +51,14 @@ export class RegisterComponent implements OnInit {
       this.spinner.show();
 
       this.user = Object.assign({}, this.registerForm.value);
+      this.user.roles = [this.registerForm.value.roles];
       this.authService.register(this.user).subscribe(() => {
         this.spinner.hide();
-        //this.router.navigate(['/']);
-        this.toastr.success('Registration successful', 'Success');
+        this.router.navigate(['/login']);
+        this.toastr.success('Registration successful. Please login to have the best experience!!!', 'Success');
       }, error => {
         this.spinner.hide();
-        this.toastr.error('Something wrong', 'Error');
+        this.toastr.error(error.error, 'Error');
         console.log(error);
       });
     }
