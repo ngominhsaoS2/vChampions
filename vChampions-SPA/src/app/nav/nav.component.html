@@ -19,25 +19,33 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Home</a>
               </li>
-              <li class="nav-item pointer">
+              <li class="nav-item pointer" routerLinkActive="active">
                 <div class="btn-group" dropdown>
                   <a dropdownToggle class="nav-link dropdown-toggle">
                     Matches <span class="caret"></span>
                   </a>
-                  <ul *dropdownMenu class="dropdown-menu">
+                  <ul *dropdownMenu class="dropdown-menu" >
+                    <li><a class="dropdown-item" href="#">Create a Match</a></li>
                     <li><a class="dropdown-item" href="#">Waiting for Rival</a></li>
+                    <li class="divider dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">League</a></li>
                     <li class="divider dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Create a Match</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/results']">Results</a></li>
                   </ul>
                 </div>
               </li>
-              <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/rank']">Rank</a>
-              </li>
-              <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/results']">Results</a>
-              </li>
+              <li class="nav-item pointer" routerLinkActive="active">
+                  <div class="btn-group" dropdown>
+                    <a dropdownToggle class="nav-link dropdown-toggle">
+                      Clubs <span class="caret"></span>
+                    </a>
+                    <ul *dropdownMenu class="dropdown-menu">
+                      <li><a class="dropdown-item" [routerLink]="['/rank']">Rank</a></li>
+                      <li class="divider dropdown-divider"></li>
+                      <li><a class="dropdown-item">Create your own Club</a></li>
+                    </ul>
+                  </div>
+                </li>
               <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['/players']">Players</a>
               </li>
