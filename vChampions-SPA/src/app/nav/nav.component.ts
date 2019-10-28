@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../_services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  jwtHelper = new JwtHelperService();
+
+  constructor(
+    private router: Router,
+    private cookieService: CookieService,
+    public authService: AuthService,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
+    const token = this.cookieService.get('token');
+    if (token) {
+      this.authService.decodedToken = this.jwtHelper.decodeToken(token);
+    }
+  }
+
+  loggedIn() {
+    return this.authService.loggedIn();
+  }
+
+  logout() {
+    this.cookieService.delete('token');
+    this.authService.decodedToken = null;
+    this.toastr.info('Logout successfully', 'Info');
+    this.router.navigate(['/']);
   }
 
 }

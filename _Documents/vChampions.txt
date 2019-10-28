@@ -107,6 +107,8 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project mỗi 
 - 2019/10/21: viết API hoàn thiện cho các mục Role, Auth, User, Club (có thể cần bổ sung thêm cho User, Club khi đã chốt được giao diện)
 - 2019/10/22: đã có thể get Stadiums, get Stadium by Id, create a new Stadium
 - 2019/10/26: Đã tạo được hình hài đầu tiên của front-end, đã có nav component
+- 2019/10/28: Login logout thành công
+
 
 
 

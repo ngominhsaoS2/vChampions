@@ -10,8 +10,8 @@
 9. Tạo home, nav component
 10. Install ngx-bootstrap: npm i ngx-bootstrap
 11. Tạo file routes.ts
-12. 
-13. 
+12. Import FormsModule, JwtModule (custom lại tokenGetter) ở app.module.ts
+13. Sử dụng Toast thay cho alertifyjs
 14. 
 15. 
 16. 

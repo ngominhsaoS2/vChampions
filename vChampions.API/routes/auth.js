@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 
     // SaoNM create JWT token
     const token = user.generateAuthToken();
-    res.send(token);
+    res.send({ 'token': token });
 });
 
 function validate(req) {

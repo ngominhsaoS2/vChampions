@@ -41,19 +41,22 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Players</a>
               </li>
-              <li class="nav-item">
+              <li *ngIf="!loggedIn()" class="nav-item">
                 <a class="nav-link" [routerLink]="['/register']">Register</a>
               </li>
-              <li class="nav-item">
+              <li *ngIf="!loggedIn()" class="nav-item">
                 <a class="nav-link" [routerLink]="['/login']">Login</a>
               </li>
-              <li class="nav-item pointer">
+              <li *ngIf="loggedIn()" class="nav-item pointer">
                 <div class="btn-group" dropdown>
                   <a dropdownToggle class="nav-link dropdown-toggle">
-                    <i class="fa fa-user fa-lg"></i><span class="caret"></span>
+                    {{authService.decodedToken?.name}}
+                    <!-- <i class="fa fa-user fa-lg"></i><span class="caret"></span> -->
                   </a>
                   <ul *dropdownMenu class="dropdown-menu">
                     <li><a class="" href="#">Profile</a></li>
+                    <li class="divider dropdown-divider"></li>
+                    <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
                   </ul>
                 </div>
               </li>
