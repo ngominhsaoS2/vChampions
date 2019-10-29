@@ -389,7 +389,7 @@ input:hover, input:focus {
 }
 
 select.form-control:not([size]):not([multiple]) {
-  height: inherit;
+  /* height: inherit; */
 }
 
 textarea {
