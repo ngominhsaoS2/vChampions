@@ -34,10 +34,6 @@ import { CarouselSmComponent } from './carousel/carousel-sm/carousel-sm.componen
 import { CarouselMdComponent } from './carousel/carousel-md/carousel-md.component';
 import { LoginComponent } from './login/login.component';
 import { FollowUsComponent } from './addition/follow-us/follow-us.component';
-import { PlayersComponent } from './players/players.component';
-import { ResultsComponent } from './results/results.component';
-import { RankComponent } from './rank/rank.component';
-import { ProfileComponent } from './profile/profile.component';
 
 // 2019/10/28 SaoNM custom tokenGetter
 export function tokenGetter() {
@@ -60,11 +56,7 @@ export function tokenGetter() {
     CarouselSmComponent,
     CarouselMdComponent,
     LoginComponent,
-    FollowUsComponent,
-    PlayersComponent,
-    ResultsComponent,
-    RankComponent,
-    ProfileComponent
+    FollowUsComponent
   ],
   imports: [
     BrowserModule,
