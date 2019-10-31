@@ -1420,6 +1420,10 @@
     max-height: 70px;
 }
 
+.maxh-300 {
+  max-height: 300px;
+}
+
 /* Min Width*/
 .minw-100 {
     min-width: 100px;

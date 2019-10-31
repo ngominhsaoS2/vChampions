@@ -59,7 +59,13 @@ const userSchema = new mongoose.Schema({
                     minlength: 3,
                     maxlength: 50
                 },
-                area: {
+                city: {
+                    type: String,
+                    required: true,
+                    minlength: 3,
+                    maxlength: 50
+                },
+                district: {
                     type: String,
                     required: true,
                     minlength: 3,

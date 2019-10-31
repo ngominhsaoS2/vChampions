@@ -16,7 +16,13 @@ const clubSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 50
   },
-  area: {
+  city: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 50
+  },
+  district: {
     type: String,
     required: true,
     minlength: 3,
@@ -128,7 +134,8 @@ async function validateClub(club) {
   const schema = {
     code: { type: "string", empty: false, min: 3, max: 50, pattern: /^\S*$/ }, // string phải theo đúng RegEx (không chứa dấu cách)
     name: { type: "string", empty: false, min: 3, max: 50 }, // empty: false - tức là không cho trường code empty
-    area: { type: "string", empty: false, min: 3, max: 50 },
+    city: { type: "string", empty: false, min: 3, max: 50 },
+    district: { type: "string", empty: false, min: 3, max: 50 },
     managerId: { type: "string", empty: false, pattern: /^[0-9a-fA-F]{24}$/ }, // pattern objectId trong mongoDb
     players: {
       type: "array", items: {

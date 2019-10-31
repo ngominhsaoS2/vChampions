@@ -31,7 +31,8 @@ router.post('/', auth, async (req, res) => {
     club = new Club({
         code: req.body.code,
         name: req.body.name,
-        area: req.body.area,
+        city: req.body.city,
+        district: req.body.district,
         manager: {
             _id: req.body.managerId,
             name: manager.name,
@@ -63,7 +64,8 @@ router.post('/', auth, async (req, res) => {
                                     _id: club._id,
                                     code: req.body.code,
                                     name: req.body.name,
-                                    area: req.body.area,
+                                    city: req.body.city,
+                                    district: req.body.district,
                                     titleOfUser: item.title ? item.title : 'player',
                                     confirmation: 'received'
                                 }
@@ -116,7 +118,8 @@ router.put('/:id/add-players', auth, async (req, res) => {
                                     _id: club._id,
                                     code: club.code,
                                     name: club.name,
-                                    area: club.area,
+                                    city: club.city,
+                                    district: club.district,
                                     titleOfUser: item.title ? item.title : 'player',
                                     confirmation: 'received'
                                 }
