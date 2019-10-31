@@ -34,6 +34,7 @@ import { CarouselSmComponent } from './carousel/carousel-sm/carousel-sm.componen
 import { CarouselMdComponent } from './carousel/carousel-md/carousel-md.component';
 import { LoginComponent } from './login/login.component';
 import { FollowUsComponent } from './addition/follow-us/follow-us.component';
+import { ClubCreateComponent } from './clubs/club-create/club-create.component';
 
 // 2019/10/28 SaoNM custom tokenGetter
 export function tokenGetter() {
@@ -56,7 +57,8 @@ export function tokenGetter() {
     CarouselSmComponent,
     CarouselMdComponent,
     LoginComponent,
-    FollowUsComponent
+    FollowUsComponent,
+    ClubCreateComponent
   ],
   imports: [
     BrowserModule,
