@@ -10,7 +10,7 @@
           <form [formGroup]="registerForm" (ngSubmit)="register()">
             <div class="form-group row">
               <label class="col-sm-2 col-form-label black">Roles</label>
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <select class="form-control p-t-8 p-b-8" formControlName="roles">
                   <option value="Player">Player</option>
                   <option value="StadiumOwner">Stadium Owner</option>
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label black">Name</label>
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <input type="text" class="form-control" formControlName="name" placeholder="Name"
                   [ngClass]="{'is-invalid': registerForm.get('name').errors && registerForm.get('name').touched}">
                 <div class="invalid-feedback"
@@ -38,7 +38,7 @@
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label black">Email</label>
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <input type="email" class="form-control" formControlName="email" placeholder="Email"
                   [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}">
                 <div class="invalid-feedback"
@@ -53,7 +53,7 @@
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label black">Phone</label>
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <input type="text" class="form-control" formControlName="phone" placeholder="Phone"
                   [ngClass]="{'is-invalid': registerForm.get('phone').errors && registerForm.get('phone').touched}">
                 <div class="invalid-feedback"
@@ -76,7 +76,7 @@
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label black">Password</label>
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <input type="password" class="form-control" formControlName="password" placeholder="Password"
                   [ngClass]="{'is-invalid': registerForm.get('password').errors && registerForm.get('password').touched}">
                 <div class="invalid-feedback"
@@ -103,7 +103,7 @@
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label black">Confirm Password</label>
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <input type="password" class="form-control" formControlName="confirmPassword"
                   placeholder="Confirm Password" [ngClass]="{'is-invalid': registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').touched
                   || registerForm.hasError('mismatch') && registerForm.get('confirmPassword').touched}" />
@@ -121,7 +121,7 @@
               </div>
             </div><!--  -->
             <div class="form-group row">
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit</button>
               </div>
             </div>

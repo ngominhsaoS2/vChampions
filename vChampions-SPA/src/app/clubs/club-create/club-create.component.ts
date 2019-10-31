@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClubCreateComponent implements OnInit {
 
+  // Above 2 variables are for carousel-sm component
+  title = 'Create your own Club';
+  description = 'To have matches, to be on Rank, to be on the Top of the World';
+
   constructor() { }
 
   ngOnInit() {
