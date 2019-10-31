@@ -59,6 +59,12 @@ const userSchema = new mongoose.Schema({
                     minlength: 3,
                     maxlength: 50
                 },
+                area: {
+                    type: String,
+                    required: true,
+                    minlength: 3,
+                    maxlength: 50
+                },
                 logo: {
                     imgId: { type: String, default: '' },
                     imgVersion: { type: String, default: '' }
