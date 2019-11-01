@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule, CarouselModule, AlertModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CarouselModule, AlertModule, ModalModule } from 'ngx-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,6 +36,7 @@ import { LoginComponent } from './login/login.component';
 import { FollowUsComponent } from './addition/follow-us/follow-us.component';
 import { ClubCreateComponent } from './clubs/club-create/club-create.component';
 import { RankSmComponent } from './addition/rank-sm/rank-sm.component';
+import { FindPlayersComponent } from './clubs/find-players/find-players.component';
 
 // 2019/10/28 SaoNM custom tokenGetter
 export function tokenGetter() {
@@ -60,7 +61,8 @@ export function tokenGetter() {
     LoginComponent,
     FollowUsComponent,
     RankSmComponent,
-    ClubCreateComponent
+    ClubCreateComponent,
+    FindPlayersComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +73,7 @@ export function tokenGetter() {
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
+    ModalModule.forRoot(),
     AlertModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     NgxSpinnerModule,
