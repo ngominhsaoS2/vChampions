@@ -44,14 +44,14 @@ router.put('/confirm-request/:clubId', [auth], async (req, res) => {
     try {
         var task = Fawn.Task();
         task.update('users', { _id: req.user._id, 'clubs._id': mongoose.Types.ObjectId(req.params.clubId) }, {
-            $set: { 'clubs.$.confirmation' : req.body.confirmation }
+            $set: { 'clubs.$.confirmation': req.body.confirmation }
         });
 
         task.update('clubs', { _id: req.params.clubId, 'players._id': mongoose.Types.ObjectId(req.user._id) }, {
-            $set: { 'players.$.confirmation' : req.body.confirmation }
+            $set: { 'players.$.confirmation': req.body.confirmation }
         });
 
-        let result = await task.run({useMongoose: true});
+        let result = await task.run({ useMongoose: true });
         //res.send(result);
         res.send(req.body.confirmation == 'accepted' ? 'You are a member of this Club now.' : "You denined to be this Club's member successfully");
     }
@@ -59,10 +59,6 @@ router.put('/confirm-request/:clubId', [auth], async (req, res) => {
         console.log(ex);
         res.status(500).send(ex);
     }
-});
-
-router.post('/demo', async (req, res) => {
-    console.log(req.body);
 });
 
 router.post('/', async (req, res) => {
@@ -101,6 +97,22 @@ router.post('/', async (req, res) => {
 
     const token = user.generateAuthToken();
     res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email', 'phone', 'roles', 'description', 'birthday']));
+});
+
+router.post('/find-players', [auth], async (req, res) => {
+    const users = await User
+        .find(
+            {
+                $and: [
+                    { name: { $regex: new RegExp(req.body.name, "i") } }, ///sao/i 
+                    { email: { $regex: new RegExp(req.body.email, "i") } },
+                    { phone: { $regex: new RegExp(req.body.phone, "i") } }
+                ]
+            }
+        )
+        .select('-password').sort('email');
+
+    res.send(users);
 });
 
 router.put('/', auth, async (req, res) => {

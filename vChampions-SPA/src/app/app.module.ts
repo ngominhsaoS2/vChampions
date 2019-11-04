@@ -18,25 +18,26 @@ import { appRoutes } from './routes';
 import { CookieService } from 'ngx-cookie-service';
 
 // Customized Guards
-import { AuthGuard } from './_guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 // Customized Services
-import { AuthService } from './_services/auth.service';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 // Customized Resolvers
 
 // Components
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { CarouselSmComponent } from './carousel/carousel-sm/carousel-sm.component';
-import { CarouselMdComponent } from './carousel/carousel-md/carousel-md.component';
-import { LoginComponent } from './login/login.component';
-import { FollowUsComponent } from './addition/follow-us/follow-us.component';
-import { ClubCreateComponent } from './clubs/club-create/club-create.component';
-import { RankSmComponent } from './addition/rank-sm/rank-sm.component';
-import { FindPlayersComponent } from './clubs/find-players/find-players.component';
+import { NavComponent } from './components/nav/nav.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { CarouselSmComponent } from './components/carousel/carousel-sm/carousel-sm.component';
+import { CarouselMdComponent } from './components/carousel/carousel-md/carousel-md.component';
+import { LoginComponent } from './components/login/login.component';
+import { FollowUsComponent } from './components/addition/follow-us/follow-us.component';
+import { ClubCreateComponent } from './components/clubs/club-create/club-create.component';
+import { RankSmComponent } from './components/addition/rank-sm/rank-sm.component';
+import { FindPlayersComponent } from './components/clubs/find-players/find-players.component';
 
 // 2019/10/28 SaoNM custom tokenGetter
 export function tokenGetter() {
@@ -96,6 +97,7 @@ export function tokenGetter() {
   providers: [
     CookieService,
     AuthService,
+    UserService,
     AuthGuard
   ],
   bootstrap: [

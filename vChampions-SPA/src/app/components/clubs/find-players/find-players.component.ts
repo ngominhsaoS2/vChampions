@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-find-players',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindPlayersComponent implements OnInit {
 
-  constructor() { }
+  criteria: any = {};
+
+  constructor(
+    private userService: UserService,
+    private spinner: NgxSpinnerService,
+  ) { }
 
   ngOnInit() {
+    
+  }
+
+  findPlayers() {
+
   }
 
 }

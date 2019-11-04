@@ -1,0 +1,229 @@
+<!-- Search and popup modal button -->
+<form class="card p-2">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Email/Name">
+    <div class="input-group-append">
+      <button type="button" class="btn btn-secondary" (click)="lgModal.show()">Search</button>
+    </div>
+  </div>
+</form>
+
+<!-- Modal -->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left black">Players found</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-3">
+            <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="criteria.phone" />
+          </div>
+          <div class="col-3">
+            <input type="text" class="form-control" placeholder="Email" [(ngModel)]="criteria.email" />
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" placeholder="Name" [(ngModel)]="criteria.name" />
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-sm btn-primary" (click)="findPlayers()">
+              <i class="fa fa-search"></i> Find
+            </button>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-b-15">
+            <div class="card">
+              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
+                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
+                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
+                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
+                    class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
+                    class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -109,11 +109,13 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/10/26: Đã tạo được hình hài đầu tiên của front-end, đã có nav component
 - 2019/10/28: Login logout thành công
 - 2019/10/30: Register thành công, chỉnh sửa lại thanh nav, chuẩn bị làm create Club
-- 2019/11/02:
+- 2019/11/02: Đã tạo xong giao diện chung Create Club, còn cần tạo modal search cầu thủ, sau đó add cầu thủ vào list cầu thủ
 - 2019/11/05: 
 - 2019/11/08: 
 - 2019/11/11: 
-
+- 2019/11/14: 
+- 2019/11/17: 
+- 2019/11/20: 
 
 
 
