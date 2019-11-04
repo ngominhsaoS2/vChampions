@@ -8,110 +8,28 @@
             <div class="col-md-4 order-md-2 mb-4">
               <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted black">Players</span>
-                <span class="badge badge-secondary badge-pill">15</span>
+                <span class="badge badge-secondary badge-pill">{{invitedPlayers.length}}</span>
               </h4>
               <ul class="list-group mb-3 ul-scrollable maxh-300">
-                <li class="list-group-item d-flex justify-content-between bg-light">
+                <li *ngIf="invitedPlayers.length <= 0"
+                  class="list-group-item d-flex justify-content-between lh-condensed">
+                  <small class="text-muted">No Players invited yet</small>
+                </li>
+                <li *ngFor="let player of invitedPlayers"
+                  class="list-group-item d-flex justify-content-between bg-light">
                   <div class="text-success">
-                    <h6 class="my-0 black m-r-5">Trần Minh Tiến (MF)</h6>
-                    <small>tientm@gmail.com</small>
+                    <h6 class="my-0 black m-r-5">{{player.name}} (MF)</h6>
+                    <small>{{player.email}}</small>
                   </div>
                   <span class="text-muted" data-toggle="tooltip" title="Remove this Player">
-                    <a href="#">
-                      <i class="fa fa-trash black"></i>
-                    </a>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0 black m-r-5">Nguyễn Tuấn Vũ (DF)</h6>
-                    <small class="text-muted">vunt@gmail.com</small>
-                  </div>
-                  <span class="text-muted" data-toggle="tooltip" title="Remove this Player">
-                    <a href="#">
-                      <i class="fa fa-trash black"></i>
-                    </a>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0 black m-r-5">Nguyễn Thanh Tùng (FW)</h6>
-                    <small class="text-muted">tungnt@gmail.com</small>
-                  </div>
-                  <span class="text-muted" data-toggle="tooltip" title="Remove this Player">
-                    <a href="#">
-                      <i class="fa fa-trash black"></i>
-                    </a>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0 black m-r-5">Nguyễn Thanh Tùng (FW)</h6>
-                    <small class="text-muted">tungnt@gmail.com</small>
-                  </div>
-                  <span class="text-muted" data-toggle="tooltip" title="Remove this Player">
-                    <a href="#">
-                      <i class="fa fa-trash black"></i>
-                    </a>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0 black m-r-5">Nguyễn Thanh Tùng (FW)</h6>
-                    <small class="text-muted">tungnt@gmail.com</small>
-                  </div>
-                  <span class="text-muted" data-toggle="tooltip" title="Remove this Player">
-                    <a href="#">
-                      <i class="fa fa-trash black"></i>
-                    </a>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0 black m-r-5">Nguyễn Thanh Tùng (FW)</h6>
-                    <small class="text-muted">tungnt@gmail.com</small>
-                  </div>
-                  <span class="text-muted" data-toggle="tooltip" title="Remove this Player">
-                    <a href="#">
-                      <i class="fa fa-trash black"></i>
-                    </a>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0 black m-r-5">Nguyễn Thanh Tùng (FW)</h6>
-                    <small class="text-muted">tungnt@gmail.com</small>
-                  </div>
-                  <span class="text-muted" data-toggle="tooltip" title="Remove this Player">
-                    <a href="#">
-                      <i class="fa fa-trash black"></i>
-                    </a>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0 black m-r-5">Nguyễn Thanh Tùng (FW)</h6>
-                    <small class="text-muted">tungnt@gmail.com</small>
-                  </div>
-                  <span class="text-muted" data-toggle="tooltip" title="Remove this Player">
-                    <a href="#">
-                      <i class="fa fa-trash black"></i>
-                    </a>
-                  </span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 class="my-0 black m-r-5">Nguyễn Thanh Tùng (FW)</h6>
-                    <small class="text-muted">tungnt@gmail.com</small>
-                  </div>
-                  <span class="text-muted" data-toggle="tooltip" title="Remove this Player">
-                    <a href="#">
+                    <a class="pointer" (click)="sendPlayerToRemove(player)">
                       <i class="fa fa-trash black"></i>
                     </a>
                   </span>
                 </li>
               </ul>
-              <app-find-players></app-find-players>
+              <app-find-players (invitation)="showInvitation($event)"
+              [playerToRemove]="playerSentToChild"></app-find-players>
             </div>
             <div class="col-md-8 order-md-1">
               <h4 class="mb-3 black">Club info</h4>

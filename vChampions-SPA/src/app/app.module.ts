@@ -1,14 +1,14 @@
 // Libarary Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule, CarouselModule, AlertModule, ModalModule } from 'ngx-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { JwtModule } from '@auth0/angular-jwt';
+/* import { JwtModule } from '@auth0/angular-jwt'; */
 import { ToastrModule } from 'ngx-toastr';
 
 // Customized Modules
@@ -38,9 +38,10 @@ import { FollowUsComponent } from './components/addition/follow-us/follow-us.com
 import { ClubCreateComponent } from './components/clubs/club-create/club-create.component';
 import { RankSmComponent } from './components/addition/rank-sm/rank-sm.component';
 import { FindPlayersComponent } from './components/clubs/find-players/find-players.component';
+import { TokenInterceptor } from './services/token-interceptor';
 
 // 2019/10/28 SaoNM custom tokenGetter
-export function tokenGetter() {
+/* export function tokenGetter() {
   const value = '; ' + document.cookie;
   const parts = value.split('; ' + 'token' + '=');
 
@@ -49,7 +50,7 @@ export function tokenGetter() {
   }
 
   return null;
-}
+} */
 
 @NgModule({
   declarations: [
@@ -83,18 +84,19 @@ export function tokenGetter() {
       timeOut: 5000,
       closeButton: true,
       positionClass: 'toast-bottom-left',
-      progressBar: true,
+      progressBar: false,
       progressAnimation: 'decreasing'
     }),
-    JwtModule.forRoot({
+    /* JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:3000'],
         blacklistedRoutes: ['localhost:3000/api/auth']
       }
-    }),
+    }), */
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     CookieService,
     AuthService,
     UserService,

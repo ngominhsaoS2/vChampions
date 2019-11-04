@@ -104,6 +104,7 @@ router.post('/find-players', [auth], async (req, res) => {
         .find(
             {
                 $and: [
+                    { roles: "Player" },
                     { name: { $regex: new RegExp(req.body.name, "i") } }, ///sao/i 
                     { email: { $regex: new RegExp(req.body.email, "i") } },
                     { phone: { $regex: new RegExp(req.body.phone, "i") } }

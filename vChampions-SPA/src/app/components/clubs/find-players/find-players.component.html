@@ -36,188 +36,29 @@
           </div>
         </div>
         <br />
-        <div class="row">
-          <div class="col-md-4 p-b-15">
+        <div *ngIf="foundPlayers.length > 0" class="row">
+          <div class="col-md-4 p-b-15" *ngFor="let player of foundPlayers">
             <div class="card">
               <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
               <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
+                <p class="m-b-3"><strong>Name: </strong>{{player.name}}</p>
+                <p class="m-b-3"><strong>Phone: </strong>{{player.phone}}</p>
+                <p class="m-b-3"><strong>Email: </strong>{{player.email}}</p>
+                <a class="btn btn-sm btn-primary pointer m-r-3" data-toggle="tooltip" title="View Player">
+                  <i class="fa fa-eye"></i>&nbsp;View
+                </a>
+                <a class="btn btn-sm btn-success pointer" data-toggle="tooltip" title="Invite to your Club"
+                  (click)="invitePlayer(player)"
+                  [ngClass]="{disabled: checkAlreadyInvited(player)}">
+                  <i class="fa fa-plus"></i>&nbsp;Add
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 p-b-15">
-            <div class="card">
-              <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="m-b-3"><strong>Name: </strong>Ngô Minh Sao</p>
-                <p class="m-b-3"><strong>Phone: </strong>0974240911</p>
-                <p class="m-b-3"><strong>Email: </strong>saonm@gmail.com</p>
-                <a href="#" class="btn btn-sm btn-primary m-r-3" data-toggle="tooltip" title="View Player"><i
-                    class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn-success" data-toggle="tooltip" title="Invite to your Club"><i
-                    class="fa fa-plus"></i></a>
-              </div>
-            </div>
+        </div>
+        <div *ngIf="foundPlayers.length <= 0" class="row">
+          <div class="col-md-12 text-center">
+            <p>No players found</p>
           </div>
         </div>
       </div>

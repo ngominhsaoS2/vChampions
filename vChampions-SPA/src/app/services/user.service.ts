@@ -14,7 +14,7 @@ export class UserService {
   ) { }
 
   findPlayers(criteria: any) {
-    return this.http.post(this.baseUrl, criteria);
+    return this.http.post(this.baseUrl + '/find-players', criteria);
   }
 
 }
