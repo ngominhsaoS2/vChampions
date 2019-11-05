@@ -46,9 +46,17 @@ export class FindPlayersComponent implements OnChanges, OnInit {
     });
   }
 
-  invitePlayer(player: any) {
+  invitePlayer(player: any, position) {
     if (_.findIndex(this.invitedPlayers, { email: player.email }) < 0) {
-      this.invitedPlayers.push(player);
+      const playerToAdd = {
+        id: player._id,
+        title: 'player',
+        name: player.name,
+        email: player.email,
+        positions: [position]
+      };
+
+      this.invitedPlayers.push(playerToAdd);
       this.toastr.success('Add ' + player.name + ' to invitation list successfully.');
     }
 

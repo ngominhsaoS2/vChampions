@@ -23,6 +23,7 @@ import { AuthGuard } from './guards/auth.guard';
 // Customized Services
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { TokenInterceptor } from './services/token-interceptor';
 
 // Customized Resolvers
 
@@ -38,7 +39,7 @@ import { FollowUsComponent } from './components/addition/follow-us/follow-us.com
 import { ClubCreateComponent } from './components/clubs/club-create/club-create.component';
 import { RankSmComponent } from './components/addition/rank-sm/rank-sm.component';
 import { FindPlayersComponent } from './components/clubs/find-players/find-players.component';
-import { TokenInterceptor } from './services/token-interceptor';
+import { ClubManageComponent } from './components/clubs/club-manage/club-manage.component';
 
 // 2019/10/28 SaoNM custom tokenGetter
 /* export function tokenGetter() {
@@ -64,6 +65,7 @@ import { TokenInterceptor } from './services/token-interceptor';
     FollowUsComponent,
     RankSmComponent,
     ClubCreateComponent,
+    ClubManageComponent,
     FindPlayersComponent
   ],
   imports: [

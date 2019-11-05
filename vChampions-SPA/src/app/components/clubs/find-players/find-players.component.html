@@ -1,9 +1,9 @@
 <!-- Search and popup modal button -->
 <form class="card p-2">
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="Email/Name">
-    <div class="input-group-append">
-      <button type="button" class="btn btn-secondary" (click)="lgModal.show()">Search</button>
+    <div class="btn-group w-100" role="group">
+      <button type="button" class="btn btn-success" (click)="lgModal.show()" data-toggle="tooltip" title="Find Players already registered on vChampions">Search</button>
+      <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Send your friends an email to invite them to join your Club">Invite by Email</button>
     </div>
   </div>
 </form>
@@ -30,8 +30,8 @@
             <input type="text" class="form-control" placeholder="Name" [(ngModel)]="criteria.name" />
           </div>
           <div class="col-2">
-            <button type="button" class="btn btn-sm btn-primary" (click)="findPlayers()">
-              <i class="fa fa-search"></i> Find
+            <button type="button" class="btn btn-sm btn-success" (click)="findPlayers()">
+              <i class="fa fa-search"></i> Search
             </button>
           </div>
         </div>
@@ -44,14 +44,27 @@
                 <p class="m-b-3"><strong>Name: </strong>{{player.name}}</p>
                 <p class="m-b-3"><strong>Phone: </strong>{{player.phone}}</p>
                 <p class="m-b-3"><strong>Email: </strong>{{player.email}}</p>
-                <a class="btn btn-sm btn-primary pointer m-r-3" data-toggle="tooltip" title="View Player">
-                  <i class="fa fa-eye"></i>&nbsp;View
+                <a class="btn btn-sm btn-info pointer m-r-3" data-toggle="tooltip" title="View Player">
+                  <i class="fa fa-eye"></i>
                 </a>
-                <a class="btn btn-sm btn-success pointer" data-toggle="tooltip" title="Invite to your Club"
-                  (click)="invitePlayer(player)"
-                  [ngClass]="{disabled: checkAlreadyInvited(player)}">
-                  <i class="fa fa-plus"></i>&nbsp;Add
-                </a>
+                <div class="btn-group btn-group-sm">
+                  <a class="btn btn-sm btn-warning pointer" data-toggle="tooltip" title="Invite as a Goalkeeper"
+                    (click)="invitePlayer(player, 'GK')" [ngClass]="{disabled: checkAlreadyInvited(player)}">
+                    GK
+                  </a>
+                  <a class="btn btn-sm btn-primary pointer" data-toggle="tooltip" title="Invite as a Defender"
+                    (click)="invitePlayer(player, 'DF')" [ngClass]="{disabled: checkAlreadyInvited(player)}">
+                    DF
+                  </a>
+                  <a class="btn btn-sm btn-success pointer" data-toggle="tooltip" title="Invite as a Middlefield"
+                    (click)="invitePlayer(player, 'MF')" [ngClass]="{disabled: checkAlreadyInvited(player)}">
+                    MF
+                  </a>
+                  <a class="btn btn-sm btn-danger pointer" data-toggle="tooltip" title="Invite as a Forward"
+                    (click)="invitePlayer(player, 'FW')" [ngClass]="{disabled: checkAlreadyInvited(player)}">
+                    FW
+                  </a>
+                </div>
               </div>
             </div>
           </div>

@@ -43,6 +43,8 @@ router.post('/', auth, async (req, res) => {
         players: []
     });
 
+    console.log(club);
+
     try {
         var task = Fawn.Task();
 

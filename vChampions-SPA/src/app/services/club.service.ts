@@ -5,15 +5,15 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  baseUrl = environment.apiUrl + 'users';
+export class ClubService {
+  baseUrl = environment.apiUrl + 'clubs';
 
   constructor(
     private http: HttpClient,
   ) { }
 
-  findPlayers(criteria: any) {
-    return this.http.post(this.baseUrl + '/find-players', criteria);
+  createClub(club: any) {
+    return this.http.post(this.baseUrl, club);
   }
 
 }
