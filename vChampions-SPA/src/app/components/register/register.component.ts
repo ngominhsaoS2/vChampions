@@ -12,10 +12,6 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  // Above 2 variables are for carousel-sm component
-  title = 'Become a Legend';
-  description = 'Register now';
-
   user: any;
   registerForm: FormGroup;
 

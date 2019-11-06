@@ -12,10 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
 
-  // Above 2 variables are for carousel-sm component
-  title = 'Become a Legend';
-  description = 'Login to catch your dream';
-
   model: any = {};
   showError = false;
 

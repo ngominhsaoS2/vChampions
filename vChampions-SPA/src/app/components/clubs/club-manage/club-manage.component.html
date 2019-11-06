@@ -1,3 +1,92 @@
-<p>
-  club-manage works!
-</p>
+<app-carousel-sm [title]="'Clubs management'" [description]="'Manage Players, Money... of your Clubs'">
+</app-carousel-sm>
+<div class="news-area p-t-30 p-b-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-9">
+        <div class="point-table">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead id="thClubs">
+                      <tr>
+                        <th>No</th>
+                        <th colspan="4">Team</th>
+                        <th>Rank</th>
+                        <th>Recent</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="pointer">
+                        <th scope="row">1</th>
+                        <td colspan="4" class="team">
+                          <div class="team-box">
+                            <img class="xs-img" src="assets/images/club-logo/logo/barcelona.png" alt="">
+                            <span><a href="#">barcelona</a></span>
+                          </div>
+                        </td>
+                        <td>5</td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-sm btn-secondary">D</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                            <a class="btn btn-sm btn-danger">L</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="pointer">
+                        <th scope="row">2</th>
+                        <td colspan="4" class="team">
+                          <div class="team-box">
+                            <img class="xs-img" src="assets/images/club-logo/logo/chelsea.png" alt="">
+                            <span><a href="#">chelsea</a></span>
+                          </div>
+                        </td>
+                        <td>25</td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-sm btn-danger">L</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                            <a class="btn btn-sm btn-secondary">D</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="pointer">
+                        <th scope="row">3</th>
+                        <td colspan="4" class="team">
+                          <div class="team-box">
+                            <img class="xs-img" src="assets/images/club-logo/logo/arsenal.png" alt="">
+                            <span><a href="#">arsenal</a></span>
+                          </div>
+                        </td>
+                        <td>8</td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <a class="btn btn-sm btn-secondary">D</a>
+                            <a class="btn btn-sm btn-danger">L</a>
+                            <a class="btn btn-sm btn-secondary">D</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-3">
+        <app-rank-sm></app-rank-sm>
+      </div>
+    </div>
+  </div>
+</div>

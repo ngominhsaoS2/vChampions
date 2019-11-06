@@ -15,10 +15,6 @@ import { ClubService } from 'src/app/services/club.service';
 })
 export class ClubCreateComponent implements OnInit {
 
-  // Above 2 variables are for carousel-sm component
-  title = 'Create your own Club';
-  description = 'To have matches, to be on Rank, to be on the Top of the World';
-
   loggedInUser: any = {};
 
   invitedPlayers: any = [];
