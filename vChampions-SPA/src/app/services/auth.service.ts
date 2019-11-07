@@ -30,6 +30,11 @@ export class AuthService {
       );
   }
 
+  logout() {
+    this.cookieService.delete('token');
+    this.decodedToken = null;
+  }
+
   loggedIn() {
     const token = this.cookieService.get('token');
     return !this.jwtHelper.isTokenExpired(token);

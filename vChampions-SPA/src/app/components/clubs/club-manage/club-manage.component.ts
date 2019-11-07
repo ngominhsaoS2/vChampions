@@ -25,7 +25,6 @@ export class ClubManageComponent implements OnInit {
 
     this.clubService.getClubsManagedByYou().subscribe((clubs: any) => {
       this.clubs = clubs;
-      console.log(clubs);
       this.spinner.hide();
     }, error => {
       console.log(error);

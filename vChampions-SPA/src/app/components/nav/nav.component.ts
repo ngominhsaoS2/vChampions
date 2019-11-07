@@ -29,8 +29,7 @@ export class NavComponent implements OnInit {
   }
 
   logout() {
-    this.cookieService.delete('token');
-    this.authService.decodedToken = null;
+    this.authService.logout();
     this.toastr.info('Logout successfully', 'Info');
     this.router.navigate(['/']);
   }
