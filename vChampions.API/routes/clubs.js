@@ -12,10 +12,15 @@ router.get('/', async (req, res) => {
     res.send(clubs);
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/find-by-id/:id', async (req, res) => {
     const club = await Club.findById(req.params.id);
     if (!club) return res.status(404).send('The Club with the given ID was not found.');
     res.send(club);
+});
+
+router.get('/managed-by-you', [auth], async (req, res) => {
+    const clubs = await Club.find({ 'manager._id': req.user._id });
+    res.send(clubs);
 });
 
 router.post('/', auth, async (req, res) => {
@@ -42,8 +47,6 @@ router.post('/', auth, async (req, res) => {
         },
         players: []
     });
-
-    console.log(club);
 
     try {
         var task = Fawn.Task();

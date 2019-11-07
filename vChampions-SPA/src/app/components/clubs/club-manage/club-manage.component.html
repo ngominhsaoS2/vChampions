@@ -19,12 +19,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="pointer">
+                      <tr class="pointer" *ngFor="let club of clubs">
                         <th scope="row">1</th>
                         <td colspan="4" class="team">
                           <div class="team-box">
                             <img class="xs-img" src="assets/images/club-logo/logo/barcelona.png" alt="">
-                            <span><a href="#">barcelona</a></span>
+                            <span><a href="/clubs/{{club.code}}" class="default">{{club.name}}</a></span>
                           </div>
                         </td>
                         <td>5</td>
@@ -34,44 +34,6 @@
                             <a class="btn btn-sm btn-success">W</a>
                             <a class="btn btn-sm btn-success">W</a>
                             <a class="btn btn-sm btn-danger">L</a>
-                            <a class="btn btn-sm btn-success">W</a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr class="pointer">
-                        <th scope="row">2</th>
-                        <td colspan="4" class="team">
-                          <div class="team-box">
-                            <img class="xs-img" src="assets/images/club-logo/logo/chelsea.png" alt="">
-                            <span><a href="#">chelsea</a></span>
-                          </div>
-                        </td>
-                        <td>25</td>
-                        <td>
-                          <div class="btn-group btn-group-sm">
-                            <a class="btn btn-sm btn-danger">L</a>
-                            <a class="btn btn-sm btn-success">W</a>
-                            <a class="btn btn-sm btn-success">W</a>
-                            <a class="btn btn-sm btn-secondary">D</a>
-                            <a class="btn btn-sm btn-success">W</a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr class="pointer">
-                        <th scope="row">3</th>
-                        <td colspan="4" class="team">
-                          <div class="team-box">
-                            <img class="xs-img" src="assets/images/club-logo/logo/arsenal.png" alt="">
-                            <span><a href="#">arsenal</a></span>
-                          </div>
-                        </td>
-                        <td>8</td>
-                        <td>
-                          <div class="btn-group btn-group-sm">
-                            <a class="btn btn-sm btn-secondary">D</a>
-                            <a class="btn btn-sm btn-danger">L</a>
-                            <a class="btn btn-sm btn-secondary">D</a>
-                            <a class="btn btn-sm btn-success">W</a>
                             <a class="btn btn-sm btn-success">W</a>
                           </div>
                         </td>

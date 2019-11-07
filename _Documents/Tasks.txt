@@ -13,6 +13,6 @@ Status: A: Đã hoàn thành
 - L2: Chỉnh sửa lại giao diện login
 - L2: Chỉnh sửa lại giao diện register
 - L4: Lỗi khi remove một Player liên tục hai lần liên tiếp
-- 
+- L4: Lỗi thi thoảng phải logout 2 lần mới được
 - 
 - 

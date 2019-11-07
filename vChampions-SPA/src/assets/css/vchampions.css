@@ -31,3 +31,26 @@
 {
 	background-color: #000000;
 }
+
+/* Change color for link has default class */
+a.default {
+  text-transform: none !important;
+}
+
+a.default:link {
+  color: rgb(33, 37, 41);
+  background-color: transparent;
+}
+
+a.default:visited {
+  color: rgb(33, 37, 41);
+  background-color: transparent;
+}
+
+a.default:hover {
+  color: rgb(118, 193, 0);
+  background-color: transparent;
+}
+
+
+

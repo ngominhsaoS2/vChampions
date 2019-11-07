@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ClubService {
-  baseUrl = environment.apiUrl + 'clubs';
+  baseUrl = environment.apiUrl + 'clubs/';
 
   constructor(
     private http: HttpClient,
@@ -14,6 +14,10 @@ export class ClubService {
 
   createClub(club: any) {
     return this.http.post(this.baseUrl, club);
+  }
+
+  getClubsManagedByYou() {
+    return this.http.get(this.baseUrl + 'managed-by-you');
   }
 
 }
