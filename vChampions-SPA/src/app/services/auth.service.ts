@@ -23,7 +23,7 @@ export class AuthService {
       .pipe(
         map((res: any) => {
           if (res) {
-            this.cookieService.set('token', res.token);
+            this.cookieService.set('token', res.token, null, '/');
             this.decodedToken = this.jwtHelper.decodeToken(res.token);
           }
         })
@@ -31,7 +31,9 @@ export class AuthService {
   }
 
   logout() {
-    this.cookieService.delete('token');
+    this.cookieService.delete('token', '/');
+    console.log('Just delete token');
+    console.log(this.cookieService.get('token'));
     this.decodedToken = null;
   }
 

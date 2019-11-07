@@ -21,8 +21,6 @@ export class AppComponent implements OnInit {
     const token = this.cookieService.get('token');
     if (token) {
       this.authService.decodedToken = this.jwtHelper.decodeToken(token);
-    } else {
-      this.cookieService.delete('token');
     }
   }
 
