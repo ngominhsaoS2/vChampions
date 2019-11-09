@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule, CarouselModule, AlertModule, ModalModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CarouselModule, AlertModule, ModalModule, TabsModule, TooltipModule } from 'ngx-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -39,7 +39,10 @@ import { FollowUsComponent } from './components/addition/follow-us/follow-us.com
 import { ClubCreateComponent } from './components/clubs/club-create/club-create.component';
 import { RankSmComponent } from './components/addition/rank-sm/rank-sm.component';
 import { FindPlayersComponent } from './components/clubs/find-players/find-players.component';
+import { ClubListComponent } from './components/clubs/club-list/club-list.component';
+import { ClubViewComponent } from './components/clubs/club-view/club-view.component';
 import { ClubManageComponent } from './components/clubs/club-manage/club-manage.component';
+import { ClubManageResolver } from './resolvers/club-manage.resolver';
 
 // 2019/10/28 SaoNM custom tokenGetter
 /* export function tokenGetter() {
@@ -65,6 +68,8 @@ import { ClubManageComponent } from './components/clubs/club-manage/club-manage.
     FollowUsComponent,
     RankSmComponent,
     ClubCreateComponent,
+    ClubListComponent,
+    ClubViewComponent,
     ClubManageComponent,
     FindPlayersComponent
   ],
@@ -79,6 +84,8 @@ import { ClubManageComponent } from './components/clubs/club-manage/club-manage.
     CarouselModule.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot(),
+    TabsModule.forRoot(),
+    TooltipModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     NgxSpinnerModule,
     ToastrModule.forRoot({
@@ -99,10 +106,14 @@ import { ClubManageComponent } from './components/clubs/club-manage/club-manage.
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    // Services
     CookieService,
     AuthService,
     UserService,
-    AuthGuard
+    // Resolver
+    ClubManageResolver,
+    // Guards
+    AuthGuard,
   ],
   bootstrap: [
     AppComponent

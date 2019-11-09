@@ -1,0 +1,13 @@
+.point-table .table.table-bordered thead {
+  line-height: 1 !important;
+}
+
+.point-table .table.table-bordered tbody th {
+  line-height: 40px !important;
+}
+
+.point-table .table.table-bordered tbody td {
+  line-height: 40px !important;
+}
+
+

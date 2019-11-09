@@ -20,4 +20,8 @@ export class ClubService {
     return this.http.get(this.baseUrl + 'managed-by-you');
   }
 
+  getClubInManagerView(clubCode) {
+    return this.http.get(this.baseUrl + 'manage/' + clubCode);
+  }
+
 }

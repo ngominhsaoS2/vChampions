@@ -73,7 +73,7 @@ export class ClubCreateComponent implements OnInit {
 
       this.clubService.createClub(club).subscribe(() => {
         this.spinner.hide();
-        this.router.navigate(['/club/manage']);
+        this.router.navigate(['/club/manage-list']);
         this.toastr.success('Create Club successfully.', 'Success');
       }, error => {
         this.spinner.hide();

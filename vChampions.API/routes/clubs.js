@@ -3,6 +3,7 @@ const router = express.Router();
 const _ = require('lodash');
 const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
+const isAdminOrModerator = require('../middlewares/isAdminOrModerator');
 const { Fawn } = require('../middlewares/fawn');
 const { Club, validateClub, validatePlayers } = require('../models/club');
 const { User } = require('../models/user');
@@ -23,6 +24,19 @@ router.get('/managed-by-you', [auth], async (req, res) => {
     res.send(clubs);
 });
 
+router.get('/manage/:clubCode', [auth, isAdminOrModerator], async (req, res) => {
+    const club = await Club.findOne({ code: req.params.clubCode });
+    if (!club) return res.status(404).send('The Club with the given Code was not found.');
+
+    if (club.manager._id != req.user._id && req.isAdminOrModerator == false)
+        return res.status(404).send('Just Manager of this Club is authorized to manage.');
+
+    // Order by Positions
+    club.players = _.orderBy(club.players, ['positions'], ['asc']);
+
+    res.send(club);
+});
+
 router.post('/', auth, async (req, res) => {
     const error = await validateClub(req.body);
     if (error != true) return res.status(400).send(error);
@@ -34,10 +48,11 @@ router.post('/', auth, async (req, res) => {
     if (!manager) return res.status(400).send('Invalid manager.');
 
     club = new Club({
-        code: req.body.code,
+        code: req.body.code.toLowerCase(),
         name: req.body.name,
         city: req.body.city,
         district: req.body.district,
+        description: req.body.description,
         manager: {
             _id: req.body.managerId,
             name: manager.name,
@@ -98,8 +113,8 @@ router.put('/:id/add-players', auth, async (req, res) => {
     let club = await Club.findById(req.params.id);
     if (!club) return res.status(400).send('Invalid Club.');
 
-    if (club.manager._id != req.user._id)
-        return res.status(400).send('Just manager of this Club is authorized to add new Players');
+    if (club.manager._id != req.user._id && req.isAdminOrModerator == false)
+        return res.status(400).send('Just Manager of this Club is authorized to add new Players');
 
     try {
         var task = Fawn.Task();
@@ -157,8 +172,8 @@ router.delete('/:id/remove-player/:playerId', [auth], async (req, res) => {
     let club = await Club.findById(req.params.id);
     if (!club) return res.status(400).send('Invalid Club.');
 
-    if (club.manager._id != req.user._id)
-        return res.status(400).send('Just manager of this club is authorized to remove players');
+    if (club.manager._id != req.user._id && req.isAdminOrModerator == false)
+        return res.status(400).send('Just Manager of this club is authorized to remove players');
 
     let player = await User.findById(req.params.playerId);
     if (!player) return res.status(400).send('Invalid Player.');

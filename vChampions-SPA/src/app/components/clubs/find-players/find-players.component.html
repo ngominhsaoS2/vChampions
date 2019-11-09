@@ -2,8 +2,8 @@
 <form class="card p-2">
   <div class="input-group">
     <div class="btn-group w-100" role="group">
-      <button type="button" class="btn btn-success" (click)="lgModal.show()" data-toggle="tooltip" title="Find Players already registered on vChampions">Search</button>
-      <button type="button" class="btn btn-secondary" data-toggle="tooltip" title="Send your friends an email to invite them to join your Club">Invite by Email</button>
+      <button type="button" class="btn btn-success" (click)="lgModal.show()" tooltip="Find Players already registered on vChampions" placement="bottom" [delay]="500">Search</button>
+      <button type="button" class="btn btn-secondary" tooltip="Send your friends an email to invite them to join your Club" placement="bottom" [delay]="500">Invite by Email</button>
     </div>
   </div>
 </form>
@@ -37,30 +37,30 @@
         </div>
         <br />
         <div *ngIf="foundPlayers.length > 0" class="row">
-          <div class="col-md-4 p-b-15" *ngFor="let player of foundPlayers">
+          <div class="col-md-6 col-lg-4 p-b-15" *ngFor="let player of foundPlayers">
             <div class="card">
               <img src="../../../assets/images/blog/2.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <p class="m-b-3"><strong>Name: </strong>{{player.name}}</p>
                 <p class="m-b-3"><strong>Phone: </strong>{{player.phone}}</p>
                 <p class="m-b-3"><strong>Email: </strong>{{player.email}}</p>
-                <a class="btn btn-sm btn-info pointer m-r-3" data-toggle="tooltip" title="View Player">
+                <a class="btn btn-sm btn-info pointer m-r-3" tooltip="View Player" placement="bottom">
                   <i class="fa fa-eye"></i>
                 </a>
                 <div class="btn-group btn-group-sm">
-                  <a class="btn btn-sm btn-warning pointer" data-toggle="tooltip" title="Invite as a Goalkeeper"
+                  <a class="btn btn-sm btn-warning pointer" tooltip="Invite as a Goalkeeper" placement="bottom"
                     (click)="invitePlayer(player, 'GK')" [ngClass]="{disabled: checkAlreadyInvited(player)}">
                     GK
                   </a>
-                  <a class="btn btn-sm btn-primary pointer" data-toggle="tooltip" title="Invite as a Defender"
+                  <a class="btn btn-sm btn-primary pointer" tooltip="Invite as a Defender" placement="bottom"
                     (click)="invitePlayer(player, 'DF')" [ngClass]="{disabled: checkAlreadyInvited(player)}">
                     DF
                   </a>
-                  <a class="btn btn-sm btn-success pointer" data-toggle="tooltip" title="Invite as a Middlefield"
+                  <a class="btn btn-sm btn-success pointer" tooltip="Invite as a Middlefield" placement="bottom"
                     (click)="invitePlayer(player, 'MF')" [ngClass]="{disabled: checkAlreadyInvited(player)}">
                     MF
                   </a>
-                  <a class="btn btn-sm btn-danger pointer" data-toggle="tooltip" title="Invite as a Forward"
+                  <a class="btn btn-sm btn-danger pointer" tooltip="Invite as a Forward" placement="bottom"
                     (click)="invitePlayer(player, 'FW')" [ngClass]="{disabled: checkAlreadyInvited(player)}">
                     FW
                   </a>

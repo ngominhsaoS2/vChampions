@@ -11,7 +11,6 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
     private toastr: ToastrService
   ) {}
 
@@ -21,7 +20,6 @@ export class AuthGuard implements CanActivate {
     }
 
     this.toastr.error('You have to login to use this page', 'Unauthorized');
-    //this.router.navigate(['/home']);
     return false;
   }
 }
