@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClubService } from 'src/app/services/club.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-club-manage',
@@ -14,11 +15,14 @@ export class ClubManageComponent implements OnInit {
   description = 'Description';
 
   club: any;
+  playerToInvite: any;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private clubService: ClubService,
     private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -26,6 +30,48 @@ export class ClubManageComponent implements OnInit {
       this.club = data.club;
       this.title = this.club.name;
       this.description = 'Manager: ' + this.club.manager.name + ' - ' + this.club.manager.phone + ' / ' + this.club.manager.email;
+    });
+  }
+
+  invitePlayer(player: any) {
+    this.spinner.show();
+    this.clubService.invitePlayers(this.club._id, { players: [player] }).subscribe(() => {
+      this.reloadClub(); // reload the Club after invite Player
+      this.toastr.success('Sent an invitation to ' + player.name + ' to join the Club successfully.');
+      this.spinner.hide();
+    }, error => {
+      this.spinner.hide();
+      this.toastr.error(error.error, 'Error');
+      console.log(error);
+    });
+  }
+
+  removePlayer(player: any) {
+    this.clubService.removePlayer(this.club._id, player._id).subscribe(() => {
+      this.reloadClub(); // reload the Club after remove Player
+      this.toastr.success('Removed ' + player.name + ' from the Club.');
+    }, error => {
+      this.toastr.error(error.error, 'Error');
+      console.log(error);
+    });
+  }
+
+  reloadClub() {
+    this.clubService.getClubInManagerView(this.club.code).subscribe((updatedClub: any) => {
+      this.club = updatedClub;
+    }, error => {
+      this.toastr.error(error.error, 'Error');
+      console.log(error);
+    });
+  }
+
+  setAsCaptain(player: any) {
+    this.clubService.setAsCaptain(this.club._id, player._id).subscribe(() => {
+      this.reloadClub(); // reload the Club after set Captain
+      this.toastr.success(player.name + ' is the Captain of the Club from now.');
+    }, error => {
+      this.toastr.error(error.error, 'Error');
+      console.log(error);
     });
   }
 

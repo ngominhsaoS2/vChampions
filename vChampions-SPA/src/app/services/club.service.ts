@@ -24,4 +24,16 @@ export class ClubService {
     return this.http.get(this.baseUrl + 'manage/' + clubCode);
   }
 
+  invitePlayers(clubId: any, players: any) {
+    return this.http.put(this.baseUrl + clubId + '/add-players', players);
+  }
+
+  removePlayer(clubId: any, playerId: any) {
+    return this.http.delete(this.baseUrl + clubId + '/remove-player/' + playerId);
+  }
+
+  setAsCaptain(clubId: any, playerId: any) {
+    return this.http.put(this.baseUrl + clubId + '/set-as-captain/' + playerId, null);
+  }
+
 }

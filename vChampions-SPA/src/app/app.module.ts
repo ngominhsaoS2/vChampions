@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /* import { JwtModule } from '@auth0/angular-jwt'; */
 import { ToastrModule } from 'ngx-toastr';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 // Customized Modules
 import { appRoutes } from './routes';
@@ -88,6 +89,7 @@ import { ClubManageResolver } from './resolvers/club-manage.resolver';
     TooltipModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     NgxSpinnerModule,
+    SweetAlert2Module.forRoot(),
     ToastrModule.forRoot({
       newestOnTop: false,
       timeOut: 5000,

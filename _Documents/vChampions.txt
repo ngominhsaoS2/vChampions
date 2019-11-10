@@ -27,40 +27,37 @@ II. Mục tiêu ngắn hạn
 III. Yêu cầu, chức năng vả tình hình thực hiện
     1. Đăng ký, đăng nhập, đăng xuất
         - User, có thể là cầu thủ/chủ sân (Role management)
-            + API: A. Done. Phân biệt bằng role. Hiện có Admin, Player, StadiumOwner.
-            + UI: 
+            A. Done.
         - Đăng ký (Register)
-            + API: A. Done.
-            + UI: 
+            A. Done.
         - Đăng nhập (Login)
-            + API: A. Done.
-            + UI: 
+            A. Done.
         - Đăng xuất (Logout)
-            + API: 
-            + UI: 
+            A. Done.
 
     2. Tạo đội bóng, quản lý cầu thủ của đội bóng
         - Tạo đội bóng, tên, logo, đội trưởng, đội phó... các thông tin cần thiết cho một đội bóng phủi/chuyên nghiệp
-            + API: 
-            + UI: 
+            B. Còn đang để dở phần hình ảnh.
+        - Update các thông tin cơ bản của đội bóng
+            E. 
         - Thêm bớt cầu thủ trong đội
-            + API: 
-            + UI: 
+            + Thêm cầu thủ đã tồn tại trong hệ thống
+                A. Done.
+            + Mời cầu thủ khác đăng ký bằng email
+                E.  
         - Tạo kèo, nhận kèo
-            + API: 
-            + UI:
+            
         - Upload kêt quả, confirm kêt quả thi đấu
-            + API: 
-            + UI:
+            
         - Cho điểm và xếp hạng các đội bóng
-            + API: 
-            + UI:
+            
         - ...
 
-    3. Phân quyền truy cập các API đã viết
-        - Theo role: Admin, Player, StadiumOwner
-            + API: A. Done
-        - 
+    3. Trang cá nhân của Player
+        - Trang view thông tin của Player
+            E. 
+        - Trang profile của Player
+            E. 
 
     4. Tạo trang quản lý cho chủ sân
         - Từ User, tạo sân bóng
@@ -112,6 +109,7 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/11/02: Đã tạo xong giao diện chung Create Club, còn cần tạo modal search cầu thủ, sau đó add cầu thủ vào list cầu thủ
 - 2019/11/05: Có thể search, add cầu thủ, tạo Club thành công :>
 - 2019/11/08: Sửa thành công lỗi logout 2 lần mới được. Hiển thị các Club của User đang quản lý
+- 2019/11/10: Hiển thị được trang manage Club, hiển thị được Players, add, remove Player thành công
 - 2019/11/11: 
 - 2019/11/14: 
 - 2019/11/17: 

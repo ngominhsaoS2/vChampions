@@ -7,6 +7,7 @@ const isAdminOrModerator = require('../middlewares/isAdminOrModerator');
 const { Fawn } = require('../middlewares/fawn');
 const { Club, validateClub, validatePlayers } = require('../models/club');
 const { User } = require('../models/user');
+const mongoose = require('mongoose');
 
 router.get('/', async (req, res) => {
     const clubs = await Club.find().sort('name');
@@ -106,7 +107,7 @@ router.post('/', auth, async (req, res) => {
     }
 });
 
-router.put('/:id/add-players', auth, async (req, res) => {
+router.put('/:id/add-players', [auth, isAdminOrModerator], async (req, res) => {
     const error = await validatePlayers(req.body);
     if (error != true) return res.status(400).send(error);
 
@@ -156,7 +157,7 @@ router.put('/:id/add-players', auth, async (req, res) => {
             });
 
             task.run();
-            res.send('Add Players successfully.');
+            res.send({ message: 'Add Players Successfully' });
         }
         else {
             return res.status(400).send('Add at least one Player.');
@@ -168,7 +169,30 @@ router.put('/:id/add-players', auth, async (req, res) => {
     }
 });
 
-router.delete('/:id/remove-player/:playerId', [auth], async (req, res) => {
+router.put('/:clubId/set-as-captain/:playerId', [auth, isAdminOrModerator], async (req, res) => {
+    let club = await Club.findById(req.params.clubId);
+    if (!club) return res.status(400).send('Invalid Club.');
+
+    if (club.manager._id != req.user._id && req.isAdminOrModerator == false)
+        return res.status(400).send('Just Manager of this Club is authorized to dicide who would be Captain');
+
+    if (_.findIndex(club.players, { _id: mongoose.Types.ObjectId(req.params.playerId) }) >= 0) {
+        club.players.forEach(player => {
+            if (player._id == req.params.playerId) {
+                player.title = 'captain';
+            } else {
+                player.title = 'player';
+            }
+        });
+
+        await club.save();
+        return res.status(200).send(club);
+    } else {
+        return res.status(400).send("This Player is not memeber of you Club");
+    }
+});
+
+router.delete('/:id/remove-player/:playerId', [auth, isAdminOrModerator], async (req, res) => {
     let club = await Club.findById(req.params.id);
     if (!club) return res.status(400).send('Invalid Club.');
 
@@ -194,9 +218,10 @@ router.delete('/:id/remove-player/:playerId', [auth], async (req, res) => {
 
         let result = await task.run({ useMongoose: true });
         //res.send(result);
-        res.send('Remove Player successfully.');
+        res.send({ message: 'Remove Player successfully.' });
     }
     catch (ex) {
+        console.log(ex);
         res.status(500).send(ex);
     }
 });

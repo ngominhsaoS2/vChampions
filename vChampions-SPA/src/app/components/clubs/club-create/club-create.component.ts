@@ -16,9 +16,7 @@ import { ClubService } from 'src/app/services/club.service';
 export class ClubCreateComponent implements OnInit {
 
   loggedInUser: any = {};
-
   invitedPlayers: any = [];
-  playerSentToChild: any = {};
 
   createClubForm: FormGroup;
 
@@ -47,12 +45,12 @@ export class ClubCreateComponent implements OnInit {
     });
   }
 
-  showInvitation(players: any) {
-    this.invitedPlayers = players;
+  showPlayers(player: any) {
+    this.invitedPlayers.push(player);
+    this.toastr.success('Sent an invitation to ' + player.name + ' to join the Club successfully.');
   }
 
-  sendPlayerToRemove(player: any) {
-    this.playerSentToChild = player;
+  removePlayerFromInvitation(player: any) {
     this.invitedPlayers = _.reject(this.invitedPlayers, { email: player.email });
   }
 

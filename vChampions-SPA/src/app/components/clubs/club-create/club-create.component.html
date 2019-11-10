@@ -27,13 +27,13 @@
                     <small>{{player.email}}</small>
                   </div>
                   <span class="text-muted" tooltip="Remove this Player" placement="bottom">
-                    <a class="pointer" (click)="sendPlayerToRemove(player)">
+                    <a class="pointer" (click)="removePlayerFromInvitation(player)">
                       <i class="fa fa-trash black"></i>
                     </a>
                   </span>
                 </li>
               </ul>
-              <app-find-players (invitation)="showInvitation($event)" [playerToRemove]="playerSentToChild">
+              <app-find-players (playerToInvite)="showPlayers($event)" [playersOnClub]="invitedPlayers">
               </app-find-players>
             </div>
             <div class="col-md-8 order-md-1">
@@ -41,7 +41,7 @@
               <form class="needs-validation" [formGroup]="createClubForm" (ngSubmit)="createClub()">
                 <div class="row">
                   <div class="col-md-6 mb-3">
-                    <label class="black">Code</label>
+                    <label class="black">Code (*)</label>
                     <input type="text" class="form-control" formControlName="code"
                       [ngClass]="{'is-invalid': createClubForm.get('code').errors && createClubForm.get('code').touched}">
                     <small class="text-muted">Club's url:
@@ -64,7 +64,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="black">Name</label>
+                    <label class="black">Name (*)</label>
                     <input type="text" class="form-control" formControlName="name"
                       [ngClass]="{'is-invalid': createClubForm.get('name').errors && createClubForm.get('name').touched}">
                     <small class="text-muted">Use to display everywhere</small>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6 mb-3">
-                    <label class="black">City</label>
+                    <label class="black">City (*)</label>
                     <select class="form-control p-t-8 p-b-8" formControlName="city"
                       [ngClass]="{'is-invalid': createClubForm.get('city').errors && createClubForm.get('city').touched}">
                       <option value="Hà Nội">Hà Nội</option>
@@ -96,7 +96,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
-                    <label class="black">District</label>
+                    <label class="black">District (*)</label>
                     <select class="form-control p-t-8 p-b-8" formControlName="district"
                       [ngClass]="{'is-invalid': createClubForm.get('district').errors && createClubForm.get('district').touched}">
                       <option value="Cầu Giấy">Cầu Giấy</option>
@@ -109,7 +109,7 @@
                   </div>
                 </div>
                 <div class="mb-3">
-                  <label class="black">Description</label>
+                  <label class="black">Description (*)</label>
                   <textarea rows="2" cols="50" class="form-control" placeholder="Write something about your Club"
                     formControlName="description"
                     [ngClass]="{'is-invalid': createClubForm.get('description').errors && createClubForm.get('description').touched}"></textarea>

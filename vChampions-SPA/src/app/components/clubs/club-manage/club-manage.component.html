@@ -4,13 +4,21 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-lg-3">
-        <div class="club-authority">
-          <img src="assets/images/club-logo/logo/barcelona.png" alt="club logo">
-          <h4 class="mt30 black">FC {{club.name}}</h4>
-          <div class="authority-box mt30">
-            <p class="m-b-8"><strong>Area: </strong>{{club.district}}, {{club.city}}</p>
-            <p class="m-b-8"><strong>Manager: </strong>{{club.manager.name}}</p>
-            <p class="m-b-8"><strong>Description: </strong>{{club.description}}</p>
+        <div class="row m-b-45">
+          <div class="col-12">
+            <div class="club-authority">
+              <img src="assets/images/club-logo/logo/barcelona.png" alt="club logo">
+              <h4 class="mt30 black">FC {{club.name}}</h4>
+              <div class="authority-box mt30">
+                <p class="m-b-8"><strong>Area: </strong>{{club.district}}, {{club.city}}</p>
+                <p class="m-b-8"><strong>Manager: </strong>{{club.manager.name}}</p>
+                <p class="m-b-8"><strong>Contact: </strong>{{club.manager.phone}}/{{club.manager.email}}</p>
+                <p class="m-b-8"><strong>Description: </strong>{{club.description}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-success w-50">Edit</button>
           </div>
         </div>
       </div>
@@ -26,8 +34,9 @@
               </div>
             </div>
             <div class="row m-t-16">
-              <div class="col-12">
-                <button class="btn btn-success"><i class="fa fa-user-plus"></i>&nbsp; Add Player</button>
+              <div class="col-md-6">
+                <app-find-players (playerToInvite)="invitePlayer($event)" [playersOnClub]="club.players">
+                </app-find-players>
               </div>
             </div>
             <div class="row m-t-16">
@@ -38,10 +47,10 @@
                     <div class="row">
                       <div class="col-sm-10">
                         <h5 class="black">{{player.name}}&nbsp;
-                          <span *ngIf="player.title == 'captain'" class="badge badge-pill badge-warning"
+                          <span *ngIf="player.title == 'captain'" class="badge badge-pill badge-secondary"
                             tooltip="Captain" placement="right">C</span>
                         </h5>
-                        <p class="m-t-6">
+                        <p class="m-t-6 m-b-6">
                           Postion:
                           <span *ngFor="let position of player.positions" class="badge m-r-3"
                             [ngClass]="position == 'GK' ? 'badge-warning' : (position == 'DF' ? 'badge-primary' : (position == 'MF' ? 'badge-success' : 'badge-danger'))"
@@ -50,18 +59,39 @@
                             {{position}}
                           </span>
                         </p>
+                        <p class="m-t-6 m-b-6">
+                          <span *ngIf="player.confirmation == 'received'" class="badge badge-pill badge-warning">Waiting
+                            approval</span>
+                        </p>
                       </div>
                       <div class="col-sm-2">
                         <div class="btn-group pull-right" dropdown>
                           <button type="button" class="btn btn-link dropdown-toggle" dropdownToggle
                             tooltip="Modify this Player" placement="top"></button>
                           <ul *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                            <li role="menuitem"><a class="dropdown-item" href="#">Change Postions</a></li>
+                            <li>
+                              <a class="dropdown-item">
+                                <i class="fa fa-random black"></i>&nbsp; Change Postions
+                              </a>
+                            </li>
                             <li class="divider dropdown-divider"></li>
-                            <li role="menuitem"><a class="dropdown-item" href="#">Set as Manager</a></li>
-                            <li role="menuitem"><a class="dropdown-item" href="#">Set as Captain</a></li>
+                            <li>
+                              <a class="dropdown-item">
+                                <i class="fa fa-user-circle black"></i>&nbsp; Set as Manager
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item pointer" (click)="setAsCaptain(player)">
+                                <i class="fa fa-contao black"></i>&nbsp; Set as Captain
+                              </a>
+                            </li>
                             <li class="divider dropdown-divider"></li>
-                            <li role="menuitem"><a class="dropdown-item" href="#">Remove from the Club</a>
+                            <li>
+                              <a class="dropdown-item pointer"
+                                [swal]="{ icon: 'warning', title: 'Are you sure?', text: 'Confirm to remove this Player from the Club', showCancelButton: true }"
+                                (confirm)="removePlayer(player)">
+                                <i class="fa fa-trash black"></i>&nbsp; Remove from the Club
+                              </a>
                             </li>
                           </ul>
                         </div>
@@ -72,6 +102,7 @@
               </div>
             </div>
           </tab>
+
           <tab>
             <ng-template tabHeading>
               <span class="f-s-20">Cash Manage</span>
@@ -88,6 +119,7 @@
               </tab>
             </tabset>
           </tab>
+
           <tab>
             <ng-template tabHeading>
               <span class="f-s-20">Results</span>
@@ -98,6 +130,7 @@
               </div>
             </div>
           </tab>
+
           <tab>
             <ng-template tabHeading>
               <span class="f-s-20">Statistics</span>

@@ -10,26 +10,19 @@ import { Observable } from 'rxjs';
   templateUrl: './find-players.component.html',
   styleUrls: ['./find-players.component.css']
 })
-export class FindPlayersComponent implements OnChanges, OnInit {
+export class FindPlayersComponent implements OnInit {
+
+  @Input() playersOnClub: any = [];
+  @Output() playerToInvite = new EventEmitter();
 
   criteria: any = {};
   foundPlayers: any = [];
-  invitedPlayers: any = [];
-  @Input() playerToRemove: any = {};
-  @Output() invitation = new EventEmitter();
 
   constructor(
     private userService: UserService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService
   ) { }
-
-  ngOnChanges(changes: SimpleChanges) {
-    const playerToRemove: SimpleChange = changes.playerToRemove;
-    if (playerToRemove.currentValue !== playerToRemove.previousValue) {
-      this.removePlayer(playerToRemove.currentValue);
-    }
-  }
 
   ngOnInit() {
 
@@ -47,28 +40,25 @@ export class FindPlayersComponent implements OnChanges, OnInit {
   }
 
   invitePlayer(player: any, position) {
-    if (_.findIndex(this.invitedPlayers, { email: player.email }) < 0) {
+    if (_.findIndex(this.playersOnClub, { email: player.email }) < 0) {
       const playerToAdd = {
         id: player._id,
         title: 'player',
         name: player.name,
         email: player.email,
+        confirmation: 'received',
         positions: [position]
       };
 
-      this.invitedPlayers.push(playerToAdd);
-      this.toastr.success('Add ' + player.name + ' to invitation list successfully.');
+      this.playerToInvite.emit(playerToAdd);
+
+    } else {
+      this.toastr.info(player.name + ' is your team member or already invited.');
     }
-
-    this.invitation.emit(this.invitedPlayers);
-  }
-
-  removePlayer(player: any) {
-    this.invitedPlayers = _.reject(this.invitedPlayers, { email: player.email });
   }
 
   checkAlreadyInvited(player: any) {
-    if (_.findIndex(this.invitedPlayers, { email: player.email }) >= 0) {
+    if (_.findIndex(this.playersOnClub, { email: player.email }) >= 0) {
       return true;
     }
 
