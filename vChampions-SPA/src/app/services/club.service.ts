@@ -24,6 +24,10 @@ export class ClubService {
     return this.http.get(this.baseUrl + 'manage/' + clubCode);
   }
 
+  getClubInViewMode(clubCode) {
+    return this.http.get(this.baseUrl + 'find-by-code/' + clubCode);
+  }
+
   invitePlayers(clubId: any, players: any) {
     return this.http.put(this.baseUrl + clubId + '/add-players', players);
   }

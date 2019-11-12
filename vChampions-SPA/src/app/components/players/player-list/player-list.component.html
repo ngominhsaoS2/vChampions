@@ -1,0 +1,145 @@
+<app-carousel-sm [title]="title" [description]="description">
+</app-carousel-sm>
+<div class="news-area p-t-30 p-b-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="row m-b-45">
+          <div class="col-12" *ngIf="selectedPlayer">
+            <div class="club-authority">
+              <img class="maxw-150 maxh-150" src="assets/images/club-list/player/hazard.jpg"
+                alt="{{selectedPlayer.name}}">
+              <h4 class="mt30 black">{{selectedPlayer.name}}</h4>
+              <div class="authority-box mt30">
+                <p class="m-b-8"><strong>Email: </strong>{{selectedPlayer.email}}</p>
+                <p class="m-b-8"><strong>Phone: </strong>{{selectedPlayer.phone}}</p>
+                <p class="m-b-8"><strong>Description: </strong>{{selectedPlayer.description}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12" *ngIf="!selectedPlayer">
+            <app-rank-sm></app-rank-sm>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <tabset type="pills" [justified]="true">
+          <tab>
+            <ng-template tabHeading>
+              <span class="f-s-20">Top Scores</span>
+            </ng-template>
+            <div class="row m-0">
+              <div class="col-12 border-bottom">
+                <br />
+              </div>
+            </div>
+          </tab>
+
+          <tab>
+            <ng-template tabHeading>
+              <span class="f-s-20">Bee Players</span>
+            </ng-template>
+            <div class="row m-0">
+              <div class="col-12 border-bottom">
+                <br />
+              </div>
+            </div>
+          </tab>
+
+          <tab>
+            <ng-template tabHeading>
+              <span class="f-s-20">All Players</span>
+            </ng-template>
+            <div class="row m-0">
+              <div class="col-12 border-bottom">
+                <br />
+              </div>
+            </div>
+            <div class="row m-t-16">
+              <div class="col-12">
+                <form class="form-inline">
+                  <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="criteria.phone" name="phone"
+                    placeholder="Phone">
+                  <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="criteria.email" name="email"
+                    placeholder="Email">
+                  <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="criteria.name" name="name"
+                    placeholder="Name">
+                  <button type="button" class="btn btn-secondary mb-2 p-b-5 p-t-5" (click)="findPlayers(1)">
+                    <i class="fa fa-search"></i>&nbsp;Search
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="row m-t-6">
+              <div class="col-12">
+                <div *ngIf="foundPlayers.length > 0" class="point-table">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-12 p-0">
+                        <div class="table-responsive">
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>No</th>
+                                <th colspan="4">Name</th>
+                                <th>Phone</th>
+                                <th>This Week</th>
+                                <th>This Month</th>
+                                <th>This Year</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let player of foundPlayers; let i = index">
+                                <th scope="row">{{i + 1}}</th>
+                                <td colspan="4" class="team">
+                                  <div class="team-box">
+                                    <img class="xs-img" src="assets/images/club-logo/logo/chelsea.png" alt="">
+                                    <span class="f-s-22" (mouseover)="briefShowPlayer(player)"><a
+                                        [routerLink]="['/player/', player._id]"
+                                        class="default">{{player.name}}</a></span>
+                                  </div>
+                                </td>
+                                <td>{{player.phone}}</td>
+                                <td>
+                                  <span tooltip="Played 2 Goals 0" placement="bottom">
+                                    <i class="fa fa-play black"></i>&nbsp;2&nbsp;
+                                    <i class="fa fa-futbol-o black"></i>&nbsp;0
+                                  </span>
+                                </td>
+                                <td>
+                                  <span tooltip="Played 5 Goals 3" placement="bottom">
+                                    <i class="fa fa-play black"></i>&nbsp;5&nbsp;
+                                    <i class="fa fa-futbol-o black"></i>&nbsp;3
+                                  </span>
+                                </td>
+                                <td>
+                                  <span tooltip="Played 30 Goals 15" placement="bottom">
+                                    <i class="fa fa-play black"></i>&nbsp;30&nbsp;
+                                    <i class="fa fa-futbol-o black"></i>&nbsp;15
+                                  </span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 p-0">
+                        <pagination [totalItems]="totalItems" [itemsPerPage]="pageSize"
+                          (pageChanged)="findPlayers($event.page)"></pagination>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="foundPlayers.length == 0">
+                  <p>No players found</p>
+                </div>
+              </div>
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

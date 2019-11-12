@@ -20,6 +20,12 @@ router.get('/find-by-id/:id', async (req, res) => {
     res.send(club);
 });
 
+router.get('/find-by-code/:clubCode', async (req, res) => {
+    const club = await Club.findOne({ code: req.params.clubCode });
+    if (!club) return res.status(404).send('The Club with the given Code was not found.');
+    res.send(club);
+});
+
 router.get('/managed-by-you', [auth], async (req, res) => {
     const clubs = await Club.find({ 'manager._id': req.user._id });
     res.send(clubs);

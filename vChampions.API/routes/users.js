@@ -99,7 +99,10 @@ router.post('/', async (req, res) => {
     res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email', 'phone', 'roles', 'description', 'birthday']));
 });
 
-router.post('/find-players', [auth], async (req, res) => {
+router.post('/find-players/pageSize/:pageSize/page/:page', [auth], async (req, res) => {
+    const page = req.params.page;
+    const pageSize = req.params.pageSize;
+
     const users = await User
         .find(
             {
@@ -111,9 +114,24 @@ router.post('/find-players', [auth], async (req, res) => {
                 ]
             }
         )
-        .select('-password').sort('email');
+        .sort('email')
+        .skip((page - 1) * pageSize)
+        .limit(pageSize * 1)
+        .select('-password');
 
-    res.send(users);
+    const total = await User
+        .count(
+            {
+                $and: [
+                    { roles: "Player" },
+                    { name: { $regex: new RegExp(req.body.name, "i") } }, ///sao/i 
+                    { email: { $regex: new RegExp(req.body.email, "i") } },
+                    { phone: { $regex: new RegExp(req.body.phone, "i") } }
+                ]
+            }
+        ); // Có cách nào khác để xử lý phân trang này không nhỉ???
+
+    res.send({ players: users, totalItems: total });
 });
 
 router.put('/', auth, async (req, res) => {

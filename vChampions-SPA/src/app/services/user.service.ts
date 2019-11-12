@@ -13,9 +13,8 @@ export class UserService {
     private http: HttpClient,
   ) { }
 
-  findPlayers(criteria: any) {
-    return this.http.post(this.baseUrl + 'find-players', criteria);
+  findPlayers(criteria: any, pageSize: number, page: number) {
+    return this.http.post(this.baseUrl + 'find-players/pageSize/' + pageSize + '/page/' + page, criteria);
   }
-
 
 }

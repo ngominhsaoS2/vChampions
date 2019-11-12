@@ -9,6 +9,8 @@ import { ClubListComponent } from './components/clubs/club-list/club-list.compon
 import { ClubViewComponent } from './components/clubs/club-view/club-view.component';
 import { ClubManageComponent } from './components/clubs/club-manage/club-manage.component';
 import { ClubManageResolver } from './resolvers/club-manage.resolver';
+import { ClubViewResolver } from './resolvers/club-view.resolver';
+import { PlayerListComponent } from './components/players/player-list/player-list.component';
 
 export const appRoutes: Routes = [
   // Home, Register, Login, Logout ...
@@ -25,9 +27,13 @@ export const appRoutes: Routes = [
       { path: 'club/create', component: ClubCreateComponent },
       { path: 'club/manage-list', component: ClubListComponent },
       { path: 'club/manage/:clubCode', component: ClubManageComponent, resolve: { club: ClubManageResolver } },
+      { path: 'club/view/:clubCode', component: ClubViewComponent, resolve: { club: ClubViewResolver } },
     ]
   },
   { path: 'club/view/:clubCode', component: ClubViewComponent },
+
+  // Players
+  { path: 'players', component: PlayerListComponent },
 
   // Others
   { path: '**', redirectTo: '', pathMatch: 'full' }

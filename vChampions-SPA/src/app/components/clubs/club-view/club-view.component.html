@@ -1,3 +1,91 @@
-<p>
-  club-view works!
-</p>
+<app-carousel-sm [title]="title" [description]="description">
+</app-carousel-sm>
+<div class="news-area p-t-30 p-b-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-3">
+        <div class="row m-b-45">
+          <div class="col-12">
+            <div class="club-authority">
+              <img src="assets/images/club-logo/logo/chelsea.png" alt="club logo">
+              <h4 class="mt30 black">FC {{club.name}}</h4>
+              <div class="authority-box mt30">
+                <p class="m-b-8"><strong>Area: </strong>{{club.district}}, {{club.city}}</p>
+                <p class="m-b-8"><strong>Manager: </strong>{{club.manager.name}}</p>
+                <p class="m-b-8"><strong>Contact: </strong>{{club.manager.phone}}/{{club.manager.email}}</p>
+                <p class="m-b-8"><strong>Description: </strong>{{club.description}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-9">
+        <tabset type="pills" [justified]="true">
+          <tab>
+            <ng-template tabHeading>
+              <span class="f-s-20">Players</span>
+            </ng-template>
+            <div class="row m-0">
+              <div class="col-12 border-bottom">
+                <br />
+              </div>
+            </div>
+            <div class="row m-t-16">
+              <div *ngFor="let player of club.players" class="col-lg-4 col-md-4 col-6 p-l-10 p-r-10 p-b-20">
+                <div class="card">
+                  <img class="full-width" src="assets/images/club-list/player/2.jpg" alt="{{player.name}}">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <h5 class="black">
+                          <a class="default" [routerLink]="['/player/id']" target="_blank">{{player.name}}&nbsp;</a>
+                          <span *ngIf="player.title == 'captain'" class="badge badge-pill badge-secondary"
+                            tooltip="Captain" placement="right">C</span>
+                        </h5>
+                        <p class="m-t-6 m-b-6">
+                          Postion:
+                          <span *ngFor="let position of player.positions" class="badge m-r-3"
+                            [ngClass]="position == 'GK' ? 'badge-warning' : (position == 'DF' ? 'badge-primary' : (position == 'MF' ? 'badge-success' : 'badge-danger'))"
+                            tooltip="{{position == 'GK' ? 'Goalkeeper' : (position == 'DF' ? 'Defender' : (position == 'MF' ? 'Middlefield' : 'Forward'))}}"
+                            placement="bottom">
+                            {{position}}
+                          </span>
+                        </p>
+                        <p class="m-t-6 m-b-6">
+                          <span *ngIf="player.confirmation == 'received'" class="badge badge-pill badge-warning">Waiting
+                            approval</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tab>
+
+          <tab>
+            <ng-template tabHeading>
+              <span class="f-s-20">Results</span>
+            </ng-template>
+            <div class="row m-0">
+              <div class="col-12 border-bottom">
+                <br />
+              </div>
+            </div>
+          </tab>
+
+          <tab>
+            <ng-template tabHeading>
+              <span class="f-s-20">Statistics</span>
+            </ng-template>
+            <div class="row m-0">
+              <div class="col-12 border-bottom">
+                <br />
+              </div>
+            </div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

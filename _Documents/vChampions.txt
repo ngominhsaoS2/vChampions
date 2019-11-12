@@ -10,6 +10,8 @@
         E. Đang làm
         F. Chưa bắt đầu; G. Đã hủy
 
+----- KEEP EVERYTHING SIMPLE AS MUCH AS THEY CAN -----
+
 I. Mục tiêu, tầm nhìn dài hạn, điều làm chúng tôi KHÁC BIỆT
     1. Giúp các đội bóng phủi có thể dễ dàng set kèo, đặt kèo
     2. ***** Giúp các đội bóng quản lý dòng tiền, quản lý đội bóng
@@ -54,6 +56,8 @@ III. Yêu cầu, chức năng vả tình hình thực hiện
         - ...
 
     3. Trang cá nhân của Player
+        - Xếp hạng các Player
+            E. 
         - Trang view thông tin của Player
             E. 
         - Trang profile của Player
@@ -110,7 +114,7 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/11/05: Có thể search, add cầu thủ, tạo Club thành công :>
 - 2019/11/08: Sửa thành công lỗi logout 2 lần mới được. Hiển thị các Club của User đang quản lý
 - 2019/11/10: Hiển thị được trang manage Club, hiển thị được Players, add, remove Player thành công
-- 2019/11/11: 
+- 2019/11/11: Set as Captain, hiển thị được trang All Players, search và pagination
 - 2019/11/14: 
 - 2019/11/17: 
 - 2019/11/20: 

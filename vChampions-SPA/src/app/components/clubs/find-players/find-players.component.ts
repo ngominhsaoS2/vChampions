@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import * as _ from 'lodash';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-find-players',
@@ -16,7 +17,9 @@ export class FindPlayersComponent implements OnInit {
   @Output() playerToInvite = new EventEmitter();
 
   criteria: any = {};
+  pageSize = 9;
   foundPlayers: any = [];
+  totalItems: number;
 
   constructor(
     private userService: UserService,
@@ -28,10 +31,11 @@ export class FindPlayersComponent implements OnInit {
 
   }
 
-  findPlayers() {
+  findPlayers(page: number) {
     this.spinner.show();
-    this.userService.findPlayers(this.criteria).subscribe(players => {
-      this.foundPlayers = players;
+    this.userService.findPlayers(this.criteria, this.pageSize, page).subscribe((res: any) => {
+      this.foundPlayers = res.players;
+      this.totalItems = res.totalItems;
       this.spinner.hide();
     }, err => {
       console.log(err);

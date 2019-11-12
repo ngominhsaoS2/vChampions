@@ -32,11 +32,11 @@
           <div class="col-3">
             <input type="text" class="form-control" placeholder="Email" [(ngModel)]="criteria.email" />
           </div>
-          <div class="col-4">
+          <div class="col-3">
             <input type="text" class="form-control" placeholder="Name" [(ngModel)]="criteria.name" />
           </div>
-          <div class="col-2">
-            <button type="button" class="btn btn-sm btn-success" (click)="findPlayers()">
+          <div class="col-3">
+            <button type="button" class="btn btn-sm btn-secondary p-b-6 p-t-6" (click)="findPlayers()">
               <i class="fa fa-search"></i> Search
             </button>
           </div>
@@ -73,6 +73,10 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="col-md-12">
+            <pagination [totalItems]="totalItems" [itemsPerPage]="pageSize" (pageChanged)="findPlayers($event.page)">
+            </pagination>
           </div>
         </div>
         <div *ngIf="foundPlayers.length <= 0" class="row">

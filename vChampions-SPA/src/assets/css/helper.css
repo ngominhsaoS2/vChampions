@@ -1403,6 +1403,10 @@
     max-width: 150px;
 }
 
+.maxw-200 {
+  max-width: 200px;
+}
+
 /* Max Height*/
 .maxh-10 {
     max-height: 10px;
@@ -1418,6 +1422,14 @@
 
 .maxh-70 {
     max-height: 70px;
+}
+
+.maxh-150 {
+  max-height: 150px;
+}
+
+.maxh-200 {
+  max-height: 200px;
 }
 
 .maxh-300 {

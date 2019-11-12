@@ -10,7 +10,7 @@
               <div class="col-md-12">
                 <div class="table-responsive">
                   <table class="table table-bordered">
-                    <thead id="thClubs">
+                    <thead>
                       <tr>
                         <th>No</th>
                         <th colspan="4">Team</th>
@@ -19,12 +19,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let club of clubs">
-                        <th scope="row">1</th>
+                      <tr *ngFor="let club of clubs; let i = index">
+                        <th scope="row">{{i + 1}}</th>
                         <td colspan="4" class="team">
                           <div class="team-box">
-                            <img class="xs-img" src="assets/images/club-logo/logo/barcelona.png" alt="">
-                            <span><a href="/club/manage/{{club.code}}" class="default">{{club.name}}</a></span>
+                            <img class="xs-img" src="assets/images/club-logo/logo/chelsea.png" alt="">
+                            <span class="f-s-22"><a [routerLink]="['/club/manage/', club.code]" class="default">{{club.name}}</a></span>
                           </div>
                         </td>
                         <td>5</td>

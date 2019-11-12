@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule, CarouselModule, AlertModule, ModalModule, TabsModule, TooltipModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CarouselModule, AlertModule, ModalModule, TabsModule, TooltipModule, PaginationModule } from 'ngx-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +27,8 @@ import { UserService } from './services/user.service';
 import { TokenInterceptor } from './services/token-interceptor';
 
 // Customized Resolvers
+import { ClubManageResolver } from './resolvers/club-manage.resolver';
+import { ClubViewResolver } from './resolvers/club-view.resolver';
 
 // Components
 import { AppComponent } from './app.component';
@@ -43,7 +45,8 @@ import { FindPlayersComponent } from './components/clubs/find-players/find-playe
 import { ClubListComponent } from './components/clubs/club-list/club-list.component';
 import { ClubViewComponent } from './components/clubs/club-view/club-view.component';
 import { ClubManageComponent } from './components/clubs/club-manage/club-manage.component';
-import { ClubManageResolver } from './resolvers/club-manage.resolver';
+import { PlayerListComponent } from './components/players/player-list/player-list.component';
+import { TopPlayersSmComponent } from './components/addition/top-players-sm/top-players-sm.component';
 
 // 2019/10/28 SaoNM custom tokenGetter
 /* export function tokenGetter() {
@@ -72,7 +75,9 @@ import { ClubManageResolver } from './resolvers/club-manage.resolver';
     ClubListComponent,
     ClubViewComponent,
     ClubManageComponent,
-    FindPlayersComponent
+    FindPlayersComponent,
+    PlayerListComponent,
+    TopPlayersSmComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +92,7 @@ import { ClubManageResolver } from './resolvers/club-manage.resolver';
     AlertModule.forRoot(),
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
+    PaginationModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     NgxSpinnerModule,
     SweetAlert2Module.forRoot(),
@@ -114,6 +120,7 @@ import { ClubManageResolver } from './resolvers/club-manage.resolver';
     UserService,
     // Resolver
     ClubManageResolver,
+    ClubViewResolver,
     // Guards
     AuthGuard,
   ],
