@@ -9,8 +9,8 @@
             <div class="club-authority">
               <img class="maxw-150 maxh-150" src="assets/images/club-list/player/hazard.jpg"
                 alt="{{selectedPlayer.name}}">
-              <h4 class="mt30 black">{{selectedPlayer.name}}</h4>
-              <div class="authority-box mt30">
+              <h4 class="m-t-15 black">{{selectedPlayer.name}}</h4>
+              <div class="authority-box m-t-15">
                 <p class="m-b-8"><strong>Email: </strong>{{selectedPlayer.email}}</p>
                 <p class="m-b-8"><strong>Phone: </strong>{{selectedPlayer.phone}}</p>
                 <p class="m-b-8"><strong>Description: </strong>{{selectedPlayer.description}}</p>
@@ -90,7 +90,7 @@
                             </thead>
                             <tbody>
                               <tr *ngFor="let player of foundPlayers; let i = index">
-                                <th scope="row">{{i + 1}}</th>
+                                <td>{{i + 1}}</td>
                                 <td colspan="4" class="team">
                                   <div class="team-box">
                                     <img class="xs-img" src="assets/images/club-logo/logo/chelsea.png" alt="">

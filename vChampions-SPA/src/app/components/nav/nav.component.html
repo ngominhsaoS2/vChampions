@@ -17,7 +17,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" [routerLink]="['/home']">Home</a>
               </li>
               <li class="nav-item pointer" routerLinkActive="active">
                 <div class="btn-group" dropdown>
@@ -25,10 +25,10 @@
                     Matches <span class="caret"></span>
                   </a>
                   <ul *dropdownMenu class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Create a Match</a></li>
-                    <li><a class="dropdown-item" href="#">Waiting for Rival</a></li>
+                    <li><a class="dropdown-item">Create a Match</a></li>
+                    <li><a class="dropdown-item">Waiting for Rival</a></li>
                     <li class="divider dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">League</a></li>
+                    <li><a class="dropdown-item">League</a></li>
                     <li class="divider dropdown-divider"></li>
                     <li><a class="dropdown-item" [routerLink]="['/results']">Results</a></li>
                   </ul>
@@ -41,7 +41,7 @@
                   </a>
                   <ul *dropdownMenu class="dropdown-menu">
                     <li><a class="dropdown-item" [routerLink]="['/rank']">Rank</a></li>
-                    <li><a class="dropdown-item" href="#">Recommended for your Club</a></li>
+                    <li><a class="dropdown-item">Recommended for your Club</a></li>
                     <li class="divider dropdown-divider"></li>
                     <li><a class="dropdown-item" [routerLink]="['/club/create']">Create your own Club</a></li>
                   </ul>
@@ -65,11 +65,12 @@
                     <li><a class="dropdown-item" [routerLink]="['/club/manage-list']">Manage your Clubs</a></li>
                     <li class="divider dropdown-divider"></li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item">
                         Notifications &nbsp;<span class="badge badge-pill badge-success">9</span>
                       </a>
                     </li>
-                    <li><a class="dropdown-item" [routerLink]="['/profile']">Profile</a></li>
+                    <li><a class="dropdown-item"
+                        [routerLink]="['/profile', authService.decodedToken?.roles[0]]">Profile</a></li>
                     <li class="divider dropdown-divider"></li>
                     <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
                   </ul>
@@ -85,7 +86,7 @@
           <li class="nav-item d-none d-lg-inline">
             <div class="icon-menu">
               <ul>
-                <li><a href="#" class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>
+                <li><a class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>
               </ul>
             </div>
           </li>

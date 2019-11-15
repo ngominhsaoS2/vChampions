@@ -115,7 +115,7 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/11/08: Sửa thành công lỗi logout 2 lần mới được. Hiển thị các Club của User đang quản lý
 - 2019/11/10: Hiển thị được trang manage Club, hiển thị được Players, add, remove Player thành công
 - 2019/11/11: Set as Captain, hiển thị được trang All Players, search và pagination
-- 2019/11/14: 
+- 2019/11/14: Hiển thị Player list, tạo được trang Profile của Player, xem danh sách Clubs của Player
 - 2019/11/17: 
 - 2019/11/20: 
 

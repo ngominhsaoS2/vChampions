@@ -1,0 +1,67 @@
+<div class="row m-t-6">
+  <div class="col-12">
+    <div *ngIf="clubs.length > 0" class="point-table">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 p-0">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Code</th>
+                  <th colspan="4">Name</th>
+                  <th>Confirmation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let club of clubs; let i = index">
+                  <td>{{i + 1}}</td>
+                  <td>{{club.code}}</td>
+                  <td colspan="4" class="team">
+                    <div class="team-box">
+                      <img class="xs-img" src="assets/images/club-logo/logo/chelsea.png" alt="">
+                      <span class="f-s-22"><a class="default">{{club.name}}</a></span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="btn-group" dropdown>
+                      <button type="button" class="btn"
+                        [ngClass]="{'btn-warning': club.confirmation == 'received'}">{{club.confirmation}}</button>
+                      <button type="button" dropdownToggle class="btn dropdown-toggle dropdown-toggle-split"
+                        [ngClass]="{'btn-warning': club.confirmation == 'received'}">
+                      </button>
+                      <ul *dropdownMenu class="dropdown-menu">
+                        <li *ngIf="club.confirmation == 'accepted'">
+                          <a class="dropdown-item pointer">
+                            <i class="fa fa-arrow-left black"></i>&nbsp; Leave this Club
+                          </a>
+                        </li>
+                        <li *ngIf="club.confirmation == 'received'">
+                          <a class="dropdown-item pointer"
+                            [swal]="{ icon: 'warning', title: 'Are you sure?', text: 'Confirm to be a member of this Club', showCancelButton: true }"
+                            (confirm)="acceptInvitation(club)">
+                            <i class="fa fa-check black"></i>&nbsp; Accept Invitation
+                          </a>
+                        </li>
+                        <li *ngIf="club.confirmation == 'received'">
+                          <a class="dropdown-item pointer"
+                            [swal]="{ icon: 'warning', title: 'Are you sure?', text: 'Deny this invitation', showCancelButton: true }"
+                            (confirm)="denyInvitation(club)">
+                            <i class="fa fa-times black"></i>&nbsp; Deny Invitation
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="clubs.length == 0">
+      <p>You are not in any Clubs</p>
+    </div>
+  </div>
+</div>

@@ -17,4 +17,12 @@ export class UserService {
     return this.http.post(this.baseUrl + 'find-players/pageSize/' + pageSize + '/page/' + page, criteria);
   }
 
+  getLoggedInUser() {
+    return this.http.get(this.baseUrl + 'me');
+  }
+
+  confirmInvitation(clubId, confirmation) {
+    return this.http.put(this.baseUrl + 'confirm-invitation/' + clubId, confirmation);
+  }
+
 }

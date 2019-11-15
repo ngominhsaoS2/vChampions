@@ -30,14 +30,14 @@ router.get('/', [auth], async (req, res) => {
     res.send(users);
 });
 
-router.get('/:id/joining-requests', [auth], async (req, res) => {
+router.get('/:id/joining-invitations', [auth], async (req, res) => {
     const user = await User.findById(req.user._id).select('-password');
     if (!user) return res.status(400).send('The User with the given ID was not found.');
     if (req.user._id != req.params.id) return res.status(400).send('The given ID was not correct.');
     res.send(_.filter(user.clubs, { 'confirmation': 'received' }));
 });
 
-router.put('/confirm-request/:clubId', [auth], async (req, res) => {
+router.put('/confirm-invitation/:clubId', [auth], async (req, res) => {
     let club = await Club.findById(req.params.clubId);
     if (!club) return res.status(400).send('Invalid Club.');
 
@@ -53,7 +53,7 @@ router.put('/confirm-request/:clubId', [auth], async (req, res) => {
 
         let result = await task.run({ useMongoose: true });
         //res.send(result);
-        res.send(req.body.confirmation == 'accepted' ? 'You are a member of this Club now.' : "You denined to be this Club's member successfully");
+        res.send({ message: req.body.confirmation == 'accepted' ? 'You are a member of this Club now.' : "You denined to be this Club's member successfully" });
     }
     catch (ex) {
         console.log(ex);

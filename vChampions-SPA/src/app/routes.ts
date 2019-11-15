@@ -11,10 +11,14 @@ import { ClubManageComponent } from './components/clubs/club-manage/club-manage.
 import { ClubManageResolver } from './resolvers/club-manage.resolver';
 import { ClubViewResolver } from './resolvers/club-view.resolver';
 import { PlayerListComponent } from './components/players/player-list/player-list.component';
+import { PlayerProfileComponent } from './components/profile/player-profile/player-profile.component';
+import { StadiumOwnerProfileComponent } from './components/profile/stadium-owner-profile/stadium-owner-profile.component';
+import { PlayerProfileResolver } from './resolvers/player-profile.resolver';
 
 export const appRoutes: Routes = [
   // Home, Register, Login, Logout ...
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
 
@@ -35,6 +39,17 @@ export const appRoutes: Routes = [
   // Players
   { path: 'players', component: PlayerListComponent },
 
+  // Profile
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'profile/Player', component: PlayerProfileComponent, resolve: { player: PlayerProfileResolver } },
+      { path: 'profile/StadiumOwner', component: StadiumOwnerProfileComponent },
+    ]
+  },
+
   // Others
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

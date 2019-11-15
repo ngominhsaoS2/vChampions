@@ -29,6 +29,7 @@ import { TokenInterceptor } from './services/token-interceptor';
 // Customized Resolvers
 import { ClubManageResolver } from './resolvers/club-manage.resolver';
 import { ClubViewResolver } from './resolvers/club-view.resolver';
+import { PlayerProfileResolver } from './resolvers/player-profile.resolver';
 
 // Components
 import { AppComponent } from './app.component';
@@ -47,6 +48,10 @@ import { ClubViewComponent } from './components/clubs/club-view/club-view.compon
 import { ClubManageComponent } from './components/clubs/club-manage/club-manage.component';
 import { PlayerListComponent } from './components/players/player-list/player-list.component';
 import { TopPlayersSmComponent } from './components/addition/top-players-sm/top-players-sm.component';
+import { PlayerProfileComponent } from './components/profile/player-profile/player-profile.component';
+import { StadiumOwnerProfileComponent } from './components/profile/stadium-owner-profile/stadium-owner-profile.component';
+import { InformationComponent } from './components/profile/information/information.component';
+import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clubs-of-player.component';
 
 // 2019/10/28 SaoNM custom tokenGetter
 /* export function tokenGetter() {
@@ -77,7 +82,11 @@ import { TopPlayersSmComponent } from './components/addition/top-players-sm/top-
     ClubManageComponent,
     FindPlayersComponent,
     PlayerListComponent,
-    TopPlayersSmComponent
+    TopPlayersSmComponent,
+    PlayerProfileComponent,
+    StadiumOwnerProfileComponent,
+    InformationComponent,
+    ClubsOfPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -121,6 +130,7 @@ import { TopPlayersSmComponent } from './components/addition/top-players-sm/top-
     // Resolver
     ClubManageResolver,
     ClubViewResolver,
+    PlayerProfileResolver,
     // Guards
     AuthGuard,
   ],

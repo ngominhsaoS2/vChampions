@@ -24,17 +24,18 @@
                         <td colspan="4" class="team">
                           <div class="team-box">
                             <img class="xs-img" src="assets/images/club-logo/logo/chelsea.png" alt="">
-                            <span class="f-s-22"><a [routerLink]="['/club/manage/', club.code]" class="default">{{club.name}}</a></span>
+                            <span class="f-s-22"><a [routerLink]="['/club/manage/', club.code]"
+                                class="default">{{club.name}}</a></span>
                           </div>
                         </td>
                         <td>5</td>
                         <td>
                           <div class="btn-group btn-group-sm">
-                            <a href="#" class="btn btn-sm btn-secondary">D</a>
-                            <a href="#" class="btn btn-sm btn-success">W</a>
-                            <a href="#" class="btn btn-sm btn-success">W</a>
-                            <a href="#" class="btn btn-sm btn-danger">L</a>
-                            <a href="#" class="btn btn-sm btn-success">W</a>
+                            <a class="btn btn-sm btn-secondary">D</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                            <a class="btn btn-sm btn-success">W</a>
+                            <a class="btn btn-sm btn-danger">L</a>
+                            <a class="btn btn-sm btn-success">W</a>
                           </div>
                         </td>
                       </tr>
@@ -47,7 +48,8 @@
         </div>
         <alert *ngIf="clubs.length == 0" type="success">
           <h4 class="alert-heading">Oh snap!</h4> <br />
-          <p>You don't manage any Club. To create one, please click <a [routerLink]="['/club/create']" class="alert-link">Create your own Club</a></p>
+          <p>You don't manage any Club. To create one, please click <a [routerLink]="['/club/create']"
+              class="alert-link">Create your own Club</a></p>
         </alert>
       </div>
       <div class="col-md-12 col-lg-3">
