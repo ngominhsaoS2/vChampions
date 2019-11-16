@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clubs-of-player',
@@ -14,13 +16,16 @@ export class ClubsOfPlayerComponent implements OnInit {
   @Output() reload = new EventEmitter();
 
   constructor(
+    private router: Router,
     private userService: UserService,
     private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
     if (this.enabled) {
-
+      this.clubs = _.filter(this.clubs, (c) => {
+        return c.confirmation !== 'denied';
+      });
     }
   }
 
@@ -35,13 +40,17 @@ export class ClubsOfPlayerComponent implements OnInit {
   }
 
   denyInvitation(club: any) {
-    this.userService.confirmInvitation(club._id, { confirmation: 'denined' }).subscribe(() => {
+    this.userService.confirmInvitation(club._id, { confirmation: 'denied' }).subscribe(() => {
       this.toastr.success('You denied to be a member of FC ' + club.name);
       this.reload.emit();
     }, error => {
       this.toastr.error(error.error, 'Error');
       console.log(error);
     });
+  }
+
+  viewClub(club: any) {
+    this.router.navigate(['/club/view/', club.code]);
   }
 
 }

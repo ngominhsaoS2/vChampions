@@ -142,7 +142,7 @@ async function validateClub(club) {
         type: "object", props: {
           title: { type: "enum", values: ["player", "captain"] },
           positions: { type: "array", items: "string", enum: [ "GK", "DF", "MF", "FW" ] },
-          confirmation: { type: "enum", values: ["received", "denined", "accepted"], optional: true }
+          confirmation: { type: "enum", values: ["received", "denied", "accepted"], optional: true }
         }
       }
     }

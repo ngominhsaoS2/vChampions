@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { TabDirective } from 'ngx-bootstrap';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-player-profile',
@@ -40,8 +41,11 @@ export class PlayerProfileComponent implements OnInit {
   }
 
   reloadPlayer() {
-    this.userService.getLoggedInUser().subscribe(player => {
+    this.userService.getLoggedInUser().subscribe((player: any) => {
       this.player = player;
+      this.player.clubs = _.filter(player.clubs, (c) => {
+        return c.confirmation !== 'denied';
+      });
     }, error => {
       this.toastr.error(error.error, 'Error');
       console.log(error);

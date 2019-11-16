@@ -53,7 +53,7 @@ router.put('/confirm-invitation/:clubId', [auth], async (req, res) => {
 
         let result = await task.run({ useMongoose: true });
         //res.send(result);
-        res.send({ message: req.body.confirmation == 'accepted' ? 'You are a member of this Club now.' : "You denined to be this Club's member successfully" });
+        res.send({ message: req.body.confirmation == 'accepted' ? 'You are a member of this Club now.' : "You denied to be this Club's member successfully" });
     }
     catch (ex) {
         console.log(ex);
