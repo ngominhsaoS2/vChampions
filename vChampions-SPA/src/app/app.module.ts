@@ -22,9 +22,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthGuard } from './guards/auth.guard';
 
 // Customized Services
+import { TokenInterceptor } from './services/token-interceptor';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
-import { TokenInterceptor } from './services/token-interceptor';
+import { ImageService } from './services/image.service';
 
 // Customized Resolvers
 import { ClubManageResolver } from './resolvers/club-manage.resolver';
@@ -52,6 +53,7 @@ import { PlayerProfileComponent } from './components/profile/player-profile/play
 import { StadiumOwnerProfileComponent } from './components/profile/stadium-owner-profile/stadium-owner-profile.component';
 import { InformationComponent } from './components/profile/information/information.component';
 import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clubs-of-player.component';
+
 
 // 2019/10/28 SaoNM custom tokenGetter
 /* export function tokenGetter() {
@@ -127,6 +129,7 @@ import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clu
     CookieService,
     AuthService,
     UserService,
+    ImageService,
     // Resolver
     ClubManageResolver,
     ClubViewResolver,
