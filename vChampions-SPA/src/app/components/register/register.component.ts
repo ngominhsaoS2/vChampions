@@ -4,6 +4,11 @@ import { AuthService } from '../../services/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { FileUploader } from 'ng2-file-upload';
+import { environment } from 'src/environments/environment';
+import { ImageService } from 'src/app/services/image.service';
+
+const URL = environment.apiUrl + 'images/add-image';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +19,18 @@ export class RegisterComponent implements OnInit {
 
   user: any;
   registerForm: FormGroup;
+  uploadImageResult: any;
+
+  uploader: FileUploader = new FileUploader({
+    url: URL,
+    disableMultipart: true
+  });
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
+    private imageService: ImageService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService
   ) { }
@@ -48,6 +60,8 @@ export class RegisterComponent implements OnInit {
 
       this.user = Object.assign({}, this.registerForm.value);
       this.user.roles = [this.registerForm.value.roles];
+      this.user.avatar = { imgId: this.uploadImageResult.public_id, imgVersion: this.uploadImageResult.version };
+
       this.authService.register(this.user).subscribe(() => {
         this.spinner.hide();
         this.router.navigate(['/login']);
@@ -58,6 +72,22 @@ export class RegisterComponent implements OnInit {
         console.log(error);
       });
     }
+  }
+
+  imageSelected(event) {
+    const file: File = event[0];
+    this.imageService.readAsBase64(file).then(base64Image => {
+      if (base64Image) {
+        this.imageService.addImage(base64Image).subscribe(result => {
+          this.uploadImageResult = result;
+          console.log('uploadImageResult', this.uploadImageResult);
+        }, err => {
+          console.log(err);
+        });
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
 }

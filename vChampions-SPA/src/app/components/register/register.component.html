@@ -131,8 +131,13 @@
             </div>
             <div class="col-md-4">
               <div class="club-authority">
-                <img class="maxw-200 maxh-200" src="assets/images/club-list/player/hazard.jpg" alt="Ngô Minh Sao">
-
+                <img class="w-100" src="assets/images/club-list/player/hazard.jpg" alt="Ngô Minh Sao">
+                <div class="input-group m-t-10">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" ng2FileSelect [uploader]="uploader" (onFileSelected)="imageSelected($event)">
+                    <label class="custom-file-label">Choose file</label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

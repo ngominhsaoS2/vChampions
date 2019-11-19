@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /* import { JwtModule } from '@auth0/angular-jwt'; */
 import { ToastrModule } from 'ngx-toastr';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FileUploadModule } from 'ng2-file-upload';
 
 // Customized Modules
 import { appRoutes } from './routes';
@@ -107,6 +108,7 @@ import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clu
     RouterModule.forRoot(appRoutes),
     NgxSpinnerModule,
     SweetAlert2Module.forRoot(),
+    FileUploadModule,
     ToastrModule.forRoot({
       newestOnTop: false,
       timeOut: 5000,

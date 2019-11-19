@@ -1,4 +1,4 @@
---- Các bước khi tạo một project Angular mới
+*** Các bước khi tạo một project Angular mới
 1. Chạy command: ng new projectname-SPA
 2. Change 2 file trong environments
 3. Tạo component 'value' để test
@@ -20,3 +20,5 @@
 19. 
 20. 
 
+*** Một số commands
+- Turn on MongoDB on mac: mongod --config /usr/local/etc/mongod.conf --fork

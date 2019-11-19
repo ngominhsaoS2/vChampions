@@ -13,7 +13,7 @@ export class ImageService {
   ) { }
 
   addImage(image: any) {
-    return this.http.post(this.baseUrl + 'add-image', image);
+    return this.http.post(this.baseUrl + 'add-image', { image });
   }
 
   readAsBase64(file): Promise<any> {
