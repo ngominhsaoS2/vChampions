@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
+const uuidv1 = require('uuid/v1');
 const config = require('config');
+
+const cloudinaryFolder = config.get('cloudinaryFolder');
 
 cloudinary.config({
     cloud_name: config.get('cloud_name'),
@@ -10,13 +13,11 @@ cloudinary.config({
 });
 
 router.post('/add-image', async (req, res) => {
-    cloudinary.uploader.upload(req.body.image, async (result) => {
+    const publidId = cloudinaryFolder + uuidv1();
+    cloudinary.uploader.upload(req.body.image, { public_id: publidId }, (error, result) => {
+        if (error) res.status(500).send(error);
         res.send(result);
-    }, error => {
-        res.status(500).send(error);
     });
 });
-
-
 
 module.exports = router;
