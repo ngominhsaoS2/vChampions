@@ -7,7 +7,14 @@
         <div class="row m-b-45">
           <div class="col-12">
             <div class="club-authority">
-              <img class="w-100 h-100" src="http://res.cloudinary.com/drssrezsl/image/upload/v{{player.avatar.imgVersion}}/{{player.avatar.imgId}}" alt="{{player.name}}">
+              <div class="image">
+                <img src="http://res.cloudinary.com/drssrezsl/image/upload/v{{player.avatar.imgVersion}}/{{player.avatar.imgId}}" class="img img-responsive h-100" />
+              </div>
+
+
+              <!-- <img class="w-100 h-100"
+                src="http://res.cloudinary.com/drssrezsl/image/upload/v{{player.avatar.imgVersion}}/{{player.avatar.imgId}}"
+                alt="{{player.name}}"> -->
               <h4 class="m-t-15 black">{{player.name}}</h4>
               <div class="m-t-15">
                 <tabset [vertical]="true" type="pills">
@@ -23,7 +30,8 @@
         </div>
       </div>
       <div class="col-md-9">
-        <app-clubs-of-player *ngIf="tab == 'Clubs'" [enabled]="tab == 'Clubs' ? true : false" [clubs]="player.clubs" (reload)="reloadPlayer()">
+        <app-clubs-of-player *ngIf="tab == 'Clubs'" [enabled]="tab == 'Clubs' ? true : false" [clubs]="player.clubs"
+          (reload)="reloadPlayer()">
         </app-clubs-of-player>
         <app-information *ngIf="tab == 'Information'" [enabled]="tab == 'Information' ? true : false"></app-information>
       </div>
