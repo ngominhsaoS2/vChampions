@@ -77,7 +77,7 @@ router.post('/', auth, async (req, res) => {
             for (let item of req.body.players) {
                 let found = await User.findById(item.id);
                 if (found) {
-                    let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description'])
+                    let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description', 'avatar'])
                     player.title = item.title ? item.title : 'player';
                     player.positions = item.positions.length > 0 ? item.positions : [];
                     player.confirmation = 'received';
@@ -131,7 +131,7 @@ router.put('/:id/add-players', [auth, isAdminOrModerator], async (req, res) => {
             for (let item of req.body.players) {
                 let found = await User.findById(item.id);
                 if (found) {
-                    let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description'])
+                    let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description', 'avatar'])
                     player.title = item.title ? item.title : 'player';
                     player.positions = item.positions.length > 0 ? item.positions : [];
                     player.confirmation = 'received';

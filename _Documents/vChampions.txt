@@ -118,7 +118,7 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/11/14: Hiển thị Player list, tạo được trang Profile của Player, xem danh sách Clubs của Player, accept - deny invitation
 - 2019/11/17: Áp dụng lại upload ảnh lên Cloudinary, cho ngắn hạn, sẽ tìm giải pháp thích hợp khi đến thời điểm mở rộng
 - 2019/11/20: KIỂM ĐIỂM LẦN 1
-- 2019/11/23: 
+- 2019/11/23: Upload ảnh, load ảnh, crop ảnh thành công lên Cloudinary (trang Register)
 - 2019/11/26: 
 - 2019/11/29: 
 - 2019/12/02: 

@@ -7,7 +7,8 @@
         <div class="row m-b-45">
           <div class="col-12" *ngIf="selectedPlayer">
             <div class="club-authority">
-              <img class="maxw-150 maxh-150" src="assets/images/club-list/player/hazard.jpg"
+              <img class="w-100 maxw-200"
+                src="http://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill,g_faces/v{{selectedPlayer.avatar.version}}/{{selectedPlayer.avatar.publicId}}"
                 alt="{{selectedPlayer.name}}">
               <h4 class="m-t-15 black">{{selectedPlayer.name}}</h4>
               <div class="authority-box m-t-15">
@@ -93,7 +94,9 @@
                                 <td>{{i + 1}}</td>
                                 <td colspan="4" class="team">
                                   <div class="team-box">
-                                    <img class="xs-img" src="assets/images/club-logo/logo/chelsea.png" alt="">
+                                    <img class="xs-img"
+                                      src="http://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill,g_faces/v{{player.avatar.version}}/{{player.avatar.publicId}}"
+                                      alt="{{player.name}}">
                                     <span class="f-s-22" (mouseover)="briefShowPlayer(player)"><a
                                         [routerLink]="['/player/', player._id]"
                                         class="default">{{player.name}}</a></span>

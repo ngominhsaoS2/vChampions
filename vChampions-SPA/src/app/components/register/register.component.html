@@ -131,10 +131,16 @@
             </div>
             <div class="col-md-4">
               <div class="club-authority">
-                <img class="w-100" src="assets/images/club-list/player/hazard.jpg" alt="Ngô Minh Sao">
+                <img *ngIf="!uploadImageResult" class="w-100 maxw-300"
+                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill,g_faces/v1574318630/vChampions/_default-user.jpg"
+                  alt="default-user">
+                <img *ngIf="uploadImageResult" class="w-100 maxw-300"
+                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill,g_faces/v{{uploadImageResult.version}}/{{uploadImageResult.public_id}}"
+                  alt="default-user">
                 <div class="input-group m-t-10">
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" ng2FileSelect [uploader]="uploader" (onFileSelected)="imageSelected($event)">
+                    <input type="file" class="custom-file-input" ng2FileSelect [uploader]="uploader"
+                      (onFileSelected)="imageSelected($event)">
                     <label class="custom-file-label">Choose file</label>
                   </div>
                 </div>

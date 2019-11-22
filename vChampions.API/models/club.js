@@ -35,8 +35,8 @@ const clubSchema = new mongoose.Schema({
     maxlength: 200
   },
   logo: {
-    imgId: { type: String, default: '' },
-    imgVersion: { type: String, default: '' }
+    publicId: { type: String, default: '' },
+    version: { type: String, default: '' }
   },
   manager: {
     type: new mongoose.Schema({
@@ -59,8 +59,8 @@ const clubSchema = new mongoose.Schema({
         maxlength: 12
       },
       avatar: {
-        imgId: { type: String, default: '' },
-        imgVersion: { type: String, default: '' }
+        publicId: { type: String, default: '' },
+        version: { type: String, default: '' }
       },
       description: {
         type: String,
@@ -92,8 +92,8 @@ const clubSchema = new mongoose.Schema({
           maxlength: 12
         },
         avatar: {
-          imgId: { type: String, default: '' },
-          imgVersion: { type: String, default: '' }
+          publicId: { type: String, default: '' },
+          version: { type: String, default: '' }
         },
         description: {
           type: String,

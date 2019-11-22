@@ -42,7 +42,9 @@
             <div class="row m-t-16">
               <div *ngFor="let player of club.players" class="col-lg-4 col-md-4 col-6 p-l-10 p-r-10 p-b-20">
                 <div class="card">
-                  <img class="full-width" src="assets/images/club-list/player/2.jpg" alt="{{player.name}}">
+                  <img class="w-100 maxw-300"
+                    src="http://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill,g_faces/v{{player.avatar.version}}/{{player.avatar.publicId}}"
+                    alt="{{player.name}}">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-10">

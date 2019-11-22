@@ -40,8 +40,8 @@ const userSchema = new mongoose.Schema({
         }
     ],
     avatar: {
-        imgId: { type: String, default: '' },
-        imgVersion: { type: String, default: '' }
+        publicId: { type: String, default: '' },
+        version: { type: String, default: '' }
     },
     clubs: [
         {
@@ -50,8 +50,7 @@ const userSchema = new mongoose.Schema({
                     type: String,
                     required: true,
                     minlength: 3,
-                    maxlength: 50,
-                    unique: true
+                    maxlength: 50
                 },
                 name: {
                     type: String,
@@ -72,8 +71,8 @@ const userSchema = new mongoose.Schema({
                     maxlength: 50
                 },
                 logo: {
-                    imgId: { type: String, default: '' },
-                    imgVersion: { type: String, default: '' }
+                    publicId: { type: String, default: '' },
+                    version: { type: String, default: '' }
                 },
                 titleOfUser: {
                     type: String,
@@ -93,8 +92,8 @@ const userSchema = new mongoose.Schema({
     ],
     images: [
         {
-            imgId: { type: String, default: '' },
-            imgVersion: { type: String, default: '' }
+            publicId: { type: String, default: '' },
+            version: { type: String, default: '' }
         }
     ],
     birthday: {

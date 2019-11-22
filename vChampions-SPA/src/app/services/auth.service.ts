@@ -32,8 +32,6 @@ export class AuthService {
 
   logout() {
     this.cookieService.delete('token', '/');
-    console.log('Just delete token');
-    console.log(this.cookieService.get('token'));
     this.decodedToken = null;
   }
 

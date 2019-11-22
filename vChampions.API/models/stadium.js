@@ -45,8 +45,8 @@ const stadiumSchema = new mongoose.Schema({
           maxlength: 12
         },
         avatar: {
-          imgId: { type: String, default: '' },
-          imgVersion: { type: String, default: '' }
+          publicId: { type: String, default: '' },
+          version: { type: String, default: '' }
         },
         description: {
           type: String,
@@ -59,8 +59,8 @@ const stadiumSchema = new mongoose.Schema({
   ],
   images: [
     {
-      imgId: { type: String, default: '' },
-      imgVersion: { type: String, default: '' }
+      publicId: { type: String, default: '' },
+      version: { type: String, default: '' }
     }
   ],
   address: {
@@ -98,8 +98,8 @@ const stadiumSchema = new mongoose.Schema({
               maxlength: 50
             },
             logo: {
-              imgId: { type: String, default: '' },
-              imgVersion: { type: String, default: '' }
+              publicId: { type: String, default: '' },
+              version: { type: String, default: '' }
             }
           })
         },
@@ -118,8 +118,8 @@ const stadiumSchema = new mongoose.Schema({
               maxlength: 50
             },
             logo: {
-              imgId: { type: String, default: '' },
-              imgVersion: { type: String, default: '' }
+              publicId: { type: String, default: '' },
+              version: { type: String, default: '' }
             }
           })
         },
