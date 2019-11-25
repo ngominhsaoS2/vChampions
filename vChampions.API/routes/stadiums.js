@@ -33,13 +33,7 @@ router.post('/', auth, async (req, res) => {
         name: req.body.name,
         address: req.body.address,
         owners: [
-            {
-                name: owner.name,
-                email: owner.email,
-                phone: owner.phone,
-                avatar: owner.avatar,
-                description: owner.description,
-            }
+            _.pick(owner, ['name', 'email', 'phone', 'description', 'avatar'])
         ],
         yards: _.uniqBy(req.body.yards, 'name')
     });

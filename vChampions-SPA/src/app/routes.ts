@@ -14,6 +14,7 @@ import { PlayerListComponent } from './components/players/player-list/player-lis
 import { PlayerProfileComponent } from './components/profile/player-profile/player-profile.component';
 import { StadiumOwnerProfileComponent } from './components/profile/stadium-owner-profile/stadium-owner-profile.component';
 import { PlayerProfileResolver } from './resolvers/player-profile.resolver';
+import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
 
 export const appRoutes: Routes = [
   // Home, Register, Login, Logout ...
@@ -32,6 +33,7 @@ export const appRoutes: Routes = [
       { path: 'club/manage-list', component: ClubListComponent },
       { path: 'club/manage/:clubCode', component: ClubManageComponent, resolve: { club: ClubManageResolver } },
       { path: 'club/view/:clubCode', component: ClubViewComponent, resolve: { club: ClubViewResolver } },
+      { path: 'club/edit/:clubCode', component: ClubEditComponent, resolve: { club: ClubManageResolver } },
     ]
   },
   { path: 'club/view/:clubCode', component: ClubViewComponent },

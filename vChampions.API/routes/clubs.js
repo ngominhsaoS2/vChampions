@@ -60,13 +60,7 @@ router.post('/', auth, async (req, res) => {
         city: req.body.city,
         district: req.body.district,
         description: req.body.description,
-        manager: {
-            _id: req.body.managerId,
-            name: manager.name,
-            email: manager.email,
-            phone: manager.phone,
-            description: manager.description
-        },
+        manager: _.pick(manager, ['_id', 'name', 'email', 'phone', 'description', 'avatar']),
         players: []
     });
 
@@ -77,7 +71,7 @@ router.post('/', auth, async (req, res) => {
             for (let item of req.body.players) {
                 let found = await User.findById(item.id);
                 if (found) {
-                    let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description', 'avatar'])
+                    let player = _.pick(found, ['_id', 'name', 'email', 'phone', 'description', 'avatar']);
                     player.title = item.title ? item.title : 'player';
                     player.positions = item.positions.length > 0 ? item.positions : [];
                     player.confirmation = 'received';
@@ -106,6 +100,46 @@ router.post('/', auth, async (req, res) => {
         task.save('clubs', club);
         task.run();
 
+        res.send(club);
+    }
+    catch (ex) {
+        res.status(500).send(ex);
+    }
+});
+
+router.put('/:id', [auth, isAdminOrModerator], async (req, res) => {
+    const error = await validateClub(req.body);
+    if (error != true) return res.status(400).send(error);
+
+    let club = await Club.findById(req.params.id);
+    if (!club) return res.status(400).send('Invalid Club.');
+
+    if (club.manager._id != req.user._id && req.isAdminOrModerator == false)
+        return res.status(400).send('Just Manager of this Club is authorized to edit');
+
+    try {
+        var task = Fawn.Task();
+
+        if (club.players.length > 0) {
+            for (let player of club.players) {
+                task.update('users', { _id: player._id, 'clubs._id': mongoose.Types.ObjectId(req.params.id) }, {
+                    $set: { 'clubs.$.logo': req.body.logo }
+                });
+            }
+        }
+
+        task.update('clubs', { _id: mongoose.Types.ObjectId(req.params.id) }, {
+            $set: {
+                'code': req.body.code,
+                'name': req.body.name,
+                'city': req.body.city,
+                'district': req.body.district,
+                'description': req.body.description,
+                'logo': req.body.logo,
+            }
+        });
+
+        task.run();
         res.send(club);
     }
     catch (ex) {
@@ -147,6 +181,7 @@ router.put('/:id/add-players', [auth, isAdminOrModerator], async (req, res) => {
                                     name: club.name,
                                     city: club.city,
                                     district: club.district,
+                                    logo: club.logo,
                                     titleOfUser: item.title ? item.title : 'player',
                                     confirmation: 'received'
                                 }

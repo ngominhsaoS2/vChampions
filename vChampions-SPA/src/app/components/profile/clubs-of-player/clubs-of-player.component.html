@@ -19,7 +19,12 @@
                   <td>{{club.code}}</td>
                   <td colspan="4" class="team">
                     <div class="team-box">
-                      <img class="xs-img" src="assets/images/club-logo/logo/chelsea.png" alt="">
+                      <img *ngIf="club.logo.publicId == ''" class="w-100 maxw-50"
+                        src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v1574318630/vChampions/_default-logo.jpg"
+                        alt="club.name">
+                      <img *ngIf="club.logo.publicId != ''" class="w-100 maxw-50"
+                        src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v{{club.logo.version}}/{{club.logo.publicId}}"
+                        alt="club.name">
                       <span class="f-s-22"><a class="default pointer" (click)="viewClub(club)">{{club.name}}</a></span>
                     </div>
                   </td>

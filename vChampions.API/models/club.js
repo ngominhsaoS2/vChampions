@@ -136,7 +136,7 @@ async function validateClub(club) {
     name: { type: "string", empty: false, min: 3, max: 50 }, // empty: false - tức là không cho trường code empty
     city: { type: "string", empty: false, min: 3, max: 50 },
     district: { type: "string", empty: false, min: 3, max: 50 },
-    managerId: { type: "string", empty: false, pattern: /^[0-9a-fA-F]{24}$/ }, // pattern objectId trong mongoDb
+    managerId: { type: "string", empty: false, pattern: /^[0-9a-fA-F]{24}$/, optional: true }, // pattern objectId trong mongoDb
     players: {
       type: "array", items: {
         type: "object", props: {

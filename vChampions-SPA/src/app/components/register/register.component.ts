@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
 
       this.user = Object.assign({}, this.registerForm.value);
       this.user.roles = [this.registerForm.value.roles];
-      this.user.avatar = { publicId: this.uploadImageResult.public_id, version: this.uploadImageResult.version };
+      this.user.avatar = { publicId: this.uploadImageResult.publicId, version: this.uploadImageResult.version };
 
       this.authService.register(this.user).subscribe(() => {
         this.spinner.hide();
@@ -80,8 +80,8 @@ export class RegisterComponent implements OnInit {
     const file: File = event[0];
     this.imageService.readAsBase64(file).then(base64Image => {
       if (base64Image) {
-        this.imageService.addImage(base64Image).subscribe(result => {
-          this.uploadImageResult = result;
+        this.imageService.addImage(base64Image).subscribe((result: any) => {
+          this.uploadImageResult = { publicId: result.public_id, version: result.version };
           this.spinner.hide();
           console.log('uploadImageResult', this.uploadImageResult);
         }, err => {

@@ -1376,82 +1376,82 @@
 
 /* Max Width*/
 .maxw-30 {
-    max-width: 30px;
+    max-width: 30px !important;
 }
 
 .maxw-40 {
-    max-width: 40px;
+    max-width: 40px !important;
 }
 
 .maxw-50 {
-    max-width: 50px;
+    max-width: 50px !important;
 }
 
 .maxw-70 {
-    max-width: 70px;
+    max-width: 70px !important;
 }
 
 .maxw-80 {
-    max-width: 80px;
+    max-width: 80px !important;
 }
 
 .maxw-100 {
-    max-width: 100px;
+    max-width: 100px !important;
 }
 
 .maxw-150 {
-    max-width: 150px;
+    max-width: 150px !important;
 }
 
 .maxw-200 {
-  max-width: 200px;
+  max-width: 200px !important;
 }
 
 /* Max Height*/
 .maxh-10 {
-    max-height: 10px;
+    max-height: 10px !important;
 }
 
 .maxh-30 {
-    max-height: 30px;
+    max-height: 30px !important;
 }
 
 .maxh-50 {
-    max-height: 50px;
+    max-height: 50px !important;
 }
 
 .maxh-70 {
-    max-height: 70px;
+    max-height: 70px !important;
 }
 
 .maxh-150 {
-  max-height: 150px;
+  max-height: 150px !important;
 }
 
 .maxh-200 {
-  max-height: 200px;
+  max-height: 200px !important;
 }
 
 .maxh-300 {
-  max-height: 300px;
+  max-height: 300px !important;
 }
 
 /* Min Width*/
 .minw-100 {
-    min-width: 100px;
+    min-width: 100px !important;
 }
 
 .minw-150 {
-    min-width: 150px;
+    min-width: 150px !important;
 }
 
 /* Min Height*/
 .minh-30 {
-    min-height: 30px;
+    min-height: 30px !important;
 }
 
 .minh-50 {
-    min-height: 50px;
+    min-height: 50px !important;
 }
 
 

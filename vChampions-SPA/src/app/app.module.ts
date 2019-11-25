@@ -54,6 +54,7 @@ import { PlayerProfileComponent } from './components/profile/player-profile/play
 import { StadiumOwnerProfileComponent } from './components/profile/stadium-owner-profile/stadium-owner-profile.component';
 import { InformationComponent } from './components/profile/information/information.component';
 import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clubs-of-player.component';
+import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
 
 
 // 2019/10/28 SaoNM custom tokenGetter
@@ -80,6 +81,7 @@ import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clu
     FollowUsComponent,
     RankSmComponent,
     ClubCreateComponent,
+    ClubEditComponent,
     ClubListComponent,
     ClubViewComponent,
     ClubManageComponent,

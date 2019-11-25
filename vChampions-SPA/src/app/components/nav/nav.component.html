@@ -17,7 +17,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/home']">Home</a>
+                <a class="nav-link" href="#">Home</a>
               </li>
               <li class="nav-item pointer" routerLinkActive="active">
                 <div class="btn-group" dropdown>
@@ -62,7 +62,7 @@
                     {{authService.decodedToken?.name}}
                   </a>
                   <ul *dropdownMenu class="dropdown-menu">
-                    <li><a class="dropdown-item" [routerLink]="['/club/manage-list']">Manage your Clubs</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/club/manage-list']">Your own Clubs</a></li>
                     <li class="divider dropdown-divider"></li>
                     <li>
                       <a class="dropdown-item">

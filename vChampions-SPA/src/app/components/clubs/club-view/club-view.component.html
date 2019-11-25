@@ -7,7 +7,12 @@
         <div class="row m-b-45">
           <div class="col-12">
             <div class="club-authority">
-              <img src="assets/images/club-logo/logo/chelsea.png" alt="club logo">
+              <img *ngIf="club.logo.publicId == ''" class="maxw-200"
+                src="https://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill/v1574318630/vChampions/_default-logo.jpg"
+                alt="club.name">
+              <img *ngIf="club.logo.publicId != ''" class="maxw-300"
+                src="https://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill/v{{club.logo.version}}/{{club.logo.publicId}}"
+                alt="club.name">
               <h4 class="mt30 black">FC {{club.name}}</h4>
               <div class="authority-box mt30">
                 <p class="m-b-8"><strong>Area: </strong>{{club.district}}, {{club.city}}</p>
