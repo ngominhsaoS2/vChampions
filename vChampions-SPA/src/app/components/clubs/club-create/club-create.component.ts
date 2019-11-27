@@ -62,11 +62,11 @@ export class ClubCreateComponent implements OnInit {
       club.managerId = this.loggedInUser._id;
       club.players = this.invitedPlayers;
 
-      // Cho captain default là thủ môn =))
+      // Cho captain default là DF
       club.players.push({
         id: this.loggedInUser._id,
         title: 'captain',
-        positions: ['GK']
+        positions: ['DF']
       });
 
       this.clubService.createClub(club).subscribe(() => {

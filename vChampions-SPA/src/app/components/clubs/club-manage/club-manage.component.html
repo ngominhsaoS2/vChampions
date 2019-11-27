@@ -80,18 +80,40 @@
                         <div class="btn-group pull-right" dropdown>
                           <button type="button" class="btn btn-link dropdown-toggle" dropdownToggle
                             tooltip="Modify this Player" placement="top"></button>
-                          <ul *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-                            <li>
-                              <a class="dropdown-item">
-                                <i class="fa fa-random black"></i>&nbsp; Change Postions
+                          <ul *dropdownMenu class="dropdown-menu">
+                            <li dropdown triggers="mouseover" placement="right" container="body">
+                              <a dropdownToggle class="dropdown-item dropdown-toggle" (click)="false">
+                                <i class="fa fa-random black"></i>&nbsp; Change Postions<span class="caret"></span>
                               </a>
+                              <ul *dropdownMenu class="dropdown-menu">
+                                <li>
+                                  <a class="dropdown-item pointer" (click)="changePosition(player, 'GK')">
+                                    <span class="badge badge-warning">Goalkeeper</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item pointer" (click)="changePosition(player, 'DF')">
+                                    <span class="badge badge-primary">Defender</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item pointer" (click)="changePosition(player, 'MF')">
+                                    <span class="badge badge-success">Middlefield</span>
+                                  </a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item pointer" (click)="changePosition(player, 'FW')">
+                                    <span class="badge badge-danger">Forward</span>
+                                  </a>
+                                </li>
+                              </ul>
                             </li>
                             <li class="divider dropdown-divider"></li>
-                            <li>
+                            <!-- <li>
                               <a class="dropdown-item">
                                 <i class="fa fa-user-circle black"></i>&nbsp; Set as Manager
                               </a>
-                            </li>
+                            </li> -->
                             <li>
                               <a class="dropdown-item pointer" (click)="setAsCaptain(player)">
                                 <i class="fa fa-contao black"></i>&nbsp; Set as Captain

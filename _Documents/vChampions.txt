@@ -39,9 +39,9 @@ III. Yêu cầu, chức năng vả tình hình thực hiện
 
     2. Tạo đội bóng, quản lý cầu thủ của đội bóng
         - Tạo đội bóng, tên, logo, đội trưởng, đội phó... các thông tin cần thiết cho một đội bóng phủi/chuyên nghiệp
-            B. Còn đang để dở phần hình ảnh.
+            A. Done.
         - Update các thông tin cơ bản của đội bóng
-            E. 
+            A. Done.
         - Thêm bớt cầu thủ trong đội
             + Thêm cầu thủ đã tồn tại trong hệ thống
                 A. Done.
@@ -56,11 +56,11 @@ III. Yêu cầu, chức năng vả tình hình thực hiện
         - ...
 
     3. Trang cá nhân của Player
-        - Xếp hạng các Player
-            E. 
         - Trang view thông tin của Player
             E. 
         - Trang profile của Player
+            E. 
+        - Xếp hạng các Player
             E. 
 
     4. Tạo trang quản lý cho chủ sân
@@ -119,7 +119,7 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/11/17: Áp dụng lại upload ảnh lên Cloudinary, cho ngắn hạn, sẽ tìm giải pháp thích hợp khi đến thời điểm mở rộng
 - 2019/11/20: KIỂM ĐIỂM LẦN 1
 - 2019/11/23: Upload ảnh, load ảnh, crop ảnh thành công lên Cloudinary (trang Register)
-- 2019/11/26: 
+- 2019/11/26: Edit club (đã bao gồm upload ảnh), hiển thị ảnh club ở các nơi liên quan
 - 2019/11/29: 
 - 2019/12/02: 
 - 2019/12/05: 

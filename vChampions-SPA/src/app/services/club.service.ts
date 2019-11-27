@@ -28,6 +28,10 @@ export class ClubService {
     return this.http.put(this.baseUrl + clubId + '/set-as-captain/' + playerId, null);
   }
 
+  changePosition(clubId: any, playerId: any, position: string) {
+    return this.http.put(this.baseUrl + clubId + '/change-position/' + playerId + '/' + position, null);
+  }
+
   getClubsManagedByYou() {
     return this.http.get(this.baseUrl + 'managed-by-you');
   }

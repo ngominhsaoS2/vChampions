@@ -123,7 +123,14 @@ router.put('/:id', [auth, isAdminOrModerator], async (req, res) => {
         if (club.players.length > 0) {
             for (let player of club.players) {
                 task.update('users', { _id: player._id, 'clubs._id': mongoose.Types.ObjectId(req.params.id) }, {
-                    $set: { 'clubs.$.logo': req.body.logo }
+                    $set: {
+                        'clubs.$.code': req.body.code,
+                        'clubs.$.name': req.body.name,
+                        'clubs.$.city': req.body.city,
+                        'clubs.$.district': req.body.district,
+                        'clubs.$.description': req.body.description,
+                        'clubs.$.logo': req.body.logo
+                    }
                 });
             }
         }
@@ -227,6 +234,28 @@ router.put('/:clubId/set-as-captain/:playerId', [auth, isAdminOrModerator], asyn
         });
 
         await club.save();
+        return res.status(200).send(club);
+    } else {
+        return res.status(400).send("This Player is not memeber of you Club");
+    }
+});
+
+router.put('/:clubId/change-position/:playerId/:postion', [auth, isAdminOrModerator], async (req, res) => {
+    let club = await Club.findById(req.params.clubId);
+    if (!club) return res.status(400).send('Invalid Club.');
+
+    if (club.manager._id != req.user._id && req.isAdminOrModerator == false)
+        return res.status(400).send('Just Manager of this Club is authorized to dicide who would be Captain');
+
+    if (_.findIndex(club.players, { _id: mongoose.Types.ObjectId(req.params.playerId) }) >= 0) {
+        club = await Club.findOneAndUpdate(
+            { _id: req.params.clubId, 'players._id': mongoose.Types.ObjectId(req.params.playerId) },
+            {
+                'players.$.positions': [req.params.postion],
+            },
+            { new: true }
+        );
+
         return res.status(200).send(club);
     } else {
         return res.status(400).send("This Player is not memeber of you Club");
