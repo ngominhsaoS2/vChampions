@@ -33,6 +33,9 @@ import { ClubManageResolver } from './resolvers/club-manage.resolver';
 import { ClubViewResolver } from './resolvers/club-view.resolver';
 import { PlayerProfileResolver } from './resolvers/player-profile.resolver';
 
+// Customized Directives
+
+
 // Components
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -71,6 +74,9 @@ import { ClubEditComponent } from './components/clubs/club-edit/club-edit.compon
 
 @NgModule({
   declarations: [
+    // Directives
+
+    // Components
     AppComponent,
     NavComponent,
     RegisterComponent,

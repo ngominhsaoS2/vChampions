@@ -28,6 +28,10 @@ export class NavComponent implements OnInit {
     return this.authService.loggedIn();
   }
 
+  hasRoles(requiredRoles: []) {
+    return this.authService.hasRoles(requiredRoles);
+  }
+
   logout() {
     this.authService.logout();
     this.toastr.info('Logout successfully', 'Info');

@@ -60,7 +60,9 @@ export class RegisterComponent implements OnInit {
 
       this.user = Object.assign({}, this.registerForm.value);
       this.user.roles = [this.registerForm.value.roles];
-      this.user.avatar = { publicId: this.uploadImageResult.publicId, version: this.uploadImageResult.version };
+      if (this.uploadImageResult) {
+        this.user.avatar = { publicId: this.uploadImageResult.publicId, version: this.uploadImageResult.version };
+      }
 
       this.authService.register(this.user).subscribe(() => {
         this.spinner.hide();

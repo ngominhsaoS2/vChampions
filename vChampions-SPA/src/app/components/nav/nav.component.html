@@ -15,7 +15,8 @@
       <div class="col-lg-8">
         <nav class="navbar navbar-expand-lg">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <!--Player Menu-->
+            <ul class="navbar-nav ml-auto" *ngIf="loggedIn() && hasRoles(['Player'])">
               <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" href="#">Home</a>
               </li>
@@ -50,13 +51,7 @@
               <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['/players']">Players</a>
               </li>
-              <li *ngIf="!loggedIn()" class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/register']">Register</a>
-              </li>
-              <li *ngIf="!loggedIn()" class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/login']">Login</a>
-              </li>
-              <li *ngIf="loggedIn()" class="nav-item pointer" routerLinkActive="active">
+              <li class="nav-item pointer" routerLinkActive="active">
                 <div class="btn-group" dropdown>
                   <a dropdownToggle class="nav-link dropdown-toggle">
                     {{authService.decodedToken?.name}}
@@ -69,14 +64,113 @@
                         Notifications &nbsp;<span class="badge badge-pill badge-success">9</span>
                       </a>
                     </li>
-                    <li><a class="dropdown-item"
-                        [routerLink]="['/profile', authService.decodedToken?.roles[0]]">Profile</a></li>
+                    <li>
+                      <a class="dropdown-item"
+                        [routerLink]="['/profile', authService.decodedToken?.roles[0]]">Profile</a>
+                    </li>
                     <li class="divider dropdown-divider"></li>
                     <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
                   </ul>
                 </div>
               </li>
             </ul>
+            <!--Player Menu-->
+
+            <!--StadiumOwner Menu-->
+            <ul class="navbar-nav ml-auto" *ngIf="loggedIn() && hasRoles(['StadiumOwner'])">
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item pointer" routerLinkActive="active">
+                <div class="btn-group" dropdown>
+                  <a dropdownToggle class="nav-link dropdown-toggle">
+                    Matches <span class="caret"></span>
+                  </a>
+                  <ul *dropdownMenu class="dropdown-menu">
+                    <li><a class="dropdown-item" [routerLink]="['/results']">Results</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item pointer" routerLinkActive="active">
+                <div class="btn-group" dropdown>
+                  <a dropdownToggle class="nav-link dropdown-toggle">
+                    Clubs <span class="caret"></span>
+                  </a>
+                  <ul *dropdownMenu class="dropdown-menu">
+                    <li><a class="dropdown-item" [routerLink]="['/rank']">Rank</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/players']">Players</a>
+              </li>
+              <li class="nav-item pointer" routerLinkActive="active">
+                <div class="btn-group" dropdown>
+                  <a dropdownToggle class="nav-link dropdown-toggle">
+                    {{authService.decodedToken?.name}}
+                  </a>
+                  <ul *dropdownMenu class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item">
+                        Notifications &nbsp;<span class="badge badge-pill badge-success">9</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item"
+                        [routerLink]="['/profile', authService.decodedToken?.roles[0]]">Profile</a>
+                    </li>
+                    <li class="divider dropdown-divider"></li>
+                    <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <!--StadiumOwner Menu-->
+
+            <!--Anonymous Menu-->
+            <ul class="navbar-nav ml-auto" *ngIf="!loggedIn()">
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item pointer" routerLinkActive="active">
+                <div class="btn-group" dropdown>
+                  <a dropdownToggle class="nav-link dropdown-toggle">
+                    Matches <span class="caret"></span>
+                  </a>
+                  <ul *dropdownMenu class="dropdown-menu">
+                    <li><a class="dropdown-item">Create a Match</a></li>
+                    <li><a class="dropdown-item">Waiting for Rival</a></li>
+                    <li class="divider dropdown-divider"></li>
+                    <li><a class="dropdown-item">League</a></li>
+                    <li class="divider dropdown-divider"></li>
+                    <li><a class="dropdown-item" [routerLink]="['/results']">Results</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item pointer" routerLinkActive="active">
+                <div class="btn-group" dropdown>
+                  <a dropdownToggle class="nav-link dropdown-toggle">
+                    Clubs <span class="caret"></span>
+                  </a>
+                  <ul *dropdownMenu class="dropdown-menu">
+                    <li><a class="dropdown-item" [routerLink]="['/rank']">Rank</a></li>
+                    <li><a class="dropdown-item">Recommended for your Club</a></li>
+                    <li class="divider dropdown-divider"></li>
+                    <li><a class="dropdown-item" [routerLink]="['/club/create']">Create your own Club</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/players']">Players</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/register']">Register</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/login']">Login</a>
+              </li>
+            </ul>
+            <!--Anonymous Menu-->
           </div>
         </nav>
       </div>

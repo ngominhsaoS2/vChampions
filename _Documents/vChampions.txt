@@ -65,26 +65,19 @@ III. Yêu cầu, chức năng vả tình hình thực hiện
 
     4. Tạo trang quản lý cho chủ sân
         - Từ User, tạo sân bóng
-            + API: 
-            + UI:
+            E. 
         - Thêm sửa xoá các sân trong sân bóng của mình
-            + API: 
-            + UI:
+            E. 
         - Tình hình sân available
-            + API: 
-            + UI:
+            E. 
         - Thêm một vài chức năng ERP cho chủ sân
-            + API: 
-            + UI:
+            E. 
         - Tạo trang đặt sân và thanh toán qua Momo, Paypal...
-            + API: 
-            + UI:
+            E. 
         - Thêm chức năng thêm thời tiết tại sân (update từ cầu thủ hoặc chủ sân đều được)
-            + API: 
-            + UI:
+            E. 
         - Làm cách nào để hạn chế việc các sân delay trong quá trình làm việc???
-            + API: 
-            + UI:
+            E. 
 
     5. Trang xếp hạng
         - 

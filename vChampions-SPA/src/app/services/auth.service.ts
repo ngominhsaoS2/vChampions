@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,23 @@ export class AuthService {
 
   register(user: any) {
     return this.http.post(this.baseUrl + 'users', user);
+  }
+
+  hasRoles(requiredRoles: []) {
+    if (this.loggedIn()) {
+      let isMatch = false;
+      const userRoles = this.decodedToken.roles as Array<string>;
+      requiredRoles.forEach(role => {
+        if (userRoles.includes(role)) {
+          isMatch = true;
+          return;
+        }
+      });
+
+      return isMatch;
+    }
+
+    return false;
   }
 
 }
