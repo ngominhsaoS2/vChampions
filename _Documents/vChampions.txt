@@ -113,7 +113,7 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/11/20: KIỂM ĐIỂM LẦN 1
 - 2019/11/23: Upload ảnh, load ảnh, crop ảnh thành công lên Cloudinary (trang Register)
 - 2019/11/26: Edit club (đã bao gồm upload ảnh), hiển thị ảnh club ở các nơi liên quan
-- 2019/11/29: 
+- 2019/11/29: Change postion, strict cors
 - 2019/12/02: 
 - 2019/12/05: 
 - 2019/12/08: 
