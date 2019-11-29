@@ -7,6 +7,9 @@ import { ToastrService } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClubService } from 'src/app/services/club.service';
+import { environment } from 'src/environments/environment';
+
+const defaultLogo = environment.defaultLogo;
 
 @Component({
   selector: 'app-club-create',
@@ -59,6 +62,7 @@ export class ClubCreateComponent implements OnInit {
       this.spinner.show();
 
       const club = Object.assign({}, this.createClubForm.value);
+      club.logo = defaultLogo;
       club.managerId = this.loggedInUser._id;
       club.players = this.invitedPlayers;
 

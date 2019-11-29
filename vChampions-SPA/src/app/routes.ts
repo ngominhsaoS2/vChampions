@@ -11,10 +11,11 @@ import { ClubManageComponent } from './components/clubs/club-manage/club-manage.
 import { ClubManageResolver } from './resolvers/club-manage.resolver';
 import { ClubViewResolver } from './resolvers/club-view.resolver';
 import { PlayerListComponent } from './components/players/player-list/player-list.component';
-import { PlayerProfileComponent } from './components/profile/player-profile/player-profile.component';
-import { StadiumOwnerProfileComponent } from './components/profile/stadium-owner-profile/stadium-owner-profile.component';
-import { PlayerProfileResolver } from './resolvers/player-profile.resolver';
+import { ProfilePlayerComponent } from './components/profile/profile-player/profile-player.component';
+import { ProfileOwnerComponent } from './components/profile/profile-owner/profile-owner.component';
+import { LoggedInUserResolver } from './resolvers/logged-in-user.resolver';
 import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
+
 
 export const appRoutes: Routes = [
   // Home, Register, Login, Logout ...
@@ -47,8 +48,8 @@ export const appRoutes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: 'profile/Player', component: PlayerProfileComponent, resolve: { player: PlayerProfileResolver } },
-      { path: 'profile/StadiumOwner', component: StadiumOwnerProfileComponent },
+      { path: 'profile/Player', component: ProfilePlayerComponent, resolve: { player: LoggedInUserResolver } },
+      { path: 'profile/StadiumOwner', component: ProfileOwnerComponent, resolve: { owner: LoggedInUserResolver } },
     ]
   },
 

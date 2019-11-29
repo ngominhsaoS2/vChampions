@@ -6,7 +6,7 @@ import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
-export class PlayerProfileResolver implements Resolve<any> {
+export class LoggedInUserResolver implements Resolve<any> {
   constructor(
     private router: Router,
     private userService: UserService,

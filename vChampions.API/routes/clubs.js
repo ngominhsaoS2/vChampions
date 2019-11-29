@@ -60,6 +60,7 @@ router.post('/', auth, async (req, res) => {
         city: req.body.city,
         district: req.body.district,
         description: req.body.description,
+        logo: req.body.logo,
         manager: _.pick(manager, ['_id', 'name', 'email', 'phone', 'description', 'avatar']),
         players: []
     });

@@ -31,7 +31,7 @@ import { ImageService } from './services/image.service';
 // Customized Resolvers
 import { ClubManageResolver } from './resolvers/club-manage.resolver';
 import { ClubViewResolver } from './resolvers/club-view.resolver';
-import { PlayerProfileResolver } from './resolvers/player-profile.resolver';
+import { LoggedInUserResolver } from './resolvers/logged-in-user.resolver';
 
 // Customized Directives
 
@@ -53,24 +53,11 @@ import { ClubViewComponent } from './components/clubs/club-view/club-view.compon
 import { ClubManageComponent } from './components/clubs/club-manage/club-manage.component';
 import { PlayerListComponent } from './components/players/player-list/player-list.component';
 import { TopPlayersSmComponent } from './components/addition/top-players-sm/top-players-sm.component';
-import { PlayerProfileComponent } from './components/profile/player-profile/player-profile.component';
-import { StadiumOwnerProfileComponent } from './components/profile/stadium-owner-profile/stadium-owner-profile.component';
+import { ProfilePlayerComponent } from './components/profile/profile-player/profile-player.component';
+import { ProfileOwnerComponent } from './components/profile/profile-owner/profile-owner.component';
 import { InformationComponent } from './components/profile/information/information.component';
 import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clubs-of-player.component';
 import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
-
-
-// 2019/10/28 SaoNM custom tokenGetter
-/* export function tokenGetter() {
-  const value = '; ' + document.cookie;
-  const parts = value.split('; ' + 'token' + '=');
-
-  if (parts.length === 2) {
-    return parts.pop().split(';').shift();
-  }
-
-  return null;
-} */
 
 @NgModule({
   declarations: [
@@ -94,8 +81,8 @@ import { ClubEditComponent } from './components/clubs/club-edit/club-edit.compon
     FindPlayersComponent,
     PlayerListComponent,
     TopPlayersSmComponent,
-    PlayerProfileComponent,
-    StadiumOwnerProfileComponent,
+    ProfilePlayerComponent,
+    ProfileOwnerComponent,
     InformationComponent,
     ClubsOfPlayerComponent
   ],
@@ -125,13 +112,6 @@ import { ClubEditComponent } from './components/clubs/club-edit/club-edit.compon
       progressBar: false,
       progressAnimation: 'decreasing'
     }),
-    /* JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:3000'],
-        blacklistedRoutes: ['localhost:3000/api/auth']
-      }
-    }), */
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
@@ -143,7 +123,7 @@ import { ClubEditComponent } from './components/clubs/club-edit/club-edit.compon
     // Resolver
     ClubManageResolver,
     ClubViewResolver,
-    PlayerProfileResolver,
+    LoggedInUserResolver,
     // Guards
     AuthGuard,
   ],

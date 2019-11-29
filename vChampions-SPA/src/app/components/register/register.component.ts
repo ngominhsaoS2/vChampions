@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { ImageService } from 'src/app/services/image.service';
 
 const URL = environment.apiUrl + 'images/add-image';
+const defaultAvatar = environment.defaultAvatar;
 
 @Component({
   selector: 'app-register',
@@ -62,6 +63,8 @@ export class RegisterComponent implements OnInit {
       this.user.roles = [this.registerForm.value.roles];
       if (this.uploadImageResult) {
         this.user.avatar = { publicId: this.uploadImageResult.publicId, version: this.uploadImageResult.version };
+      } else {
+        this.user.avatar = defaultAvatar;
       }
 
       this.authService.register(this.user).subscribe(() => {

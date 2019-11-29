@@ -1,0 +1,32 @@
+<app-carousel-sm [title]="title" [description]="description">
+</app-carousel-sm>
+<div class="news-area p-t-30 p-b-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="row m-b-45">
+          <div class="col-12">
+            <div class="club-authority">
+              <img class="w-100 maxw-200"
+                src="http://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill,g_faces/v{{owner.avatar.version}}/{{owner.avatar.publicId}}"
+                alt="{{owner.name}}">
+              <h5 class="m-t-15 black">{{owner.name}}</h5>
+              <div class="m-t-15">
+                <tabset [vertical]="true" type="pills">
+                  <tab heading="Stadiums" (selectTab)="onSelect($event)"></tab>
+                  <tab heading="Matches"></tab>
+                  <tab heading="Notifications"></tab>
+                  <tab heading="Information" (selectTab)="onSelect($event)"></tab>
+                  <tab heading="Gallery"></tab>
+                </tabset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <app-information *ngIf="tab == 'Information'" [enabled]="tab == 'Information' ? true : false"></app-information>
+      </div>
+    </div>
+  </div>
+</div>

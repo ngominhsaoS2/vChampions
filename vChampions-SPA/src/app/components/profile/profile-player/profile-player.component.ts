@@ -7,11 +7,11 @@ import { TabDirective } from 'ngx-bootstrap';
 import * as _ from 'lodash';
 
 @Component({
-  selector: 'app-player-profile',
-  templateUrl: './player-profile.component.html',
-  styleUrls: ['./player-profile.component.css']
+  selector: 'app-profile-player',
+  templateUrl: './profile-player.component.html',
+  styleUrls: ['./profile-player.component.css']
 })
-export class PlayerProfileComponent implements OnInit {
+export class ProfilePlayerComponent implements OnInit {
 
   title = 'Name of the Player';
   description = 'Description';

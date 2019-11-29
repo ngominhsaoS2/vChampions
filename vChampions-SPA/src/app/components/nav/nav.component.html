@@ -101,6 +101,16 @@
                   </ul>
                 </div>
               </li>
+              <li class="nav-item pointer" routerLinkActive="active">
+                <div class="btn-group" dropdown>
+                  <a dropdownToggle class="nav-link dropdown-toggle">
+                    Stadiums <span class="caret"></span>
+                  </a>
+                  <ul *dropdownMenu class="dropdown-menu">
+                      <li><a class="dropdown-item" [routerLink]="['/stadium/create']">Create Stadium</a></li>
+                  </ul>
+                </div>
+              </li>
               <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['/players']">Players</a>
               </li>

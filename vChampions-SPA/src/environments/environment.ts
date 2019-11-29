@@ -5,7 +5,15 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000/api/',
-  pageSize: 10
+  pageSize: 10,
+  defaultAvatar: {
+    publicId: 'vChampions/_default-user.jpg',
+    version: '1574318630'
+  },
+  defaultLogo: {
+    publicId: 'vChampions/_default-logo.png',
+    version: '1574398775'
+  }
 };
 
 /*

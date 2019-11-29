@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ClubsOfPlayerComponent implements OnInit {
 
-  @Input() enabled = true;
+  @Input() enabled = false;
   @Input() clubs: any = [];
   @Output() reload = new EventEmitter();
 
