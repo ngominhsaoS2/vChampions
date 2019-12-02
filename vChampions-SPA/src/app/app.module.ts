@@ -27,6 +27,7 @@ import { TokenInterceptor } from './services/token-interceptor';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { ImageService } from './services/image.service';
+import { StadiumService } from './services/stadium.service';
 
 // Customized Resolvers
 import { ClubManageResolver } from './resolvers/club-manage.resolver';
@@ -58,6 +59,8 @@ import { ProfileOwnerComponent } from './components/profile/profile-owner/profil
 import { InformationComponent } from './components/profile/information/information.component';
 import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clubs-of-player.component';
 import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
+import { StadiumCreateComponent } from './components/stadiums/stadium-create/stadium-create.component';
+
 
 @NgModule({
   declarations: [
@@ -84,7 +87,8 @@ import { ClubEditComponent } from './components/clubs/club-edit/club-edit.compon
     ProfilePlayerComponent,
     ProfileOwnerComponent,
     InformationComponent,
-    ClubsOfPlayerComponent
+    ClubsOfPlayerComponent,
+    StadiumCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -120,6 +124,7 @@ import { ClubEditComponent } from './components/clubs/club-edit/club-edit.compon
     AuthService,
     UserService,
     ImageService,
+    StadiumService,
     // Resolver
     ClubManageResolver,
     ClubViewResolver,

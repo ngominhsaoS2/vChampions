@@ -1,0 +1,97 @@
+<app-carousel-sm [title]="'Create your Stadium'" [description]="'For Clubs to rent and get you money'">
+</app-carousel-sm>
+<div class="news-area p-t-30 p-b-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-9">
+        <div class="sports-news mb60">
+          <div class="row">
+            <div class="col-12">
+              <alert *ngIf="yards.length == 0" type="info"><strong>Warning!</strong> Please have at least one Yard.
+              </alert>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+              <h4 class="mb-3 black">Stadium info</h4>
+              <form class="needs-validation" [formGroup]="createStadiumForm">
+                <div class="form-group">
+                  <label class="black">Name (*)</label>
+                  <input type="text" class="form-control" formControlName="name"
+                    [ngClass]="{'is-invalid': createStadiumForm.get('name').errors && createStadiumForm.get('name').touched}">
+                  <div class="invalid-feedback"
+                    *ngIf="createStadiumForm.get('name').hasError('required') && createStadiumForm.get('name').touched">
+                    Please choose a Name
+                  </div>
+                  <div class="invalid-feedback"
+                    *ngIf="createStadiumForm.get('name').hasError('minlength') && createStadiumForm.get('name').touched">
+                    Name must be at least 3 characters
+                  </div>
+                  <div class="invalid-feedback"
+                    *ngIf="createStadiumForm.get('name').hasError('maxlength') && createStadiumForm.get('name').touched">
+                    Name cannot exceed 50 characters
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="black">Address (*)</label>
+                  <textarea rows="2" cols="50" class="form-control"
+                    placeholder="Provide a proper Address for people to come" formControlName="address"
+                    [ngClass]="{'is-invalid': createStadiumForm.get('address').errors && createStadiumForm.get('address').touched}"></textarea>
+                  <div class="invalid-feedback"
+                    *ngIf="createStadiumForm.get('address').hasError('required') && createStadiumForm.get('address').touched">
+                    Please choose a Address
+                  </div>
+                  <div class="invalid-feedback"
+                    *ngIf="createStadiumForm.get('address').hasError('minlength') && createStadiumForm.get('address').touched">
+                    Address must be at least 5 characters
+                  </div>
+                  <div class="invalid-feedback"
+                    *ngIf="createStadiumForm.get('address').hasError('maxlength') && createStadiumForm.get('address').touched">
+                    Address cannot exceed 200 characters
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-5 m-b-16">
+              <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted black">Yards (*)</span>
+                <span class="badge badge-success badge-pill">{{yards.length}}</span>
+              </h4>
+              <ul class="list-group mb-3 ul-scrollable maxh-300">
+                <li *ngIf="yards.length <= 0" class="list-group-item d-flex justify-content-between lh-condensed">
+                  <small class="text-muted">No Yards added yet</small>
+                </li>
+                <li *ngFor="let yard of yards" class="list-group-item d-flex justify-content-between bg-light">
+                  <div class="text-success">
+                    <label class="black m-b-0">{{yard.name}}</label>
+                  </div>
+                  <span class="text-muted" tooltip="Remove this Yard" placement="bottom">
+                    <a class="pointer" (click)="removeYard(yard)">
+                      <i class="fa fa-trash black"></i>
+                    </a>
+                  </span>
+                </li>
+              </ul>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Yard's name" [(ngModel)]="yardName">
+                <div class="input-group-append">
+                  <button class="btn btn-success p-b-4" type="button" (click)="addYard()">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7">
+              <button [disabled]="!createStadiumForm.valid || yards.length == 0"
+                (click)="createStadium()"
+                class="btn btn-primary btn-lg btn-block" type="button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-3">
+        <app-rank-sm></app-rank-sm>
+      </div>
+    </div>
+  </div>
+</div>

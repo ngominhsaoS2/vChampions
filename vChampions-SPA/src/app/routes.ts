@@ -15,6 +15,7 @@ import { ProfilePlayerComponent } from './components/profile/profile-player/prof
 import { ProfileOwnerComponent } from './components/profile/profile-owner/profile-owner.component';
 import { LoggedInUserResolver } from './resolvers/logged-in-user.resolver';
 import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
+import { StadiumCreateComponent } from './components/stadiums/stadium-create/stadium-create.component';
 
 
 export const appRoutes: Routes = [
@@ -38,6 +39,16 @@ export const appRoutes: Routes = [
     ]
   },
   { path: 'club/view/:clubCode', component: ClubViewComponent },
+
+  // Stadiums
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'stadium/create', component: StadiumCreateComponent },
+    ]
+  },
 
   // Players
   { path: 'players', component: PlayerListComponent },
