@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-12">
+    <div *ngIf="stadiums.length > 0" class="point-table">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 p-0">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Yards</th>
+                  <th colspan="4">Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let stadium of stadiums; let i = index">
+                  <td>{{i + 1}}</td>
+                  <td>{{stadium.name}}</td>
+                  <td>{{stadium.yards.length}}</td>
+                  <td>{{stadium.address}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="stadiums.length == 0">
+      <p>You don't have any Stadiums</p>
+    </div>
+  </div>
+</div>

@@ -25,7 +25,10 @@
         </div>
       </div>
       <div class="col-md-10">
-        <app-information *ngIf="tab == 'Information'" [enabled]="tab == 'Information' ? true : false"></app-information>
+        <app-stadiums-of-owner *ngIf="tab == 'Stadiums'" [enabled]="tab == 'Stadiums' ? true : false">
+        </app-stadiums-of-owner>
+        <app-information *ngIf="tab == 'Information'" [enabled]="tab == 'Information' ? true : false">
+        </app-information>
       </div>
     </div>
   </div>

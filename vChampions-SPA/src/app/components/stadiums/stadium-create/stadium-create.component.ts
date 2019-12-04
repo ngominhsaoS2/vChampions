@@ -64,6 +64,7 @@ export class StadiumCreateComponent implements OnInit {
 
       this.stadiumService.createStadium(stadium).subscribe(() => {
         this.spinner.hide();
+        this.router.navigate(['/profile/StadiumOwner']);
         this.toastr.success('Create Stadium successfully.', 'Success');
       }, error => {
         this.spinner.hide();

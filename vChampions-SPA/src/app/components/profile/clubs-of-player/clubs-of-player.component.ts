@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
+import { ClubService } from 'src/app/services/club.service';
 
 @Component({
   selector: 'app-clubs-of-player',
@@ -15,9 +16,12 @@ export class ClubsOfPlayerComponent implements OnInit {
   @Input() clubs: any = [];
   @Output() reload = new EventEmitter();
 
+  clubsManged: any = [];
+
   constructor(
     private router: Router,
     private userService: UserService,
+    private clubService: ClubService,
     private toastr: ToastrService,
   ) { }
 
@@ -26,7 +30,17 @@ export class ClubsOfPlayerComponent implements OnInit {
       this.clubs = _.filter(this.clubs, (c) => {
         return c.confirmation !== 'denied';
       });
+
+      this.getClubsManagedByYou();
     }
+  }
+
+  getClubsManagedByYou() {
+    this.clubService.getClubsManagedByYou().subscribe((clubs: any) => {
+      this.clubsManged = clubs;
+    }, error => {
+      console.log(error);
+    });
   }
 
   acceptInvitation(club: any) {

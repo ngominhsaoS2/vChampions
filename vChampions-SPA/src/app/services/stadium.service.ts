@@ -17,4 +17,8 @@ export class StadiumService {
     return this.http.post(this.baseUrl, stadium);
   }
 
+  getStadiumsManagedByYou() {
+    return this.http.get(this.baseUrl + 'managed-by-you');
+  }
+
 }

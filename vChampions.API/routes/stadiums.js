@@ -13,10 +13,15 @@ router.get('/', async (req, res) => {
     res.send(stadiums);
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/find-by-id/:id', async (req, res) => {
     const stadium = await Stadium.findById(req.params.id);
     if (!stadium) return res.status(404).send('The Stadium with the given ID was not found.');
     res.send(stadium);
+});
+
+router.get('/managed-by-you', [auth], async (req, res) => {
+    const stadiums = await Stadium.find({ 'owners._id': req.user._id });
+    res.send(stadiums);
 });
 
 router.post('/', auth, async (req, res) => {
@@ -33,7 +38,7 @@ router.post('/', auth, async (req, res) => {
         name: req.body.name,
         address: req.body.address,
         owners: [
-            _.pick(owner, ['name', 'email', 'phone', 'description', 'avatar'])
+            _.pick(owner, ['_id', 'name', 'email', 'phone', 'description', 'avatar'])
         ],
         yards: _.uniqBy(req.body.yards, 'name')
     });
