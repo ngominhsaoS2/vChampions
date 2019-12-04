@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
 import { ClubService } from 'src/app/services/club.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-clubs-of-player',
@@ -16,6 +17,7 @@ export class ClubsOfPlayerComponent implements OnInit {
   @Input() clubs: any = [];
   @Output() reload = new EventEmitter();
 
+  defaultAvatar = environment.defaultAvatar;
   clubsManged: any = [];
 
   constructor(

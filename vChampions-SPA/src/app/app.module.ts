@@ -8,7 +8,6 @@ import { BsDropdownModule, CarouselModule, AlertModule, ModalModule, TabsModule,
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-/* import { JwtModule } from '@auth0/angular-jwt'; */
 import { ToastrModule } from 'ngx-toastr';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -33,6 +32,7 @@ import { StadiumService } from './services/stadium.service';
 import { ClubManageResolver } from './resolvers/club-manage.resolver';
 import { ClubViewResolver } from './resolvers/club-view.resolver';
 import { LoggedInUserResolver } from './resolvers/logged-in-user.resolver';
+import { StadiumResolver } from './resolvers/stadium.resolver';
 
 // Customized Directives
 
@@ -61,6 +61,7 @@ import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clu
 import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
 import { StadiumCreateComponent } from './components/stadiums/stadium-create/stadium-create.component';
 import { StadiumsOfOwnerComponent } from './components/profile/stadiums-of-owner/stadiums-of-owner.component';
+import { StadiumManageComponent } from './components/stadiums/stadium-manage/stadium-manage.component';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import { StadiumsOfOwnerComponent } from './components/profile/stadiums-of-owner
     InformationComponent,
     ClubsOfPlayerComponent,
     StadiumCreateComponent,
-    StadiumsOfOwnerComponent
+    StadiumsOfOwnerComponent,
+    StadiumManageComponent
   ],
   imports: [
     BrowserModule,
@@ -131,6 +133,7 @@ import { StadiumsOfOwnerComponent } from './components/profile/stadiums-of-owner
     ClubManageResolver,
     ClubViewResolver,
     LoggedInUserResolver,
+    StadiumResolver,
     // Guards
     AuthGuard,
   ],

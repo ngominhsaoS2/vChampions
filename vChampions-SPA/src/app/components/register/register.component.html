@@ -130,9 +130,9 @@
               </form>
             </div>
             <div class="col-md-4">
-              <div class="club-authority">
+              <div class="user-logo">
                 <img *ngIf="!uploadImageResult" class="w-100 maxw-300"
-                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill,g_faces/v1574318630/vChampions/_default-user.jpg"
+                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill,g_faces/v{{defaultAvatar.version}}/{{defaultAvatar.publicId}}"
                   alt="default-user">
                 <img *ngIf="uploadImageResult" class="w-100 maxw-300"
                   src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill,g_faces/v{{uploadImageResult.version}}/{{uploadImageResult.publicId}}"

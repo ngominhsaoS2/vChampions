@@ -102,7 +102,7 @@
             <div class="col-md-4">
               <div class="club-authority">
                 <img *ngIf="logo.publicId == ''" class="w-100 maxw-300"
-                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill/v1574318630/vChampions/_default-logo.jpg"
+                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill/v{{defaultAvatar.version}}/{{defaultAvatar.publicId}}"
                   alt="club.name">
                 <img *ngIf="logo.publicId != ''" class="w-100 maxw-300"
                   src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill/v{{logo.version}}/{{logo.publicId}}"

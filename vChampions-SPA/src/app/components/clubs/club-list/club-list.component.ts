@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClubService } from 'src/app/services/club.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-club-list',
@@ -9,6 +10,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ClubListComponent implements OnInit {
 
+  defaultAvatar = environment.defaultAvatar;
   clubs = [];
 
   constructor(

@@ -20,5 +20,8 @@ export class StadiumService {
   getStadiumsManagedByYou() {
     return this.http.get(this.baseUrl + 'managed-by-you');
   }
+  getStadiumById(id) {
+    return this.http.get(this.baseUrl + 'find-by-id/' + id);
+  }
 
 }

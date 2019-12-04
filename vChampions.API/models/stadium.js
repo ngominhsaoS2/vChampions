@@ -57,6 +57,10 @@ const stadiumSchema = new mongoose.Schema({
       })
     }
   ],
+  logo: {
+    publicId: { type: String, default: '' },
+    version: { type: String, default: '' }
+  },
   images: [
     {
       publicId: { type: String, default: '' },

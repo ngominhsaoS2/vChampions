@@ -3,6 +3,7 @@ import { ClubService } from 'src/app/services/club.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-club-manage',
@@ -13,6 +14,7 @@ export class ClubManageComponent implements OnInit {
 
   title = 'Name of the Club';
   description = 'Description';
+  defaultAvatar = environment.defaultAvatar;
 
   club: any;
   playerToInvite: any;

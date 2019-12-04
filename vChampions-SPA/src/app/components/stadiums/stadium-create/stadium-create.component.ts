@@ -6,6 +6,11 @@ import { ToastrService } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
 import * as _ from 'lodash';
 import { StadiumService } from 'src/app/services/stadium.service';
+import { ImageService } from 'src/app/services/image.service';
+import { environment } from 'src/environments/environment';
+import { FileUploader } from 'ng2-file-upload';
+
+const URL = environment.apiUrl + 'images/add-image';
 
 @Component({
   selector: 'app-stadium-create',
@@ -17,13 +22,21 @@ export class StadiumCreateComponent implements OnInit {
   createStadiumForm: FormGroup;
   yards: any = [];
   yardName = '';
+  uploadImageResult: any;
+  defaultStadium = environment.defaultStadium;
+
+  uploader: FileUploader = new FileUploader({
+    url: URL,
+    disableMultipart: true
+  });
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
-    private stadiumService: StadiumService
+    private stadiumService: StadiumService,
+    private imageService: ImageService,
   ) { }
 
   ngOnInit() {
@@ -61,6 +74,11 @@ export class StadiumCreateComponent implements OnInit {
 
       const stadium = Object.assign({}, this.createStadiumForm.value);
       stadium.yards = this.yards;
+      if (this.uploadImageResult) {
+        stadium.logo = { publicId: this.uploadImageResult.publicId, version: this.uploadImageResult.version };
+      } else {
+        stadium.logo = this.defaultStadium;
+      }
 
       this.stadiumService.createStadium(stadium).subscribe(() => {
         this.spinner.hide();
@@ -72,6 +90,27 @@ export class StadiumCreateComponent implements OnInit {
         console.log(error);
       });
     }
+  }
+
+  imageSelected(event) {
+    this.spinner.show();
+
+    const file: File = event[0];
+    this.imageService.readAsBase64(file).then(base64Image => {
+      if (base64Image) {
+        this.imageService.addImage(base64Image).subscribe((result: any) => {
+          this.uploadImageResult = { publicId: result.public_id, version: result.version };
+          this.spinner.hide();
+          console.log('uploadImageResult', this.uploadImageResult);
+        }, err => {
+          this.spinner.hide();
+          console.log(err);
+        });
+      }
+    }).catch(err => {
+      this.spinner.hide();
+      console.log(err);
+    });
   }
 
 }

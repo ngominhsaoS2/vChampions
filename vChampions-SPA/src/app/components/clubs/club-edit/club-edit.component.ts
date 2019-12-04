@@ -20,6 +20,7 @@ export class ClubEditComponent implements OnInit {
 
   title = 'Name of the Club';
   description = 'Description';
+  defaultAvatar = environment.defaultAvatar;
 
   loggedInUser: any = {};
 

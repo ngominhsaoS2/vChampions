@@ -27,7 +27,7 @@
                             <td colspan="4" class="team">
                               <div class="team-box">
                                 <img *ngIf="club.logo.publicId == ''" class="w-100 maxw-50"
-                                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v1574318630/vChampions/_default-logo.jpg"
+                                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v{{defaultAvatar.version}}/{{defaultAvatar.publicId}}"
                                   alt="club.name">
                                 <img *ngIf="club.logo.publicId != ''" class="w-100 maxw-50"
                                   src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v{{club.logo.version}}/{{club.logo.publicId}}"
@@ -88,7 +88,7 @@
                           <td colspan="4" class="team">
                             <div class="team-box">
                               <img *ngIf="club.logo.publicId == ''" class="w-100 maxw-50"
-                                src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v1574318630/vChampions/_default-logo.jpg"
+                                src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v{{defaultAvatar.version}}/{{defaultAvatar.publicId}}"
                                 alt="club.name">
                               <img *ngIf="club.logo.publicId != ''" class="w-100 maxw-50"
                                 src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v{{club.logo.version}}/{{club.logo.publicId}}"

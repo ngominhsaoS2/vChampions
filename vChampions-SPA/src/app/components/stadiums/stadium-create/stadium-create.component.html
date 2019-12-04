@@ -12,7 +12,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-5">
               <h4 class="mb-3 black">Stadium info</h4>
               <form class="needs-validation" [formGroup]="createStadiumForm">
                 <div class="form-group">
@@ -52,38 +52,56 @@
                 </div>
               </form>
             </div>
-            <div class="col-md-5 m-b-16">
-              <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted black">Yards (*)</span>
-                <span class="badge badge-success badge-pill">{{yards.length}}</span>
-              </h4>
-              <ul class="list-group mb-3 ul-scrollable maxh-300">
-                <li *ngIf="yards.length <= 0" class="list-group-item d-flex justify-content-between lh-condensed">
-                  <small class="text-muted">No Yards added yet</small>
-                </li>
-                <li *ngFor="let yard of yards" class="list-group-item d-flex justify-content-between bg-light">
-                  <div class="text-success">
-                    <label class="black m-b-0">{{yard.name}}</label>
+            <div class="col-md-4 m-b-16">
+              <div class="yard">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-muted black">Yards (*)</span>
+                  <span class="badge badge-success badge-pill">{{yards.length}}</span>
+                </h4>
+                <ul class="list-group mb-3 ul-scrollable maxh-300">
+                  <li *ngIf="yards.length <= 0" class="list-group-item d-flex justify-content-between lh-condensed">
+                    <small class="text-muted">No Yards added yet</small>
+                  </li>
+                  <li *ngFor="let yard of yards" class="list-group-item d-flex justify-content-between bg-light">
+                    <div class="text-success">
+                      <label class="black m-b-0">{{yard.name}}</label>
+                    </div>
+                    <span class="text-muted" tooltip="Remove this Yard" placement="top">
+                      <a class="pointer" (click)="removeYard(yard)">
+                        <i class="fa fa-trash black"></i>
+                      </a>
+                    </span>
+                  </li>
+                </ul>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Yard's name" [(ngModel)]="yardName">
+                  <div class="input-group-append">
+                    <button class="btn btn-success p-b-4" type="button" (click)="addYard()">Add</button>
                   </div>
-                  <span class="text-muted" tooltip="Remove this Yard" placement="top">
-                    <a class="pointer" (click)="removeYard(yard)">
-                      <i class="fa fa-trash black"></i>
-                    </a>
-                  </span>
-                </li>
-              </ul>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Yard's name" [(ngModel)]="yardName">
-                <div class="input-group-append">
-                  <button class="btn btn-success p-b-4" type="button" (click)="addYard()">Add</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 m-b-16">
+              <div class="stadium-logo">
+                <img *ngIf="!uploadImageResult" class="w-100 maxw-300"
+                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill,g_faces/v{{defaultStadium.version}}/{{defaultStadium.publicId}}"
+                  alt="default-stadium">
+                <img *ngIf="uploadImageResult" class="w-100 maxw-300"
+                  src="https://res.cloudinary.com/drssrezsl/image/upload/w_300,h_300,c_fill,g_faces/v{{uploadImageResult.version}}/{{uploadImageResult.publicId}}"
+                  alt="default-stadium">
+                <div class="input-group m-t-10">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" ng2FileSelect [uploader]="uploader"
+                      (onFileSelected)="imageSelected($event)">
+                    <label class="custom-file-label">Choose file</label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-7">
-              <button [disabled]="!createStadiumForm.valid || yards.length == 0"
-                (click)="createStadium()"
+            <div class="col-md-9">
+              <button [disabled]="!createStadiumForm.valid || yards.length == 0" (click)="createStadium()"
                 class="btn btn-primary btn-lg btn-block" type="button">Submit</button>
             </div>
           </div>

@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
 import { ImageService } from 'src/app/services/image.service';
 
 const URL = environment.apiUrl + 'images/add-image';
-const defaultAvatar = environment.defaultAvatar;
 
 @Component({
   selector: 'app-register',
@@ -21,6 +20,7 @@ export class RegisterComponent implements OnInit {
   user: any;
   registerForm: FormGroup;
   uploadImageResult: any;
+  defaultAvatar = environment.defaultAvatar;
 
   uploader: FileUploader = new FileUploader({
     url: URL,
@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
       if (this.uploadImageResult) {
         this.user.avatar = { publicId: this.uploadImageResult.publicId, version: this.uploadImageResult.version };
       } else {
-        this.user.avatar = defaultAvatar;
+        this.user.avatar = this.defaultAvatar;
       }
 
       this.authService.register(this.user).subscribe(() => {

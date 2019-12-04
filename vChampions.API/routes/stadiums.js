@@ -37,6 +37,7 @@ router.post('/', auth, async (req, res) => {
     stadium = new Stadium({
         name: req.body.name,
         address: req.body.address,
+        logo: req.body.logo,
         owners: [
             _.pick(owner, ['_id', 'name', 'email', 'phone', 'description', 'avatar'])
         ],

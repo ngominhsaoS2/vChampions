@@ -8,7 +8,7 @@
           <div class="col-12">
             <div class="club-authority">
               <img *ngIf="club.logo.publicId == ''" class="maxw-200"
-                src="https://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill/v1574318630/vChampions/_default-logo.jpg"
+                src="https://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill/v{{defaultAvatar.version}}/{{defaultAvatar.publicId}}"
                 alt="club.name">
               <img *ngIf="club.logo.publicId != ''" class="maxw-300"
                 src="https://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill/v{{club.logo.version}}/{{club.logo.publicId}}"

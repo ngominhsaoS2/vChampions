@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
+// Components
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
@@ -8,15 +9,18 @@ import { ClubCreateComponent } from './components/clubs/club-create/club-create.
 import { ClubListComponent } from './components/clubs/club-list/club-list.component';
 import { ClubViewComponent } from './components/clubs/club-view/club-view.component';
 import { ClubManageComponent } from './components/clubs/club-manage/club-manage.component';
-import { ClubManageResolver } from './resolvers/club-manage.resolver';
-import { ClubViewResolver } from './resolvers/club-view.resolver';
 import { PlayerListComponent } from './components/players/player-list/player-list.component';
 import { ProfilePlayerComponent } from './components/profile/profile-player/profile-player.component';
 import { ProfileOwnerComponent } from './components/profile/profile-owner/profile-owner.component';
-import { LoggedInUserResolver } from './resolvers/logged-in-user.resolver';
 import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
 import { StadiumCreateComponent } from './components/stadiums/stadium-create/stadium-create.component';
+import { StadiumManageComponent } from './components/stadiums/stadium-manage/stadium-manage.component';
 
+// Resolvers
+import { ClubManageResolver } from './resolvers/club-manage.resolver';
+import { ClubViewResolver } from './resolvers/club-view.resolver';
+import { LoggedInUserResolver } from './resolvers/logged-in-user.resolver';
+import { StadiumResolver } from './resolvers/stadium.resolver';
 
 export const appRoutes: Routes = [
   // Home, Register, Login, Logout ...
@@ -47,6 +51,7 @@ export const appRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'stadium/create', component: StadiumCreateComponent },
+      { path: 'stadium/manage/:id', component: StadiumManageComponent, resolve: { stadium: StadiumResolver } },
     ]
   },
 

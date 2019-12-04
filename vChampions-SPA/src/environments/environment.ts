@@ -13,6 +13,10 @@ export const environment = {
   defaultLogo: {
     publicId: 'vChampions/_default-logo.png',
     version: '1574398775'
+  },
+  defaultStadium: {
+    publicId: 'vChampions/_default-stadium.jpg',
+    version: '1575427287'
   }
 };
 

@@ -16,7 +16,9 @@
               <tbody>
                 <tr *ngFor="let stadium of stadiums; let i = index">
                   <td>{{i + 1}}</td>
-                  <td>{{stadium.name}}</td>
+                  <td>
+                    <a [routerLink]="['/stadium/manage/', stadium._id]" class="default">{{stadium.name}}</a>
+                  </td>
                   <td>{{stadium.yards.length}}</td>
                   <td>{{stadium.address}}</td>
                 </tr>

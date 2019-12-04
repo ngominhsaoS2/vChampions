@@ -5,32 +5,33 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
+const defaultStadium = environment.defaultStadium;
+
 @Component({
-  selector: 'app-club-view',
-  templateUrl: './club-view.component.html',
-  styleUrls: ['./club-view.component.css']
+  selector: 'app-stadium-manage',
+  templateUrl: './stadium-manage.component.html',
+  styleUrls: ['./stadium-manage.component.css']
 })
-export class ClubViewComponent implements OnInit {
+export class StadiumManageComponent implements OnInit {
 
-  title = 'Name of the Club';
+  title = 'Name of the Stadium';
   description = 'Description';
-  defaultAvatar = environment.defaultAvatar;
+  defaultStadium = environment.defaultStadium;
 
-  club: any;
+  stadium: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private clubService: ClubService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.club = data.club;
-      this.title = this.club.name;
-      this.description = 'Manager: ' + this.club.manager.name + ' - ' + this.club.manager.phone + ' / ' + this.club.manager.email;
+      this.stadium = data.stadium;
+      this.title = this.stadium.name;
+      this.description = 'Address: ' + this.stadium.address;
     });
   }
 
