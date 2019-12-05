@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { FileUploader } from 'ng2-file-upload';
 
 const URL = environment.apiUrl + 'images/add-image';
+const folderStadium = environment.folderStadium;
 
 @Component({
   selector: 'app-stadium-create',
@@ -98,7 +99,7 @@ export class StadiumCreateComponent implements OnInit {
     const file: File = event[0];
     this.imageService.readAsBase64(file).then(base64Image => {
       if (base64Image) {
-        this.imageService.addImage(base64Image).subscribe((result: any) => {
+        this.imageService.addImage(base64Image, folderStadium).subscribe((result: any) => {
           this.uploadImageResult = { publicId: result.public_id, version: result.version };
           this.spinner.hide();
           console.log('uploadImageResult', this.uploadImageResult);

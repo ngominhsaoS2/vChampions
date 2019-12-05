@@ -17,7 +17,10 @@ export const environment = {
   defaultStadium: {
     publicId: 'vChampions/_default-stadium.jpg',
     version: '1575427287'
-  }
+  },
+  folderUser: 'user',
+  folderStadium: 'stadium',
+  folderLogo: 'logo',
 };
 
 /*

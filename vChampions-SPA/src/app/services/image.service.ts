@@ -12,8 +12,8 @@ export class ImageService {
     private http: HttpClient,
   ) { }
 
-  addImage(image: any) {
-    return this.http.post(this.baseUrl + 'add-image', { image });
+  addImage(image: any, folder: string) {
+    return this.http.post(this.baseUrl + 'add-image', { image, folder });
   }
 
   readAsBase64(file): Promise<any> {

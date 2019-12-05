@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { ImageService } from 'src/app/services/image.service';
 
 const URL = environment.apiUrl + 'images/add-image';
+const folderUser = environment.folderUser;
 
 @Component({
   selector: 'app-register',
@@ -85,7 +86,7 @@ export class RegisterComponent implements OnInit {
     const file: File = event[0];
     this.imageService.readAsBase64(file).then(base64Image => {
       if (base64Image) {
-        this.imageService.addImage(base64Image).subscribe((result: any) => {
+        this.imageService.addImage(base64Image, folderUser).subscribe((result: any) => {
           this.uploadImageResult = { publicId: result.public_id, version: result.version };
           this.spinner.hide();
           console.log('uploadImageResult', this.uploadImageResult);

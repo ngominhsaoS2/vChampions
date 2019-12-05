@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/services/auth.service';
 
 const URL = environment.apiUrl + 'images/add-image';
+const folderLogo = environment.folderLogo;
 
 @Component({
   selector: 'app-club-edit',
@@ -95,7 +96,7 @@ export class ClubEditComponent implements OnInit {
     const file: File = event[0];
     this.imageService.readAsBase64(file).then(base64Image => {
       if (base64Image) {
-        this.imageService.addImage(base64Image).subscribe((result: any) => {
+        this.imageService.addImage(base64Image, folderLogo).subscribe((result: any) => {
           this.logo = { publicId: result.public_id, version: result.version };
           this.spinner.hide();
           console.log('logo', this.logo);

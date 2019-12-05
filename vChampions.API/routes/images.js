@@ -13,7 +13,7 @@ cloudinary.config({
 });
 
 router.post('/add-image', async (req, res) => {
-    const publidId = cloudinaryFolder + uuidv1();
+    const publidId = cloudinaryFolder + req.body.folder + '/' + uuidv1();
     cloudinary.uploader.upload(req.body.image, { public_id: publidId }, (error, result) => {
         if (error) res.status(500).send(error);
         res.send(result);
