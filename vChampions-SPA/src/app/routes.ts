@@ -1,6 +1,12 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
+// Resolvers
+import { ClubManageResolver } from './resolvers/club-manage.resolver';
+import { ClubViewResolver } from './resolvers/club-view.resolver';
+import { LoggedInUserResolver } from './resolvers/logged-in-user.resolver';
+import { StadiumResolver } from './resolvers/stadium.resolver';
+
 // Components
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -15,12 +21,8 @@ import { ProfileOwnerComponent } from './components/profile/profile-owner/profil
 import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
 import { StadiumCreateComponent } from './components/stadiums/stadium-create/stadium-create.component';
 import { StadiumManageComponent } from './components/stadiums/stadium-manage/stadium-manage.component';
+import { StadiumEditComponent } from './components/stadiums/stadium-edit/stadium-edit.component';
 
-// Resolvers
-import { ClubManageResolver } from './resolvers/club-manage.resolver';
-import { ClubViewResolver } from './resolvers/club-view.resolver';
-import { LoggedInUserResolver } from './resolvers/logged-in-user.resolver';
-import { StadiumResolver } from './resolvers/stadium.resolver';
 
 export const appRoutes: Routes = [
   // Home, Register, Login, Logout ...
@@ -51,6 +53,7 @@ export const appRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'stadium/create', component: StadiumCreateComponent },
+      { path: 'stadium/edit/:id', component: StadiumEditComponent, resolve: { stadium: StadiumResolver } },
       { path: 'stadium/manage/:id', component: StadiumManageComponent, resolve: { stadium: StadiumResolver } },
     ]
   },

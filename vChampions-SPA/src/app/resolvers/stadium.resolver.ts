@@ -14,7 +14,7 @@ export class StadiumResolver implements Resolve<any> {
   ) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
-    return this.stadiumService.getStadiumById(route.params.id).pipe(
+    return this.stadiumService.getStadiumManageView(route.params.id).pipe(
       catchError(error => {
         this.toastr.error(error.error, 'Error');
         this.router.navigate(['/profile/StadiumOwner']);

@@ -89,7 +89,6 @@ export class RegisterComponent implements OnInit {
         this.imageService.addImage(base64Image, folderUser).subscribe((result: any) => {
           this.uploadImageResult = { publicId: result.public_id, version: result.version };
           this.spinner.hide();
-          console.log('uploadImageResult', this.uploadImageResult);
         }, err => {
           this.spinner.hide();
           console.log(err);

@@ -1,6 +1,4 @@
-<app-carousel-sm [title]="title" [description]="description">
-</app-carousel-sm>
-<div class="news-area p-t-30 p-b-60">
+<div class="news-area p-t-100 p-b-60">
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-lg-3">
@@ -13,8 +11,8 @@
               <img *ngIf="stadium.logo.publicId != ''" class="maxw-300"
                 src="https://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill/v{{stadium.logo.version}}/{{stadium.logo.publicId}}"
                 alt="club.name">
-              <h4 class="mt30 black">{{stadium.name}}</h4>
-              <div class="authority-box mt30">
+              <h4 class="m-t-20 black">{{stadium.name}}</h4>
+              <div class="authority-box m-t-20">
                 <p class="m-b-8"><strong>Owner: </strong>{{stadium.owners[0].name}}</p>
                 <p class="m-b-8"><strong>Contact: </strong>{{stadium.owners[0].phone}}/{{stadium.owners[0].email}}</p>
                 <p class="m-b-8"><strong>Address: </strong>{{stadium.address}}</p>

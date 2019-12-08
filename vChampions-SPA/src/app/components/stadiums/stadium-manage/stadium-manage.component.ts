@@ -5,8 +5,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
-const defaultStadium = environment.defaultStadium;
-
 @Component({
   selector: 'app-stadium-manage',
   templateUrl: './stadium-manage.component.html',
@@ -14,10 +12,7 @@ const defaultStadium = environment.defaultStadium;
 })
 export class StadiumManageComponent implements OnInit {
 
-  title = 'Name of the Stadium';
-  description = 'Description';
   defaultStadium = environment.defaultStadium;
-
   stadium: any;
 
   constructor(
@@ -30,8 +25,6 @@ export class StadiumManageComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.stadium = data.stadium;
-      this.title = this.stadium.name;
-      this.description = 'Address: ' + this.stadium.address;
     });
   }
 

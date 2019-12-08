@@ -7,15 +7,15 @@ export const environment = {
   apiUrl: 'http://localhost:3000/api/',
   pageSize: 10,
   defaultAvatar: {
-    publicId: 'vChampions/_default-user.jpg',
+    publicId: 'vChampions/default/_default-user.jpg',
     version: '1574318630'
   },
   defaultLogo: {
-    publicId: 'vChampions/_default-logo.png',
+    publicId: 'vChampions/default/_default-logo.png',
     version: '1574398775'
   },
   defaultStadium: {
-    publicId: 'vChampions/_default-stadium.jpg',
+    publicId: 'vChampions/default/_default-stadium.jpg',
     version: '1575427287'
   },
   folderUser: 'user',

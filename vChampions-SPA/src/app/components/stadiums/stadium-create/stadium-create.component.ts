@@ -102,7 +102,6 @@ export class StadiumCreateComponent implements OnInit {
         this.imageService.addImage(base64Image, folderStadium).subscribe((result: any) => {
           this.uploadImageResult = { publicId: result.public_id, version: result.version };
           this.spinner.hide();
-          console.log('uploadImageResult', this.uploadImageResult);
         }, err => {
           this.spinner.hide();
           console.log(err);

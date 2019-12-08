@@ -28,8 +28,10 @@
         </div>
       </div>
     </div>
-    <div *ngIf="stadiums.length == 0">
-      <p>You don't have any Stadiums</p>
-    </div>
+    <alert *ngIf="stadiums.length == 0" type="success">
+      <h4 class="alert-heading p-b-8">Oh snap!</h4>
+      <p class="m-b-0">You don't manage any Stadiums. To create one, please click <a [routerLink]="['/stadium/create']"
+          class="alert-link">Create your own Stadium</a></p>
+    </alert>
   </div>
 </div>

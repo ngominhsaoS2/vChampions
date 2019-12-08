@@ -60,6 +60,7 @@ import { InformationComponent } from './components/profile/information/informati
 import { ClubsOfPlayerComponent } from './components/profile/clubs-of-player/clubs-of-player.component';
 import { ClubEditComponent } from './components/clubs/club-edit/club-edit.component';
 import { StadiumCreateComponent } from './components/stadiums/stadium-create/stadium-create.component';
+import { StadiumEditComponent } from './components/stadiums/stadium-edit/stadium-edit.component';
 import { StadiumsOfOwnerComponent } from './components/profile/stadiums-of-owner/stadiums-of-owner.component';
 import { StadiumManageComponent } from './components/stadiums/stadium-manage/stadium-manage.component';
 
@@ -91,6 +92,7 @@ import { StadiumManageComponent } from './components/stadiums/stadium-manage/sta
     InformationComponent,
     ClubsOfPlayerComponent,
     StadiumCreateComponent,
+    StadiumEditComponent,
     StadiumsOfOwnerComponent,
     StadiumManageComponent
   ],

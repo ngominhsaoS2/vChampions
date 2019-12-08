@@ -3,6 +3,7 @@ const router = express.Router();
 const _ = require('lodash');
 const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
+const isAdminOrModerator = require('../middlewares/isAdminOrModerator');
 const { Fawn } = require('../middlewares/fawn');
 const { Stadium, validateStadium, validateYards, validatePrices } = require('../models/stadium');
 const { User } = require('../models/user');
@@ -16,6 +17,16 @@ router.get('/', async (req, res) => {
 router.get('/find-by-id/:id', async (req, res) => {
     const stadium = await Stadium.findById(req.params.id);
     if (!stadium) return res.status(404).send('The Stadium with the given ID was not found.');
+    res.send(stadium);
+});
+
+router.get('/manage/:id', [auth, isAdminOrModerator], async (req, res) => {
+    const stadium = await Stadium.findById(req.params.id);
+    if (!stadium) return res.status(404).send('The Stadium with the given ID was not found.');
+
+    if (_.findIndex(stadium.owners, { _id: mongoose.Types.ObjectId(req.user._id) }) == -1 && req.isAdminOrModerator == false)
+        return res.status(400).send('Just Owner of this Stadium is authorized to edit');
+
     res.send(stadium);
 });
 
@@ -46,6 +57,30 @@ router.post('/', auth, async (req, res) => {
 
     await stadium.save();
     res.send(stadium);
+});
+
+router.put('/:id', [auth, isAdminOrModerator], async (req, res) => {
+    const error = await validateStadium(req.body);
+    if (error != true) return res.status(400).send(error);
+
+    let stadium = await Stadium.findById(req.params.id);
+    if (!stadium) return res.status(400).send('Invalid Stadium.');
+
+    if (_.findIndex(stadium.owners, { _id: mongoose.Types.ObjectId(req.user._id) }) == -1 && req.isAdminOrModerator == false)
+        return res.status(400).send('Just Owner of this Stadium is authorized to edit');
+
+    stadium = await Stadium.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+            name: req.body.name,
+            address: req.body.address,
+            logo: req.body.logo,
+            yards: _.uniqBy(req.body.yards, 'name')
+        },
+        { new: true }
+    );
+
+    return res.status(200).send(stadium);
 });
 
 router.put('/:id/add-yards', auth, async (req, res) => {
@@ -82,7 +117,7 @@ router.put('/:id/add-prices', auth, async (req, res) => {
         return res.status(400).send('Just owners of this Stadium are authorized to add new yards.');
 
     stadium.prices = _.concat(stadium.prices, req.body.prices);
-    
+
     await stadium.save();
     res.send(stadium);
 });

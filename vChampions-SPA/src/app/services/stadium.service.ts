@@ -17,11 +17,16 @@ export class StadiumService {
     return this.http.post(this.baseUrl, stadium);
   }
 
+  editStadium(stadium: any) {
+    return this.http.put(this.baseUrl + stadium._id, stadium);
+  }
+
   getStadiumsManagedByYou() {
     return this.http.get(this.baseUrl + 'managed-by-you');
   }
-  getStadiumById(id) {
-    return this.http.get(this.baseUrl + 'find-by-id/' + id);
+
+  getStadiumManageView(id) {
+    return this.http.get(this.baseUrl + 'manage/' + id);
   }
 
 }
