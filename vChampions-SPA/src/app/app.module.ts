@@ -20,6 +20,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 // Customized Guards
 import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
 
 // Customized Services
 import { TokenInterceptor } from './services/token-interceptor';
@@ -138,6 +139,7 @@ import { StadiumManageComponent } from './components/stadiums/stadium-manage/sta
     StadiumResolver,
     // Guards
     AuthGuard,
+    RoleGuard
   ],
   bootstrap: [
     AppComponent

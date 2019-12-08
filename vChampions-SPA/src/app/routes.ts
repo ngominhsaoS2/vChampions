@@ -22,6 +22,7 @@ import { ClubEditComponent } from './components/clubs/club-edit/club-edit.compon
 import { StadiumCreateComponent } from './components/stadiums/stadium-create/stadium-create.component';
 import { StadiumManageComponent } from './components/stadiums/stadium-manage/stadium-manage.component';
 import { StadiumEditComponent } from './components/stadiums/stadium-edit/stadium-edit.component';
+import { RoleGuard } from './guards/role.guard';
 
 
 export const appRoutes: Routes = [
@@ -35,7 +36,8 @@ export const appRoutes: Routes = [
   {
     path: '',
     runGuardsAndResolvers: 'always',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: { roles: ['Player'] },
     children: [
       { path: 'club/create', component: ClubCreateComponent },
       { path: 'club/manage-list', component: ClubListComponent },
@@ -44,13 +46,14 @@ export const appRoutes: Routes = [
       { path: 'club/edit/:clubCode', component: ClubEditComponent, resolve: { club: ClubManageResolver } },
     ]
   },
-  { path: 'club/view/:clubCode', component: ClubViewComponent },
+  /* { path: 'club/view/:clubCode', component: ClubViewComponent }, */
 
   // Stadiums
   {
     path: '',
     runGuardsAndResolvers: 'always',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: { roles: ['StadiumOwner'] },
     children: [
       { path: 'stadium/create', component: StadiumCreateComponent },
       { path: 'stadium/edit/:id', component: StadiumEditComponent, resolve: { stadium: StadiumResolver } },
@@ -65,10 +68,19 @@ export const appRoutes: Routes = [
   {
     path: '',
     runGuardsAndResolvers: 'always',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, RoleGuard],
+    data: { roles: ['StadiumOwner'] },
     children: [
-      { path: 'profile/Player', component: ProfilePlayerComponent, resolve: { player: LoggedInUserResolver } },
       { path: 'profile/StadiumOwner', component: ProfileOwnerComponent, resolve: { owner: LoggedInUserResolver } },
+    ]
+  },
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard, RoleGuard],
+    data: { roles: ['Player'] },
+    children: [
+      { path: 'profile/Player', component: ProfilePlayerComponent, resolve: { player: LoggedInUserResolver } }
     ]
   },
 
