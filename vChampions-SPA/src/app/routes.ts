@@ -46,7 +46,6 @@ export const appRoutes: Routes = [
       { path: 'club/edit/:clubCode', component: ClubEditComponent, resolve: { club: ClubManageResolver } },
     ]
   },
-  /* { path: 'club/view/:clubCode', component: ClubViewComponent }, */
 
   // Stadiums
   {

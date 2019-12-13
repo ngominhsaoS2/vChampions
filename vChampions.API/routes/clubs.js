@@ -121,6 +121,17 @@ router.put('/:id', [auth, isAdminOrModerator], async (req, res) => {
     try {
         var task = Fawn.Task();
 
+        task.update('clubs', { _id: mongoose.Types.ObjectId(req.params.id) }, {
+            $set: {
+                'code': req.body.code,
+                'name': req.body.name,
+                'city': req.body.city,
+                'district': req.body.district,
+                'description': req.body.description,
+                'logo': req.body.logo,
+            }
+        });
+
         if (club.players.length > 0) {
             for (let player of club.players) {
                 task.update('users', { _id: player._id, 'clubs._id': mongoose.Types.ObjectId(req.params.id) }, {
@@ -135,17 +146,6 @@ router.put('/:id', [auth, isAdminOrModerator], async (req, res) => {
                 });
             }
         }
-
-        task.update('clubs', { _id: mongoose.Types.ObjectId(req.params.id) }, {
-            $set: {
-                'code': req.body.code,
-                'name': req.body.name,
-                'city': req.body.city,
-                'district': req.body.district,
-                'description': req.body.description,
-                'logo': req.body.logo,
-            }
-        });
 
         task.run();
         res.send(club);
