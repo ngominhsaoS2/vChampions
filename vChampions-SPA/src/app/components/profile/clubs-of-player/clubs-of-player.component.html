@@ -28,10 +28,10 @@
                               <div class="team-box">
                                 <img *ngIf="club.logo.publicId == ''" class="w-100 maxw-50"
                                   src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v{{defaultAvatar.version}}/{{defaultAvatar.publicId}}"
-                                  alt="club.name">
+                                  alt="{{club.code}}">
                                 <img *ngIf="club.logo.publicId != ''" class="w-100 maxw-50"
                                   src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v{{club.logo.version}}/{{club.logo.publicId}}"
-                                  alt="club.name">
+                                  alt="{{club.code}}">
                                 <span class="f-s-22"><a [routerLink]="['/club/manage/', club.code]"
                                     class="default">{{club.name}}</a></span>
                               </div>
@@ -89,10 +89,10 @@
                             <div class="team-box">
                               <img *ngIf="club.logo.publicId == ''" class="w-100 maxw-50"
                                 src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v{{defaultAvatar.version}}/{{defaultAvatar.publicId}}"
-                                alt="club.name">
+                                alt="{{club.code}}">
                               <img *ngIf="club.logo.publicId != ''" class="w-100 maxw-50"
                                 src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill/v{{club.logo.version}}/{{club.logo.publicId}}"
-                                alt="club.name">
+                                alt="{{club.code}}">
                               <span class="f-s-22"><a class="default pointer"
                                   (click)="viewClub(club)">{{club.name}}</a></span>
                             </div>
