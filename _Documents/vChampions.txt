@@ -65,9 +65,9 @@ III. Yêu cầu, chức năng vả tình hình thực hiện
 
     4. Tạo trang quản lý cho chủ sân
         - Từ User, tạo sân bóng
-            E. 
+            A. Done.
         - Thêm sửa xoá các sân trong sân bóng của mình
-            E. 
+            A. Done.
         - Tình hình sân available
             E. 
         - Thêm một vài chức năng ERP cho chủ sân
@@ -115,10 +115,10 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/11/26: Edit club (đã bao gồm upload ảnh), hiển thị ảnh club ở các nơi liên quan
 - 2019/11/29: Change postion, strict cors
 - 2019/12/02: Create Stadiums, view list Stadiums của StadiumOwner
-- 2019/12/05: Create Stadium manage view
+- 2019/12/05: Create Stadium manage view, update được thông tin chung của Stadium
 - 2019/12/08: Cho bản thân tạm nghỉ tới sau Noel hoặc sau năm mới (tương đương 3 tuần nghỉ) để relax, đọc sách, thư giãn, chữa bệnh
-- 2020/01/01: 
-- 2020/01/14: 
+- 2020/01/01: Oke bắt đầu quay trở lại guồng công việc nào, dạo này lười quen rồi đấy -_-
+-  
 
 
 
