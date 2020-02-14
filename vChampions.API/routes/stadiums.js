@@ -116,7 +116,9 @@ router.put('/:id/add-prices', auth, async (req, res) => {
     if (!(_.find(stadium.owners, { 'email': req.user.email })))
         return res.status(400).send('Just owners of this Stadium are authorized to add new yards.');
 
+    stadium.prices = _.uniqBy(stadium.prices, x => [x.from, x.to].join()); // To unique items before concat
     stadium.prices = _.concat(stadium.prices, req.body.prices);
+    stadium.prices = _.uniqBy(stadium.prices, x => [x.from, x.to].join()); // To unique items after concat
 
     await stadium.save();
     res.send(stadium);

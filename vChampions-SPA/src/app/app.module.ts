@@ -64,7 +64,7 @@ import { StadiumCreateComponent } from './components/stadiums/stadium-create/sta
 import { StadiumEditComponent } from './components/stadiums/stadium-edit/stadium-edit.component';
 import { StadiumsOfOwnerComponent } from './components/profile/stadiums-of-owner/stadiums-of-owner.component';
 import { StadiumManageComponent } from './components/stadiums/stadium-manage/stadium-manage.component';
-
+import { PriceCreateEditComponent } from './components/stadiums/price-create-edit/price-create-edit.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +95,8 @@ import { StadiumManageComponent } from './components/stadiums/stadium-manage/sta
     StadiumCreateComponent,
     StadiumEditComponent,
     StadiumsOfOwnerComponent,
-    StadiumManageComponent
+    StadiumManageComponent,
+    PriceCreateEditComponent
   ],
   imports: [
     BrowserModule,
