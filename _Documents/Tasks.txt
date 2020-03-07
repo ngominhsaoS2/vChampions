@@ -12,5 +12,6 @@ Status: A: Đã hoàn thành
 
 - L2: Chỉnh sửa lại giao diện login
 - L2: Chỉnh sửa lại giao diện register
-- 
+- L2: Chỉ cho phép nhập số
+- L2: format input theo currency
 - 

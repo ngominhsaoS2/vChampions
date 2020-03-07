@@ -118,10 +118,6 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/12/05: Create Stadium manage view, update được thông tin chung của Stadium
 - 2019/12/08: Cho bản thân tạm nghỉ tới sau Noel hoặc sau năm mới (tương đương 3 tuần nghỉ) để relax, đọc sách, thư giãn, chữa bệnh
 - 2020/01/01: Oke bắt đầu quay trở lại guồng công việc nào, dạo này lười quen rồi đấy -_-
-- 2020/01/10: 
-- 2020/01/13: 
-- 2020/01/16: 
-- 2020/01/19: 
-- 2020/01/22: 
-- 2020/01/25: 
+- 2020/02/17: Tạo được giao diện của price-create-edit.component
+- 2020/02/20: 
 

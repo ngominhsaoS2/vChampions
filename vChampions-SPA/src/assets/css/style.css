@@ -380,7 +380,7 @@ input {
   border: 1px solid #6b6b6b;
 }
 input:hover, input:focus {
-  border: 2px solid #76c100 !important;
+  border: 1px solid #76c100 !important;
 }
 
 .form-control:hover, .form-control:focus {

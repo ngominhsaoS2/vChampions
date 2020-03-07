@@ -2,10 +2,61 @@
 <form class="card">
   <div class="input-group">
     <div class="btn-group w-100" role="group">
-      <button type="button" class="btn btn-success"
+      <button type="button" class="btn btn-success" (click)="mdPrice.show()"
         tooltip="Find Players already registered on vChampions" placement="bottom" [delay]="500">
         Add Price
       </button>
     </div>
   </div>
 </form>
+
+<!-- Modal -->
+<div bsModal #mdPrice="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left black">Price</h4>
+        <button type="button" class="close pull-right" (click)="mdPrice.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="priceForm">
+          <div class="form-group">
+            <label class="black">From</label>
+            <timepicker [formControlName]="'from'" [showMeridian]="true" [showSpinners]="false"></timepicker>
+            <small class="form-text text-muted">You could also use scroll to change time.</small>
+          </div>
+          <div class="form-group">
+            <label class="black">To</label>
+            <timepicker [formControlName]="'to'" [showMeridian]="true" [showSpinners]="false"></timepicker>
+          </div>
+          <div class="form-group m-b-3">
+            <label class="black" [appHighlight]="'orange'">Price</label>
+            <input type="number" class="form-control" formControlName="price"
+              [ngClass]="{'is-invalid': priceForm.get('price').errors && priceForm.get('price').touched}">
+            <div class="invalid-feedback"
+              *ngIf="priceForm.get('price').hasError('required') && priceForm.get('price').touched">
+              Please choose a Price
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="priceForm.get('price').hasError('pattern') && priceForm.get('price').touched">
+              Just type in number, without space
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="priceForm.get('price').hasError('min') && priceForm.get('price').touched">
+              Should be greater than or equal 100,0000
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="priceForm.get('price').hasError('max') && priceForm.get('price').touched">
+              Should be less than or equal 2,000,000
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" [disabled]="!priceForm.valid" (click)="addPrice()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

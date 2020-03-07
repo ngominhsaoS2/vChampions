@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule, CarouselModule, AlertModule, ModalModule, TabsModule, TooltipModule, PaginationModule } from 'ngx-bootstrap';
+// tslint:disable-next-line: max-line-length
+import { BsDropdownModule, CarouselModule, AlertModule, ModalModule, TabsModule, TooltipModule, PaginationModule, TimepickerModule } from 'ngx-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,7 +37,7 @@ import { LoggedInUserResolver } from './resolvers/logged-in-user.resolver';
 import { StadiumResolver } from './resolvers/stadium.resolver';
 
 // Customized Directives
-
+import { HighlightDirective } from './directives/high-light.directive';
 
 // Components
 import { AppComponent } from './app.component';
@@ -66,9 +67,11 @@ import { StadiumsOfOwnerComponent } from './components/profile/stadiums-of-owner
 import { StadiumManageComponent } from './components/stadiums/stadium-manage/stadium-manage.component';
 import { PriceCreateEditComponent } from './components/stadiums/price-create-edit/price-create-edit.component';
 
+
 @NgModule({
   declarations: [
     // Directives
+    HighlightDirective,
 
     // Components
     AppComponent,
@@ -112,6 +115,7 @@ import { PriceCreateEditComponent } from './components/stadiums/price-create-edi
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
     PaginationModule.forRoot(),
+    TimepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     NgxSpinnerModule,
     SweetAlert2Module.forRoot(),

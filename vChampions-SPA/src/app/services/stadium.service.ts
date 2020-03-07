@@ -13,6 +13,14 @@ export class StadiumService {
     private http: HttpClient
   ) { }
 
+  getStadiumsManagedByYou() {
+    return this.http.get(this.baseUrl + 'managed-by-you');
+  }
+
+  getStadiumManageView(id) {
+    return this.http.get(this.baseUrl + 'manage/' + id);
+  }
+
   createStadium(stadium: any) {
     return this.http.post(this.baseUrl, stadium);
   }
@@ -21,12 +29,8 @@ export class StadiumService {
     return this.http.put(this.baseUrl + stadium._id, stadium);
   }
 
-  getStadiumsManagedByYou() {
-    return this.http.get(this.baseUrl + 'managed-by-you');
-  }
-
-  getStadiumManageView(id) {
-    return this.http.get(this.baseUrl + 'manage/' + id);
+  addPrice(prices: any, stadiumId: string) {
+    return this.http.put(this.baseUrl + stadiumId + '/add-prices', prices);
   }
 
 }
