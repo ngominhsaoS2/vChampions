@@ -46,6 +46,8 @@ export class PriceCreateEditComponent implements OnInit {
       const price = Object.assign({}, this.priceForm.value);
       const prices = { prices: [price] };
 
+      console.log(price);
+
       this.stadiumService.addPrice(prices, this.stadium._id).subscribe((newStadium) => {
         this.spinner.hide();
         this.mdPrice.hide();

@@ -107,6 +107,8 @@ router.put('/:id/add-yards', auth, async (req, res) => {
 });
 
 router.put('/:id/add-prices', auth, async (req, res) => {
+    console.log(req.body.prices);
+    
     const error = await validatePrices(req.body);
     if (error != true) return res.status(400).send(error);
 
