@@ -28,7 +28,7 @@ export class NavComponent implements OnInit {
     return this.authService.loggedIn();
   }
 
-  hasRoles(requiredRoles: []) {
+  hasRoles(requiredRoles: any) {
     return this.authService.hasRoles(requiredRoles);
   }
 

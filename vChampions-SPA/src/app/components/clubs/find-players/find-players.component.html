@@ -36,7 +36,7 @@
             <input type="text" class="form-control" placeholder="Name" [(ngModel)]="criteria.name" />
           </div>
           <div class="col-3">
-            <button type="button" class="btn btn-sm btn-secondary p-b-6 p-t-6" [(click)="findPlayers()"]>
+            <button type="button" class="btn btn-sm btn-secondary p-b-6 p-t-6" (click)="findPlayers(1)">
               <i class="fa fa-search"></i> Search
             </button>
           </div>

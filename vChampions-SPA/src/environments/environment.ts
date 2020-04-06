@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/api/',
+  apiUrl: 'http://139.180.134.199/api/',
   pageSize: 10,
   defaultAvatar: {
     publicId: 'vChampions/default/_default-user.jpg',
