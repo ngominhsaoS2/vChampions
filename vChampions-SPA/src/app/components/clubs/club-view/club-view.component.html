@@ -50,7 +50,7 @@
                             tooltip="Captain" placement="right">C</span>
                         </h5>
                         <p class="m-t-6 m-b-6">
-                          position:
+                          Position:
                           <span *ngFor="let position of player.positions" class="badge m-r-3"
                             [ngClass]="position == 'GK' ? 'badge-warning' : (position == 'DF' ? 'badge-primary' : (position == 'MF' ? 'badge-success' : 'badge-danger'))"
                             tooltip="{{position == 'GK' ? 'Goalkeeper' : (position == 'DF' ? 'Defender' : (position == 'MF' ? 'Middlefield' : 'Forward'))}}"
