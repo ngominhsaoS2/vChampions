@@ -79,7 +79,7 @@ export class ClubManageComponent implements OnInit {
 
   changePosition(player: any, position: string) {
     this.clubService.changePosition(this.club._id, player._id, position).subscribe(() => {
-      this.reloadClub(); // reload the Club after change postion of a Player
+      this.reloadClub(); // reload the Club after change position of a Player
       this.toastr.success(player.name + ' plays as ' + position + ' now.');
     }, error => {
       this.toastr.error(error.error, 'Error');

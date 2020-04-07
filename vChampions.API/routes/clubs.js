@@ -241,7 +241,7 @@ router.put('/:clubId/set-as-captain/:playerId', [auth, isAdminOrModerator], asyn
     }
 });
 
-router.put('/:clubId/change-position/:playerId/:postion', [auth, isAdminOrModerator], async (req, res) => {
+router.put('/:clubId/change-position/:playerId/:position', [auth, isAdminOrModerator], async (req, res) => {
     let club = await Club.findById(req.params.clubId);
     if (!club) return res.status(400).send('Invalid Club.');
 
@@ -252,7 +252,7 @@ router.put('/:clubId/change-position/:playerId/:postion', [auth, isAdminOrModera
         club = await Club.findOneAndUpdate(
             { _id: req.params.clubId, 'players._id': mongoose.Types.ObjectId(req.params.playerId) },
             {
-                'players.$.positions': [req.params.postion],
+                'players.$.positions': [req.params.position],
             },
             { new: true }
         );

@@ -113,7 +113,7 @@ VI. Cập nhật hiện trạng, trạng thái hiện tại của Project, cứ 
 - 2019/11/20: KIỂM ĐIỂM LẦN 1
 - 2019/11/23: Upload ảnh, load ảnh, crop ảnh thành công lên Cloudinary (trang Register)
 - 2019/11/26: Edit club (đã bao gồm upload ảnh), hiển thị ảnh club ở các nơi liên quan
-- 2019/11/29: Change postion, strict cors
+- 2019/11/29: Change position, strict cors
 - 2019/12/02: Create Stadiums, view list Stadiums của StadiumOwner
 - 2019/12/05: Create Stadium manage view, update được thông tin chung của Stadium
 - 2019/12/08: Cho bản thân tạm nghỉ tới sau Noel hoặc sau năm mới (tương đương 3 tuần nghỉ) để relax, đọc sách, thư giãn, chữa bệnh
