@@ -1,10 +1,10 @@
-<div class="nav-menu fixed-top" id="sticky-menu">
+<div class="nav-menu fixed-top">
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
         <div class="navbar-header">
           <a class="navbar-brand" href="index.html"><img src="assets/images/logo/logo.png" alt="BEFIT logo"></a>
-          <button class="navbar-toggler d-md-inlline d-xl-none" type="button" data-toggle="collapse"
+          <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler d-md-inlline d-xl-none" type="button" data-toggle="collapse"
             data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="fa fa-bars"></span>
@@ -14,7 +14,7 @@
       <!--col end-->
       <div class="col-lg-8">
         <nav class="navbar navbar-expand-lg">
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarNavDropdown">
             <!--Player Menu-->
             <ul class="navbar-nav ml-auto" *ngIf="loggedIn() && hasRoles(['Player'])">
               <li class="nav-item" routerLinkActive="active">

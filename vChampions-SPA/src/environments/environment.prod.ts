@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://139.180.134.199/api/',
+  apiUrl: 'https://api.vietchampions.com/api/',
   pageSize: 10,
   defaultAvatar: {
     publicId: 'vChampions/default/_default-user.jpg',

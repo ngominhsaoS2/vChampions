@@ -9,6 +9,7 @@ import { BsDropdownModule, CarouselModule, AlertModule, ModalModule, TabsModule,
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -67,7 +68,6 @@ import { StadiumsOfOwnerComponent } from './components/profile/stadiums-of-owner
 import { StadiumManageComponent } from './components/stadiums/stadium-manage/stadium-manage.component';
 import { PriceCreateEditComponent } from './components/stadiums/price-create-edit/price-create-edit.component';
 
-
 @NgModule({
   declarations: [
     // Directives
@@ -107,6 +107,7 @@ import { PriceCreateEditComponent } from './components/stadiums/price-create-edi
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgbModule,
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),

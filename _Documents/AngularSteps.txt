@@ -22,3 +22,18 @@
 
 *** Một số commands
 - Turn on MongoDB on mac: mongod --config /usr/local/etc/mongod.conf --fork
+- Tạo wildcard certificate: certbot certonly --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory --manual-public-ip-logging-ok -d *.vietchampions.com -d vietchampions.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+

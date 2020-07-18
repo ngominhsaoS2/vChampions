@@ -12,6 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class NavComponent implements OnInit {
 
+  isCollapsed = true;
   jwtHelper = new JwtHelperService();
 
   constructor(

@@ -1,6 +1,6 @@
-<app-carousel-sm [title]="title" [description]="description">
-</app-carousel-sm>
-<div class="news-area p-t-30 p-b-60">
+<!-- <app-carousel-sm [title]="title" [description]="description">
+</app-carousel-sm> -->
+<div class="news-area p-t-100 p-b-60">
   <div class="container">
     <div class="row">
       <div class="col-md-3">
@@ -8,7 +8,7 @@
           <div class="col-12" *ngIf="selectedPlayer">
             <div class="club-authority">
               <img class="w-100 maxw-200"
-                src="http://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill,g_faces/v{{selectedPlayer.avatar.version}}/{{selectedPlayer.avatar.publicId}}"
+                src="https://res.cloudinary.com/drssrezsl/image/upload/w_200,h_200,c_fill,g_faces/v{{selectedPlayer.avatar.version}}/{{selectedPlayer.avatar.publicId}}"
                 alt="{{selectedPlayer.name}}">
               <h4 class="m-t-15 black">{{selectedPlayer.name}}</h4>
               <div class="authority-box m-t-15">
@@ -95,7 +95,7 @@
                                 <td colspan="4" class="team">
                                   <div class="team-box">
                                     <img class="xs-img"
-                                      src="http://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill,g_faces/v{{player.avatar.version}}/{{player.avatar.publicId}}"
+                                      src="https://res.cloudinary.com/drssrezsl/image/upload/w_50,h_50,c_fill,g_faces/v{{player.avatar.version}}/{{player.avatar.publicId}}"
                                       alt="{{player.name}}">
                                     <span class="f-s-22" (mouseover)="briefShowPlayer(player)"><a
                                         [routerLink]="['/player/', player._id]"
